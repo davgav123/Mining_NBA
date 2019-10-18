@@ -31,62 +31,21 @@ def scrap_bbref_table(year, target_table_url):
     return stats
 
 
-def create_per_game_dataFrame():
-    per_game_df = pd.DataFrame()
+def data_from_url(url, dest_path):
+    dest_df = pd.DataFrame()
 
     for year in three_point_era_years:
-        df, col = scrap_bbref_table(year, per_game_url)
-        per_game_df = pd.concat([per_game_df, df], ignore_index=True)
+        df = scrap_bbref_table(year, url)
+        dest_df = pd.concat([dest_df, df], ignore_index=True)
 
-    per_game_df.to_csv('../data/per_game_data.csv')
-    print('Per game data created!')
+    dest_df.to_csv(dest_path)
+    print('Data is saved into {}'.format(dest_path))
 
-
-def create_totals_dataFrame():
-    totals_df = pd.DataFrame()
-
-    for year in three_point_era_years:
-        df = scrap_bbref_table(year, totals_url)
-        totals_df = pd.concat([totals_df, df], ignore_index=True)
-
-    totals_df.to_csv('../data/totals_data.csv')
-    print('Totals data created!')
-
-
-def create_per_36_dataFrame():
-    per_36_df = pd.DataFrame()
-
-    for year in three_point_era_years:
-        df = scrap_bbref_table(year, per_36_url)
-        per_36_df = pd.concat([per_36_df, df], ignore_index=True)
-
-    per_36_df.to_csv('../data/per_36_data.csv')
-    print('Per 36 data created!')
-
-
-def create_per_100_poss_dataFrame():
-    per_100_poss_df = pd.DataFrame()
-
-    for year in three_point_era_years:
-        df = scrap_bbref_table(year, per_100_poss_url)
-        per_100_poss_df = pd.concat([per_100_poss_df, df], ignore_index=True)
-
-    per_100_poss_df.to_csv('../data/per_100_poss_data.csv')
-    print('Per 100 possessions data created!')
-
-
-def create_advanced_dataFrame():
-    advanced_df = pd.DataFrame()
-
-    for year in three_point_era_years:
-        df = scrap_bbref_table(year, advanced_url)
-        advanced_df = pd.concat([advanced_df, df], ignore_index=True)
-
-    advanced_df.to_csv('../data/advanced_data.csv')
-    print('Advanced data created!')
-    
 
 if __name__ == "__main__":
-    create_per_game_dataFrame()
-    
+    data_from_url(per_game_url, '../data/per_game_data.csv')
+    data_from_url(totals_url, '../data/totals_data.csv')
+    data_from_url(per_36_url, '../data/per_36_data.csv')
+    data_from_url(per_100_poss_url, '../data/per_100_data.csv')
+    data_from_url(advanced_url, '../data/advanced_data.csv')    
 
