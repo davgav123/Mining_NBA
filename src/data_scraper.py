@@ -1,8 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# from 1979-1980 to 2018-2019 seasons, 3-point era
+# from 1979-1980 to 2018-2019 season, 3-point era
 three_point_era_years = [year for year in range(1980, 2020)]
 
 per_game_url = 'https://www.basketball-reference.com/leagues/NBA_{}_per_game.html'
@@ -26,15 +29,19 @@ def scrap_bbref_table(year, target_table_url):
                     for i in range(len(rows))]
 
     stats = pd.DataFrame(player_stats, columns = headers)
+    
+    # delete empty rows
+    stats = stats[pd.notnull(stats['Player'])]
+    stats = stats.reset_index(drop=True)
 
     print('Reading data from {} finished'.format(url))
     return stats
 
 
-def data_from_url(url, dest_path):
+def data_from_url(url, dest_path, years):
     dest_df = pd.DataFrame()
 
-    for year in three_point_era_years:
+    for year in years:
         df = scrap_bbref_table(year, url)
         dest_df = pd.concat([dest_df, df], ignore_index=True)
 
@@ -43,9 +50,9 @@ def data_from_url(url, dest_path):
 
 
 if __name__ == "__main__":
-    data_from_url(per_game_url, '../data/per_game_data.csv')
-    data_from_url(totals_url, '../data/totals_data.csv')
-    data_from_url(per_36_url, '../data/per_36_data.csv')
-    data_from_url(per_100_poss_url, '../data/per_100_data.csv')
-    data_from_url(advanced_url, '../data/advanced_data.csv')    
+    data_from_url(per_game_url, '../data/per_game_data.csv', three_point_era_years)
+    data_from_url(totals_url, '../data/totals_data.csv', three_point_era_years)
+    data_from_url(per_36_url, '../data/per_36_data.csv', three_point_era_years)
+    data_from_url(per_100_poss_url, '../data/per_100_data.csv', three_point_era_years)
+    data_from_url(advanced_url, '../data/advanced_data.csv', three_point_era_years)    
 
