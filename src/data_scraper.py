@@ -4,6 +4,7 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
+from pathlib import Path
 
 # from 1979-1980 to 2018-2019 season, 3-point era
 three_point_era_years = [year for year in range(1980, 2020)]
@@ -50,9 +51,9 @@ def data_from_url(url, dest_path, years):
 
 
 if __name__ == "__main__":
-    data_from_url(per_game_url, '../data/per_game_data.csv', three_point_era_years)
-    data_from_url(totals_url, '../data/totals_data.csv', three_point_era_years)
-    data_from_url(per_36_url, '../data/per_36_data.csv', three_point_era_years)
-    data_from_url(per_100_poss_url, '../data/per_100_data.csv', three_point_era_years)
-    data_from_url(advanced_url, '../data/advanced_data.csv', three_point_era_years)    
+    data_from_url(per_game_url, Path('../data/per_game_data.csv'), three_point_era_years)
+    data_from_url(totals_url, Path('../data/totals_data.csv'), three_point_era_years)
+    data_from_url(per_36_url, Path('../data/per_36_data.csv'), three_point_era_years)
+    data_from_url(per_100_poss_url, Path('../data/per_100_data.csv'), three_point_era_years)
+    data_from_url(advanced_url, Path('../data/advanced_data.csv'), three_point_era_years)    
 
