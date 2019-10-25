@@ -91,6 +91,28 @@ def plot_award_ages():
     plt.show()
 
 
+def bar_plot_stat_by_age(path_to_csv, stat_of_interest):
+    df = pd.read_csv(Path(path_to_csv))
+    # df = filter_data_by_mpg_and_gms(df, 15.0, 35.0)
+
+    # average selected stat by age
+    df = df.groupby('Age')[stat_of_interest].mean().reset_index()
+    
+    ages = df['Age']
+    stat = df[stat_of_interest]
+    
+    plt.bar(ages, stat)
+    x = np.arange(min(ages), max(ages) + 1)
+    plt.xticks(x, x)
+    plt.xlabel('Age', fontsize=12)
+    plt.ylabel('Value', fontsize=12)
+    plt.title('Average number of {} per age by a player per season'.format(stat_of_interest),
+                fontsize=16)
+    plt.show()
+
+
 if __name__ == "__main__":
     plot_age_histogram_for_every_season(15, 35)
     plot_award_ages()
+    bar_plot_stat_by_age('../data/totals_data.csv', 'PTS')
+    bar_plot_stat_by_age('../data/advanced_data.csv', 'WS')
