@@ -29,35 +29,21 @@ def plot_age_histogram_for_every_season(mpg_limit, gms_limit):
     plt.show()
 
 
-def list_of_frequencies(l):
-    sorted_l = sorted(l)
-    unique_elements = np.unique(sorted_l)
-
-    freq_of_the_sorted = []
-    for elem in unique_elements:
-        freq_of_the_sorted += [(sorted_l == elem).sum()]
-
-    # frequence of the i-th element in unique_list
-    # is on the i-th spot in the frequence_list
-    return freq_of_the_sorted, unique_elements
-
-
 def plot_award_ages():
     mvp_df = pd.read_csv(Path('../data/reg_season_mvp.csv'))
     fmvp_df = pd.read_csv(Path('../data/finals_mvp.csv'))
     dpoy_df = pd.read_csv(Path('../data/reg_season_dpoy.csv'))
     smoy_df = pd.read_csv(Path('../data/sixth_man.csv'))
 
-    mvp_ages = mvp_df['Age'].values
-    fmvp_ages = fmvp_df['Age'].values
-    dpoy_ages = dpoy_df['Age'].values
-    smoy_ages = smoy_df['Age'].values
+    mvp_df = mvp_df.groupby('Age').count().reset_index()
+    fmvp_df = fmvp_df.groupby('Age').count().reset_index()
+    dpoy_df = dpoy_df.groupby('Age').count().reset_index()
+    smoy_df = smoy_df.groupby('Age').count().reset_index()
 
-    mvp_age_freq, mvp_ages = list_of_frequencies(mvp_ages)
-    fmvp_age_freq, fmvp_ages = list_of_frequencies(fmvp_ages)
-    dpoy_age_freq, dpoy_ages = list_of_frequencies(dpoy_ages)
-    smoy_age_freq, smoy_ages = list_of_frequencies(smoy_ages)
+    mvp_ages = mvp_df['Age']
+    mvp_age_freq = mvp_df['Player'] # could be any stat but age
 
+    # box plot for mvp
     plt.subplot(2, 2, 1)
     plt.bar(mvp_ages, mvp_age_freq)
     x = np.arange(min(mvp_ages), max(mvp_ages) + 1)
@@ -66,6 +52,10 @@ def plot_award_ages():
     plt.ylabel('Number of MVP awards', fontsize=12)
     plt.title('Bar plot of the age of the players who won MVP', fontsize=16)
 
+    fmvp_ages = fmvp_df['Age']
+    fmvp_age_freq = fmvp_df['Player'] # could be any stat but age
+
+    # box plot for fmvp    
     plt.subplot(2, 2, 2)
     plt.bar(fmvp_ages, fmvp_age_freq)
     x = np.arange(min(fmvp_ages), max(fmvp_ages) + 1)
@@ -74,6 +64,10 @@ def plot_award_ages():
     plt.ylabel('Number of FMVP awards', fontsize=12)
     plt.title('Bar plot of the age of the players who won FMVP', fontsize=16)
 
+    dpoy_ages = dpoy_df['Age']
+    dpoy_age_freq = dpoy_df['Player'] # could be any stat but age
+
+    # box plot for dpoy
     plt.subplot(2, 2, 3)
     plt.bar(dpoy_ages, dpoy_age_freq)
     x = np.arange(min(dpoy_ages), max(dpoy_ages) + 1)
@@ -82,6 +76,10 @@ def plot_award_ages():
     plt.ylabel('Number of DPOY awards', fontsize=12)
     plt.title('Bar plot of the age of the players who won DPOY', fontsize=16)
 
+    smoy_ages = smoy_df['Age']
+    smoy_age_freq = smoy_df['Player'] # could be any stat but age
+
+    # box plot for smoy
     plt.subplot(2, 2, 4)
     plt.bar(smoy_ages, smoy_age_freq)
     x = np.arange(min(smoy_ages), max(smoy_ages) + 1)
