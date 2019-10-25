@@ -1,0 +1,131 @@
+% !TEX encoding = UTF-8 Unicode
+\documentclass[a4paper]{article}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[utf8]{inputenc} % make weird characters work
+\usepackage{graphicx}
+%\usepackage[nottoc]{tocbibind}
+
+\usepackage[serbian, english]{babel}
+
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+% used for code
+\usepackage{color}
+\usepackage{listings}
+\usepackage{setspace}
+
+\definecolor{Background}{rgb}{0.97,0.97,0.97}
+
+\renewcommand{\lstlistingname}{Code}
+\lstdefinelanguage{Python3}{
+	language=Python,
+	firstnumber=1,
+	stepnumber=1,
+	numbers=left,
+	numbersep=5pt, 
+	tabsize=4,
+	basicstyle=\small\ttfamily,	
+	morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,
+		continue,return,True,False,None,access,as,,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
+	stringstyle=\color{mymauve},
+	commentstyle=\color{mygreen},  
+	keywordstyle=\color{blue},
+	backgroundcolor=\color{Background},	
+	captionpos=b,  
+	frame=single,	  
+ 	breakatwhitespace=false,
+ 	breaklines=true,
+ 	escapeinside={\%*}{*)},
+ 	extendedchars=true,
+ 	keepspaces=true,
+	numberstyle=\tiny\color{mygray},
+  	rulecolor=\color{black},
+  	showspaces=false,
+  	showstringspaces=false,
+  	showtabs=false,
+}
+
+% this will be used when we want to show results
+\lstdefinelanguage{Print}{
+	numbers=none,
+	tabsize=4,
+	basicstyle=\small\ttfamily,
+	frame=none	
+}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ 
+                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\begin{document}
+
+\title{Mining NBA}
+\author{David Gavrilović}
+% \date{9.~april 2015.}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+
+\section{Stats 101}
+\label{Stats_101}
+
+\subsection{Traditional stats}
+\label{Traditional_stats}
+
+
+\begin{itemize}
+	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: PG - point guard, SG - shooting guard, SF - small forward, PF - power forward and C - center. Nowdays, one player usually plays multiple positions and usually is oen of the: Point - primarly PG, Combo guard - plays PG and SG, Wing - SF and SG, Forward - PF and SF, Big - usually C but can also be PF.
+	\item \textbf{G} - Games. Number of games player played in during a season.
+	\item \textbf{GS} - Game started. Number of games player started. Cannot be greater than G.
+	\item \textbf{MP} - Minutes played (Per game or total in a season).
+	\item \textbf{FG} - Field goals.
+	\item \textbf{FGA} - Field goals attempts.
+	\item \textbf{FG\%} - Field goal percentage. Calculated as FG / FGA.
+	\item \textbf{3P} - 3-point field goals.
+	\item \textbf{3PA} - 3-point field goal attempts.
+	\item \textbf{3P\%} - 3-point percentage. Calculated as 3P / 3PA.
+	\item \textbf{2P} - 2-point field goals. 
+	\item \textbf{2PA} - 2-point field goal attempts.
+	\item \textbf{2P\%} - 2-point percentage. Calculated as 2P / 2PA.
+	\item \textbf{FT} - Free throws.
+	\item \textbf{FTA} - Free throw attempts.
+	\item \textbf{FT\%} - Free throws percentage. Calculated as FT / FTA.
+	\item \textbf{eFG\%} - Field goal percentage that takes into account that a 3-point field goal is, by one point, worth more than a 2-point field goal. Calculated as (FG + 0.5 * 3P) / FGA.
+	\item \textbf{ORB} - Offensive rebounds.
+	\item \textbf{TRB} - Defensive rebounds.
+	\item \textbf{AST} - Assists.
+	\item \textbf{STL} - Steals.
+	\item \textbf{BLK} - Blocks.
+	\item \textbf{TOV} - Turnovers.
+	\item \textbf{PF} - Personal fouls.
+	\item \textbf{PTS or PPG} - Points or Points per game.
+	
+\subsection{Advanced stats}
+\label{Advanced_stats}
+
+...
+
+\end{itemize}
+
+\pagebreak
+
+\addcontentsline{toc}{section}{References}
+\appendix
+\bibliography{ref}
+\bibliographystyle{unsrt}
+\appendix
+
+\end{document}
