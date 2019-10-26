@@ -48,8 +48,8 @@ def plot_award_ages():
     plt.bar(mvp_ages, mvp_age_freq)
     x = np.arange(min(mvp_ages), max(mvp_ages) + 1)
     plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=12)
-    plt.ylabel('Number of MVP awards', fontsize=12)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Number of MVP awards', fontsize=14)
     plt.title('Bar plot of the age of the players who won MVP', fontsize=16)
 
     fmvp_ages = fmvp_df['Age']
@@ -60,8 +60,8 @@ def plot_award_ages():
     plt.bar(fmvp_ages, fmvp_age_freq)
     x = np.arange(min(fmvp_ages), max(fmvp_ages) + 1)
     plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=12)
-    plt.ylabel('Number of FMVP awards', fontsize=12)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Number of FMVP awards', fontsize=14)
     plt.title('Bar plot of the age of the players who won FMVP', fontsize=16)
 
     dpoy_ages = dpoy_df['Age']
@@ -72,8 +72,8 @@ def plot_award_ages():
     plt.bar(dpoy_ages, dpoy_age_freq)
     x = np.arange(min(dpoy_ages), max(dpoy_ages) + 1)
     plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=12)
-    plt.ylabel('Number of DPOY awards', fontsize=12)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Number of DPOY awards', fontsize=14)
     plt.title('Bar plot of the age of the players who won DPOY', fontsize=16)
 
     smoy_ages = smoy_df['Age']
@@ -84,16 +84,18 @@ def plot_award_ages():
     plt.bar(smoy_ages, smoy_age_freq)
     x = np.arange(min(smoy_ages), max(smoy_ages) + 1)
     plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=12)
-    plt.ylabel('Number of SMOY awards', fontsize=12)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Number of SMOY awards', fontsize=14)
     plt.title('Bar plot of the age of the players who won SMOY', fontsize=16)
 
     plt.show()
 
 
-def bar_plot_stat_by_age(path_to_csv, stat_of_interest):
+def bar_plot_stat_by_age(path_to_csv, stat_of_interest, filter_players=False, mpg=15.0, gms=35):
     df = pd.read_csv(Path(path_to_csv))
-    # df = filter_data_by_mpg_and_gms(df, 15.0, 35.0)
+
+    if filter_players:
+        df = filter_data_by_mpg_and_gms(df, mpg, gms)
 
     # average selected stat by age
     df = df.groupby('Age')[stat_of_interest].mean().reset_index()
@@ -104,8 +106,8 @@ def bar_plot_stat_by_age(path_to_csv, stat_of_interest):
     plt.bar(ages, stat)
     x = np.arange(min(ages), max(ages) + 1)
     plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=12)
-    plt.ylabel('Value', fontsize=12)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Value', fontsize=14)
     plt.title('Average number of {} per age by a player per season'.format(stat_of_interest),
                 fontsize=16)
     plt.show()
@@ -115,4 +117,4 @@ if __name__ == "__main__":
     plot_age_histogram_for_every_season(15, 35)
     plot_award_ages()
     bar_plot_stat_by_age('../data/totals_data.csv', 'PTS')
-    bar_plot_stat_by_age('../data/advanced_data.csv', 'WS')
+    bar_plot_stat_by_age('../data/advanced_data.csv', 'BPM')
