@@ -17,10 +17,12 @@ def filter_data_by_mpg_and_gms(df, mpg_limit, gms_limit):
     return df
 
 
-def plot_age_histogram_for_every_season(mpg_limit, gms_limit):
+def plot_age_histogram(filter_players=True, mpg_limit=15.0, gms_limit=35):
     df_totals = pd.read_csv(Path('../data/totals_data.csv'))
     
-    df_totals = filter_data_by_mpg_and_gms(df_totals, mpg_limit, gms_limit)
+    if filter_players:
+        df_totals = filter_data_by_mpg_and_gms(df_totals, mpg_limit, gms_limit)
+    
     ages = df_totals['Age'].values
     
     plt.hist(ages, ec='black', facecolor='blue', alpha=0.5)
@@ -113,8 +115,31 @@ def bar_plot_stat_by_age(path_to_csv, stat_of_interest, filter_players=False, mp
     plt.show()
 
 
+def player_stat_by_age(name, path_to_csv, stat):
+    df_per_game = pd.read_csv(Path(path_to_csv))
+    df = df_per_game[df_per_game['Player'] == name]
+
+    # remove '*' from name, if there is one
+    name = name[:-1] if name[-1] == '*' else name
+
+    age = df['Age']
+    stats = df[stat]
+
+    plt.bar(age, stats)
+    x = np.arange(min(age), max(age) + 1)
+    plt.xticks(x, x)
+    plt.xlabel('Age', fontsize=14)
+    plt.ylabel('Value', fontsize=14)
+    plt.title('{}\'s {} per season'.format(name, stat), fontsize=16)
+    plt.show()
+
+
 if __name__ == "__main__":
-    plot_age_histogram_for_every_season(15, 35)
+    plot_age_histogram(True, 15, 35)
     plot_award_ages()
     bar_plot_stat_by_age('../data/totals_data.csv', 'PTS')
     bar_plot_stat_by_age('../data/advanced_data.csv', 'BPM')
+
+    # '*' represents hall of famer
+    player_stat_by_age('Shaquille O\'Neal*', '../data/advanced_data.csv', 'WS/48')
+    player_stat_by_age('Tim Duncan', '../data/advanced_data.csv', 'WS/48')
