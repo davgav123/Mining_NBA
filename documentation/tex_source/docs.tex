@@ -87,9 +87,9 @@
 
 
 \begin{itemize}
-	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: PG - point guard, SG - shooting guard, SF - small forward, PF - power forward and C - center. Nowdays, one player usually plays multiple positions and usually is oen of the: Point - primarly PG, Combo guard - plays PG and SG, Wing - SF and SG, Forward - PF and SF, Big - usually C but can also be PF.
+	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: \textit{\textbf{PG}} - point guard, \textit{\textbf{SG}} - shooting guard, \textit{\textbf{SF}} - small forward, \textit{\textbf{PF}} - power forward and \textit{\textbf{C}} - center. Nowdays, one player usually plays multiple positions and usually is one of the: \textit{\textbf{Point}} - primarly PG, \textit{\textbf{Combo guard}} - plays PG and SG, \textit{\textbf{Wing}} - SF and SG, \textit{\textbf{Forward}} - PF and SF, \textit{\textbf{Big}} - usually C but can also be PF.
 	\item \textbf{G} - Games. Number of games player played in during a season.
-	\item \textbf{GS} - Game started. Number of games player started. Cannot be greater than G.
+	\item \textbf{GS} - Games started. Number of games player started. Cannot be greater than G.
 	\item \textbf{MP} - Minutes played (Per game or total in a season).
 	\item \textbf{FG} - Field goals.
 	\item \textbf{FGA} - Field goals attempts.
@@ -121,7 +121,7 @@
 	\item \textbf{ORtg} - Offensive rating. An estimate of points produced/scored by a player/team per 100 possessions \cite{odrt}.
 	\item \textbf{DRtg} - Defensive rating. An estimate of point allowed per 100 possessions \cite{odrt}.  
 	\item \textbf{PER} - Player efficiency rating. A measure of a per minute production standardized such that the league average is 15 \cite{per}.
-	\item \textbf{TS\%} - True shooting percentage. A measure of shooting efficiency that takes into account 2P, 3P and FT. Calculated as  PTS / (2 *  FGA + 0.44 * FTA) 
+	\item \textbf{TS\%} - True shooting percentage. Points per scoring attempt converted to the 2-point field goal percentage needed to score that many points per attempt. Calculated as  PTS / (2 *  FGA + 0.44 * FTA). 
 	\item \textbf{3PAr} - 3-Point attempt rate. Percentage of FGA from 3-point range.
 	\item \textbf{FTr} - Free throw attempt rate. Number of FTA per FGA.
 	\item \textbf{ORD\%} - Offensive rebound percentage. An estimate of the percentage of available offensive rebounds a player grabbed while he was on the floor.
@@ -139,9 +139,18 @@
 	\item \textbf{OBPM} - Offensive Box plus/minus. A box score estimate of the offensive points per 100 possessions that a player contributed above a league-average player, translated to an average team \cite{bpm}.
 	\item \textbf{DBPM} - Defensive Box plus/minus. A box score estimate of the defensive points per 100 possessions that a player contributed above a league-average player, translated to an average team \cite{bpm}.
 	\item \textbf{BPM} - Box plus/minus. A box score estimate of the points per 100 possessions that a player contributed above a league-average player, translated to an average team \cite{bpm}.
-	\item \textbf{VORP} - Value over replacement player. An estimate of the points per 100 TEAM possessions that a player contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season \cite{bpm}.
+	\item \textbf{VORP} - Value over replacement player. An estimate of the points per 100 team possessions that a player contributed above a replacement-level (-2.0) player, translated to an average team and prorated to an 82-game season \cite{bpm}.
 
 \end{itemize}
+
+\section{Calculating prime of an average player}
+\label{prime}
+
+In this section we will try to determine when does an average player hit their prime. But first, what is prime? In order to answer that question we must first define something called peak. Peak is the best season player had in his career. Knowing that, prime can be defined as a player's seasons in which he is close, or somewhat close, to his peak. Knowing length of a player's prime is important, because prime is probably the most important thing when considering player's career.  
+
+So, when does an average player peak? 
+
+TODO
 
 
 \pagebreak
