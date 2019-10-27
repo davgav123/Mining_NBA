@@ -95,26 +95,31 @@ def plot_award_ages():
     plt.show()
 
 
-def bar_plot_stat_by_age(path_to_csv, stat_of_interest, filter_players=False, mpg=15.0, gms=35):
+def bar_plot_stat_by_age(path_to_csv, stats_of_interest, filter_players=False, mpg=15.0, gms=35):
     df = pd.read_csv(Path(path_to_csv))
 
     if filter_players:
         df = filter_data_by_mpg_and_gms(df, mpg, gms)
 
-    # average selected stat by age
-    df = df.groupby('Age')[stat_of_interest].mean().reset_index()
+    i = 1
+    for stat_i in stats_of_interest:
+        # average selected stat by age
+        df_tmp = df.groupby('Age')[stat_i].mean().reset_index()
+
+        ages = df_tmp['Age']
+        stat = df_tmp[stat_i]
+
+        plt.subplot(2, 2, i)
+        plt.bar(ages, stat)
+        x = np.arange(min(ages), max(ages) + 1)
+        plt.xticks(x, x)
+        plt.xlabel('Age', fontsize=14)
+        plt.ylabel('Avg. number of {} per season'.format(stat_i), fontsize=14)
+        plt.title('Average number of {} per age by a player per season'.format(stat_i),
+                    fontsize=18)
     
-    ages = df['Age']
-    stat = df[stat_of_interest]
-    
-    plt.bar(ages, stat)
-    x = np.arange(min(ages), max(ages) + 1)
-    plt.xticks(x, x, fontsize=24)
-    plt.yticks(fontsize=24)
-    plt.xlabel('Age', fontsize=30)
-    plt.ylabel('Value', fontsize=30)
-    plt.title('Average number of {} per age by a player per season'.format(stat_of_interest),
-                fontsize=36)
+        i += 1
+
     plt.show()
 
 
@@ -141,8 +146,8 @@ def player_stat_by_age(name, path_to_csv, stat):
 if __name__ == "__main__":
     plot_age_histogram(False, 15, 35)
     plot_award_ages()
-    bar_plot_stat_by_age('../data/totals_data.csv', 'FG')
-    bar_plot_stat_by_age('../data/advanced_data.csv', 'BPM')
+    bar_plot_stat_by_age('../data/totals_data.csv', ['PTS', 'FG', 'FGA', 'FT'], filter_players=True)
+    bar_plot_stat_by_age('../data/advanced_data.csv', ['PER', 'WS/48', 'BPM', 'VORP'], filter_players=True)
 
     # '*' represents Hall of famer
     player_stat_by_age('Shaquille O\'Neal*', '../data/advanced_data.csv', 'WS/48')
