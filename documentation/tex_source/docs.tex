@@ -146,11 +146,60 @@
 \section{Calculating prime of an average player}
 \label{prime}
 
-In this section we will try to determine when does an average player hit their prime. But first, what is prime? In order to answer that question we must first define something called peak. Peak is the best season player had in his career. Knowing that, prime can be defined as a player's seasons in which he is close, or somewhat close, to his peak. Knowing length of a player's prime is important, because prime is probably the most important thing when considering player's career.  
+In this section we will try to determine when does an average player hit their \textit{prime}. But first, what is prime? In order to answer that question we must first define something called \textit{peak}. Peak is the best season player had in his career. Knowing that, prime can be defined as player's seasons in which he is close, or somewhat close, to his peak. Knowing length of a player's prime is important, because prime is probably the most important thing when discussing player's career. \\
 
-So, when does an average player peak? 
+In this paper only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS/48, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS per 48 is used to determine players contribution to winning, per 48 minutes, the lenght of a game without overtime. It's also expected for this stat to be higher for seasons in player's prime than for the other seasons. \\  
 
-TODO
+Of course, different players can hit their prime at different age. Let's check prime years od some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird \ref{plt:bird}, Shaq \ref{plt:shaq} and Duncan \ref{plt:duncan}. As we can see from the shown box plots, mentioned players have the best stats when they were around 26 to 30 years old. From that we can conclude that that was the lenght of their prime.  \\
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.32]{bird.png}
+\end{center}
+\caption{Bird's WS/48 and BPM per season}
+\label{plt:bird}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.32]{shaq.png} % 2 x 800px and 413px
+\end{center}
+\caption{Shaq's WS/48 and BPM per season}
+\label{plt:shaq}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.32]{duncan.png}
+\end{center}
+\caption{Duncan's WS/48 and BPM per season}
+\label{plt:duncan}
+\end{figure}
+
+
+In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{regular season MVP}, \textit{FMVP}, \textit{DPOY} and \textit{Sixth man of the year}. Plots are shown in figure \ref{plt:awards}. Every plot but plot for Sixth man of the year is somewhat similar. The number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 years old when they won, and the ones who were 27. After that there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?  \\
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{awards_plots.png}
+\end{center}
+\caption{Age of award winners}
+\label{plt:awards}
+\end{figure}
+
+First, I checked age of players who played in the NBA. Results can be seen in histogram (figure \ref{plt:age_hist}). Note that there are two histograms. One represents every player who played in the NBA (in the three point era, from 1979/80 season). The other is filtering out every player (from the same era) that has played in less than 25 games and less then 15 minutes per game. Those players are filtered because I don't consider them regular contributors for the team they are playing for, so they might not be important. Also, I just wanted to check on their histogram as well.  
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{age_histograms.png}
+\end{center}
+\caption{Age histograms}
+\label{plt:age_hist}
+\end{figure}
+
+
+TODO -> comment about age histograms, and then show other plots
 
 
 \pagebreak
