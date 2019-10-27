@@ -25,9 +25,11 @@ def plot_age_histogram(filter_players=True, mpg_limit=15.0, gms_limit=35):
     
     ages = df_totals['Age'].values
     
-    plt.hist(ages, ec='black', facecolor='blue', alpha=0.5)
-    plt.title('Age histogram', fontsize=22)
-    plt.xlabel('Age', fontsize='14')
+    plt.hist(ages, 10, ec='black', facecolor='blue', alpha=0.5)
+    plt.title('Age histogram, filtered' if filter_players else 'Age histogram', fontsize=36)
+    plt.xlabel('Age', fontsize=30)
+    plt.xticks(fontsize=24)
+    plt.yticks(fontsize=24)
     plt.show()
 
 
@@ -52,7 +54,7 @@ def plot_award_ages():
     plt.xticks(x, x)
     plt.xlabel('Age', fontsize=14)
     plt.ylabel('Number of MVP awards', fontsize=14)
-    plt.title('Bar plot of the age of the players who won MVP', fontsize=16)
+    plt.title('Bar plot of the age of the players who won MVP', fontsize=18)
 
     fmvp_ages = fmvp_df['Age']
     fmvp_age_freq = fmvp_df['Player'] # could be any stat but age
@@ -64,7 +66,7 @@ def plot_award_ages():
     plt.xticks(x, x)
     plt.xlabel('Age', fontsize=14)
     plt.ylabel('Number of FMVP awards', fontsize=14)
-    plt.title('Bar plot of the age of the players who won FMVP', fontsize=16)
+    plt.title('Bar plot of the age of the players who won FMVP', fontsize=18)
 
     dpoy_ages = dpoy_df['Age']
     dpoy_age_freq = dpoy_df['Player'] # could be any stat but age
@@ -76,7 +78,7 @@ def plot_award_ages():
     plt.xticks(x, x)
     plt.xlabel('Age', fontsize=14)
     plt.ylabel('Number of DPOY awards', fontsize=14)
-    plt.title('Bar plot of the age of the players who won DPOY', fontsize=16)
+    plt.title('Bar plot of the age of the players who won DPOY', fontsize=18)
 
     smoy_ages = smoy_df['Age']
     smoy_age_freq = smoy_df['Player'] # could be any stat but age
@@ -88,7 +90,7 @@ def plot_award_ages():
     plt.xticks(x, x)
     plt.xlabel('Age', fontsize=14)
     plt.ylabel('Number of SMOY awards', fontsize=14)
-    plt.title('Bar plot of the age of the players who won SMOY', fontsize=16)
+    plt.title('Bar plot of the age of the players who won SMOY', fontsize=18)
 
     plt.show()
 
@@ -107,11 +109,12 @@ def bar_plot_stat_by_age(path_to_csv, stat_of_interest, filter_players=False, mp
     
     plt.bar(ages, stat)
     x = np.arange(min(ages), max(ages) + 1)
-    plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=14)
-    plt.ylabel('Value', fontsize=14)
+    plt.xticks(x, x, fontsize=24)
+    plt.yticks(fontsize=24)
+    plt.xlabel('Age', fontsize=30)
+    plt.ylabel('Value', fontsize=30)
     plt.title('Average number of {} per age by a player per season'.format(stat_of_interest),
-                fontsize=16)
+                fontsize=36)
     plt.show()
 
 
@@ -127,19 +130,21 @@ def player_stat_by_age(name, path_to_csv, stat):
 
     plt.bar(age, stats)
     x = np.arange(min(age), max(age) + 1)
-    plt.xticks(x, x)
-    plt.xlabel('Age', fontsize=14)
-    plt.ylabel('Value', fontsize=14)
-    plt.title('{}\'s {} per season'.format(name, stat), fontsize=16)
+    plt.xticks(x, x, fontsize=24)
+    plt.yticks(fontsize=24)
+    plt.xlabel('Age', fontsize=30)
+    plt.ylabel('Value', fontsize=30)
+    plt.title('{}\'s {} per season'.format(name, stat), fontsize=36)
     plt.show()
 
 
 if __name__ == "__main__":
-    plot_age_histogram(True, 15, 35)
+    plot_age_histogram(False, 15, 35)
     plot_award_ages()
-    bar_plot_stat_by_age('../data/totals_data.csv', 'PTS')
+    bar_plot_stat_by_age('../data/totals_data.csv', 'FG')
     bar_plot_stat_by_age('../data/advanced_data.csv', 'BPM')
 
-    # '*' represents hall of famer
+    # '*' represents Hall of famer
     player_stat_by_age('Shaquille O\'Neal*', '../data/advanced_data.csv', 'WS/48')
+    player_stat_by_age('Larry Bird*', '../data/advanced_data.csv', 'WS/48')
     player_stat_by_age('Tim Duncan', '../data/advanced_data.csv', 'WS/48')
