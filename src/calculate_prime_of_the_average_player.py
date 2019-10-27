@@ -147,7 +147,7 @@ if __name__ == "__main__":
     plot_age_histogram(False, 15, 35)
     plot_award_ages()
     bar_plot_stat_by_age('../data/totals_data.csv', ['PTS', 'FG', 'FGA', 'FT'], filter_players=True)
-    bar_plot_stat_by_age('../data/advanced_data.csv', ['PER', 'WS/48', 'BPM', 'VORP'], filter_players=True)
+    bar_plot_stat_by_age('../data/advanced_data.csv', ['PER', 'WS', 'BPM', 'VORP'], filter_players=True)
 
     # '*' represents Hall of famer
     player_stat_by_age('Shaquille O\'Neal*', '../data/advanced_data.csv', 'WS/48')
