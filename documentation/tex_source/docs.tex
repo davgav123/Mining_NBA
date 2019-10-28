@@ -148,14 +148,14 @@
 
 In this section we will try to determine when does an average player hit their \textit{prime}. But first, what is prime? In order to answer that question we must first define something called \textit{peak}. Peak is the best season player had in his career. Knowing that, prime can be defined as player's seasons in which he is close, or somewhat close, to his peak. Knowing length of a player's prime is important, because prime is probably the most important thing when discussing player's career. \\
 
-In this paper only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS is used to determine players contribution to winning. It's also expected for this stat to be higher for seasons in player's prime than for the other seasons. \\  
+In this research only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS is used to determine players contribution to winning. It's expected from a player to contribute to winning more in his prime years, than in the rest of his career. \\  
 
-Of course, different players can hit their prime at different age. Let's check prime years od some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird \ref{plt:bird}, Shaq \ref{plt:shaq} and Duncan \ref{plt:duncan}. As we can see from the shown box plots, mentioned players have the best stats when they were around 26 to 30 years old. From that we can conclude that that was the lenght of their prime.  \\
+Of course, different players can hit their prime at different age. Let's check prime years of some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird (figure \ref{plt:bird}), Shaq (figure \ref{plt:shaq}) and Duncan (figure \ref{plt:duncan}). As we can see from the shown box plots, mentioned players had the best seasons when they were around 26 to 30 years old. From that we can conclude that those seasons were their prime.  \\
 
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.32]{bird.png}
+\includegraphics[scale=0.30]{bird.png}
 \end{center}
 \caption{Bird's WS/48 and BPM per season}
 \label{plt:bird}
@@ -163,7 +163,7 @@ Of course, different players can hit their prime at different age. Let's check p
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.32]{shaq.png} % 2 x 800px and 413px
+\includegraphics[scale=0.30]{shaq.png} % 2 x 800px and 413px
 \end{center}
 \caption{Shaq's WS/48 and BPM per season}
 \label{plt:shaq}
@@ -171,14 +171,14 @@ Of course, different players can hit their prime at different age. Let's check p
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.32]{duncan.png}
+\includegraphics[scale=0.30]{duncan.png}
 \end{center}
 \caption{Duncan's WS/48 and BPM per season}
 \label{plt:duncan}
 \end{figure}
 
 
-In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{regular season MVP}, \textit{FMVP}, \textit{DPOY} and \textit{Sixth man of the year}. Plots are shown in figure \ref{plt:awards}. Every plot but plot for Sixth man of the year is somewhat similar. The number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 years old when they won, and the ones who were 27. After that there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?  \\
+In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{Regular season MVP}, \textit{Finals MVP}, \textit{DPOY} and \textit{Sixth man of the year} (\textit{SMOY}). Plots are shown in figure \ref{plt:awards}. Every plot but plot for Sixth man of the year is somewhat similar. The number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 (highest value) and 27 years old when they won. After that, there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?  \\
 
 \begin{figure}[h!]
 \begin{center}
@@ -188,7 +188,7 @@ In the next step of determining prime of players, I checked at what age do playe
 \label{plt:awards}
 \end{figure}
 
-First, I checked age of players who played in the NBA. Results can be seen in figure \ref{plt:age_hist}. Note that there are two histograms. One represents every player who played in the NBA (in the three point era, from 1979/80 season). The other is filtering out every player (from the same era) that has played in less than 25 games and less then 15 minutes per game. Those players are filtered out because I don't consider them regular contributors for the team they are playing for. The reason behind that is that they are probably not skilled enough, and possibly not in their prime, so they might not be important. Also, I just wanted to check on their histogram as well.  
+After that, I checked age of players who played in the NBA. Results can be seen in figure \ref{plt:age_hist}. Note that there are two histograms. One represents every player who played in the NBA. The other is filtering out every player that has played in less than 25 games and less then 15 minutes per game. Those players are filtered out because I don't consider them regular contributors for the team they are playing for. The reason behind that is that they are probably not skilled enough, and possibly not in their prime, so they might not be important. Also, I just wanted to check on their histogram as well. Data used only takes into account players in the so-called \textit{Three-point era}. which began in 1979/80 season, the first season with 3-point line, and last till this day.
 
 \begin{figure}[h!]
 \begin{center}
@@ -202,7 +202,7 @@ First, I checked age of players who played in the NBA. Results can be seen in fi
 In the left histogram, unfiltered one, most of the players are in between 21 and 28 years old. That makes sense because players are usually drafted when they are younger than 25, and after rookie contracts expire and they are not good enough, they are out of the league. Histogram on the right has way lower number of players youger than around 23 years old. The reason behind that is that rookies aren't usually contributors right away because they need some time to develop.   The difference in number of players that are above 28 years old in unfiltered and filtered data is not that large. That is the case because players obove that age are usually good players, and they might be good because they are in their prime. That trend continues on both histograms until the significant drop somewhere after players reach 32 or 33. That might happen because they are simply not serviceable anymore, and because of that cannot find teams to sign with. 
 To conclude this paragraph, number of players is rising ar first, until the age of 28. After that, there are two significant drops. \\
 
-Now, I can try to estimate prime of an average player with statistics. First, I checked traditional stats. Box plots of four stats are shown, PTS, FG, FGA and FT. Simply, it is expected from a player in his prime to shoot and score more than in his non-prime seasons. Note that values represented on a y-axis are averages per season, not per game! In figure \ref{plt:totals_age} every player from the three-point era is taken into account while players represented in the figure \ref{plt:totals_age_filtered} are the ones I consider contributors (minutes per game $>$ 15 and games played $>$ 35). 
+Now, I can try to estimate prime of an average player with statistics. First, I checked traditional stats. Box plots for four stats are shown, PTS, FG, FGA and FT. Simply, it is expected from a player in his prime to shoot and score more than in his non-prime seasons. Note that values represented on a y-axis are averages per season, not per game! In figure \ref{plt:totals_age} every player from the three-point era is taken into account while players represented in the figure \ref{plt:totals_age_filtered} are the ones I consider contributors (minutes per game $>$ 15 and games played $>$ 35). 
 
 \begin{figure}[h!]
 \begin{center}
@@ -222,7 +222,7 @@ Now, I can try to estimate prime of an average player with statistics. First, I 
 
 Both plots are somewhat similar. Values for players age from 26 to 30 or maybe 31 are higher than for the any other age, with a significant drop after that. Both plots show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is acually in late twenties/early thrties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has a easily noticable difference between values for players 21 and players 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized. \\
 
-Advanced stats are better than traditional and hold more information about how good a certain player is. I did the same thing as in the paragraph before, but now with some of the advanced stats. Stats chosen are PER, WS, BPM and VORP. Box plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while box plots after filtering are in figure \ref{plt:advanced_age_filtered}.
+Advanced stats are better than traditional and hold more information about how good a certain player is. So, I did similar thing as in the paragraphs before, but now with the advanced stats. Stats chosen are PER, WS, BPM and VORP. Box plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while box plots after filtering are in figure \ref{plt:advanced_age_filtered}.
 
 
 \begin{figure}[h!]
@@ -241,9 +241,9 @@ Advanced stats are better than traditional and hold more information about how g
 \label{plt:advanced_age_filtered}
 \end{figure}
 
-These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are normal distribution-like, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data has hight value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, in limited minutes. \\
+These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. It helps that there are not many players who played untill the age of 39. \\
 
-Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around 25 year old, and exits when he is around 31, with kinda significant drop after that. Peak season happens when player is from 27 to 29 years of age, somewhere in the middle of their prime.
+Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around \textbf{25} year old, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
 
 \pagebreak
 
