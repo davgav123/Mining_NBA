@@ -65,17 +65,17 @@ if __name__ == "__main__":
     print('James Harden in 2018-19: {} games, {} PPG, {}eFG%, {}TS% in {} minutes per game'
                     .format(harden_g, harden_ppg, harden_efg, harden_ts, harden_mpg))
 
-    print('He was {}% more efficient than the average player in that season'
+    print('He was {} more efficient than the average player in was that season'
                     .format(around(harden_ts - avg_TS_for_2018_19_season, 3)))
 
     print('In the same season, he had {} Points per 48 minutes, and {} Points per 100 possessions'
                     .format(harden_pp48, harden_pp100))
 
     print('\n------------------------------------------------------------------------------------------\n')
-    print('Kobe Bryant in 2018-19: {} games, {} PPG, {}eFG%, {}TS% in {} minutes per game'
+    print('Kobe Bryant in 2005-06: {} games, {} PPG, {}eFG%, {}TS% in {} minutes per game'
                     .format(bryant_g, bryant_ppg, bryant_efg, bryant_ts, bryant_mpg))
 
-    print('He was {}% more efficient than the average player in that season'
+    print('He was {} more efficient than the average player was in that season'
                     .format(around(bryant_ts - avg_TS_for_2005_06_season, 3)))
 
     print('In the same season, he had {} Points per 48 minutes, and {} Points per 100 possessions'
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     print('Michael Jordan in 1986-87: {} games, {} PPG, {}eFG%, {}TS% in {} minutes per game'
                     .format(jordan_g, jordan_ppg, jordan_efg, jordan_ts, jordan_mpg))
 
-    print('He was {}% more efficient than the average player in that season'
+    print('He was {} more efficient than the average player was in that season'
                     .format(around(jordan_ts - avg_TS_for_1986_87_season, 3)))
 
     print('In the same season, he had {} Points per 48 minutes, and {} Points per 100 possessions'
