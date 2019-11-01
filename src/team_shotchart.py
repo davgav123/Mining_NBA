@@ -111,7 +111,7 @@ def team_shotchart(team_id, first_date, last_date, title):
         context_measure_simple='FGA'
     )
     team_shots = team_shots.get_data_frames()[0]
-        
+
     # filter games
     team_shots = team_shots[team_shots.GAME_DATE > first_date]
     team_shots = team_shots[team_shots.GAME_DATE < last_date]
@@ -126,8 +126,8 @@ if __name__ == "__main__":
 
     # dates used for filtering must be type string!
     # date format: yyyymmdd
-    first_date = '20041001'
-    last_date = '20051001'
+    first_date = '20101001'
+    last_date = '20111001'
 
-    team_shotchart(houston_id, first_date, last_date, 'Rockets shotchart for {}-{} season'.format(first_date[:4], last_date[:4]))
+    team_shotchart(houston_id, first_date, last_date, 'Rockets FG attempts shotchart for {}-{} season'.format(first_date[:4], last_date[:4]))
     

@@ -16,22 +16,25 @@ per_100_poss_url = 'https://www.basketball-reference.com/leagues/NBA_{}_per_poss
 advanced_url = 'https://www.basketball-reference.com/leagues/NBA_{}_advanced.html'
 
 
+# source for this code: https://towardsdatascience.com/web-scraping-nba-stats-4b4f8c525994
 def scrap_bbref_table(year, target_table_url):
     url = target_table_url.format(year)
     
     html = urlopen(url)
     soup = BeautifulSoup(html, 'html.parser')
 
+    # get headers
     headers = [th.getText() for th in soup.findAll('tr', limit=2)[0].findAll('th')]
     headers = headers[1:]
 
+    # rest of the data
     rows = soup.findAll('tr')[1:]
     player_stats = [[td.getText() for td in rows[i].findAll('td')]
                     for i in range(len(rows))]
 
-    stats = pd.DataFrame(player_stats, columns = headers)
+    stats = pd.DataFrame(player_stats, columns=headers)
     
-    # delete empty rows
+    # delete empty rows, rows where 'Player' field is missing
     stats = stats[pd.notnull(stats['Player'])]
     stats = stats.reset_index(drop=True)
 
