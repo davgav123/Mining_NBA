@@ -9,6 +9,7 @@
 
 \usepackage[american]{babel}
 
+\usepackage{indentfirst}
 \usepackage[unicode]{hyperref}
 \hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
 
@@ -82,7 +83,7 @@
 \section{Stats 101}
 \label{sec:stats_101}
 
-smth smth
+% maybe something in here
 
 \subsection{Traditional stats}
 \label{subsec:traditional_stats}
@@ -120,8 +121,8 @@ smth smth
 
 \begin{itemize}
 	\item \textbf{Pace} - Pace. Number of possessions per 48 minutes.
-	\item \textbf{ORtg} - Offensive rating. An estimate of points produced/scored by a player/team per 100 possessions \cite{odrt}.
-	\item \textbf{DRtg} - Defensive rating. An estimate of point allowed per 100 possessions \cite{odrt}.  
+	\item \textbf{ORtg} - Offensive rating. An estimate of points produced/scored by a player/team per 100 possessions \cite{odrt}. Higher values are better.
+	\item \textbf{DRtg} - Defensive rating. An estimate of point allowed per 100 possessions \cite{odrt}. Lower values are better.  
 	\item \textbf{PER} - Player efficiency rating. A measure of a per minute production standardized such that the league average is 15 \cite{per}.
 	\item \textbf{TS\%} - True shooting percentage. Points per scoring attempt converted to the 2-point field goal percentage needed to score that many points per attempt. Calculated as  PTS / (2 *  FGA + 0.44 * FTA). 
 	\item \textbf{3PAr} - 3-Point attempt rate. Percentage of FGA from 3-point range.
@@ -176,7 +177,7 @@ Very important thing to note is that players played different number of minutes 
 	\item \textbf{Jordan:} 44.5 Points per 48 minutes
 \end{itemize}
 
-As expected, difference that existed in PPG just got larger. This does not provide eny extra information. The thing is, not every minute is created equal. Important aspect of the game is \textbf{pace}, number of possession team has in 48 minutes. The higher the pace, the more chances are there to score per game, but also per minute. That is the reason why \textbf{per possession} stats exist! Usually, per possession stats are used as an \textbf{per 100 pessessions} because it is more natural to say that a player had 40 points per 100 possessions, then 0.4 per possession. Scoring numbers for previously mentioned players look like this:
+When we scale PPG to 48 minutes, Harden takes the lead. But, this does not provide eny extra information. The thing is, not every minute is created equal. Important aspect of the game is \textbf{pace}, number of possession team has in 48 minutes. The higher the pace, the more chances are there to score per game, but also per minute. That is the reason why \textbf{per possession} stats exist! Usually, per possession stats are used as an \textbf{per 100 pessessions} because it is more natural to say that a player had 40 points per 100 possessions, then 0.4 per possession. Scoring numbers for previously mentioned players look like this:
 
 \begin{itemize}
 	\item \textbf{Harden:} 48.2 Points per 100 possessions
@@ -287,6 +288,7 @@ Advanced stats are better than traditional and hold more information about how g
 These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. It helps that there are not many players who played untill the age of 39.
 
 Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around \textbf{25} year old, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
+
 
 \pagebreak
 
