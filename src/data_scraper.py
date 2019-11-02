@@ -47,6 +47,10 @@ def data_from_url(url, dest_path, years):
 
     for year in years:
         df = scrap_bbref_table(year, url)
+
+        # add season colum
+        df['season'] = year
+
         dest_df = pd.concat([dest_df, df], ignore_index=True)
 
     dest_df.to_csv(dest_path)
