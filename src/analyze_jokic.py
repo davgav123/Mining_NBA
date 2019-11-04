@@ -38,10 +38,10 @@ def jokic_stats_plot(path, stats, title):
     plt.show()
 
 
-def draw_one_boxplot(df, df_jokic, stat, lbls, title):
+def draw_one_boxplot(df, df_jokic, stat, lbls, title, show_plot=False):
     plt.boxplot(df[stat], notch=True, showfliers=False)
     plt.scatter([1 for i in range(len(df[stat]))], df[stat], c='red')
-    jokic = plt.scatter([1], df_jokic[stat], c='blue', s=80)
+    jokic = plt.scatter([1], df_jokic[stat], c='blue', s=90)
 
     plt.xticks([1], labels=lbls, fontsize=24)
     plt.yticks(fontsize=24)
@@ -49,14 +49,16 @@ def draw_one_boxplot(df, df_jokic, stat, lbls, title):
     plt.grid(axis='y')
     plt.legend(handles=[jokic], labels=['Jokić'], fontsize=22)
     plt.title(title, fontsize=36)
-    plt.show()
+
+    if show_plot:
+        plt.show()
 
 
-def draw_two_boxplots(df, df_jokic, stats, lbls, title):
+def draw_two_boxplots(df, df_jokic, stats, lbls, title, show_plot=False):
     plt.boxplot([df[stats[0]], df[stats[1]]], notch=True, showfliers=False)
     plt.scatter([1 for i in range(len(df[stats[0]]))], df[stats[0]], c='red')
     plt.scatter([2 for i in range(len(df[stats[1]]))], df[stats[1]], c='red')
-    jokic = plt.scatter([1, 2], [df_jokic[stats[0]].values, df_jokic[stats[1]].values], c='blue', s=80)
+    jokic = plt.scatter([1, 2], [df_jokic[stats[0]].values, df_jokic[stats[1]].values], c='blue', s=90)
 
     plt.xticks([1, 2], labels=lbls, fontsize=24)
     plt.yticks(fontsize=24)
@@ -64,15 +66,17 @@ def draw_two_boxplots(df, df_jokic, stats, lbls, title):
     plt.grid(axis='y')
     plt.legend(handles=[jokic], labels=['Jokić'], fontsize=22)
     plt.title(title, fontsize=36)
-    plt.show()
+
+    if show_plot:
+        plt.show()
 
 
-def draw_three_boxplots(df, df_jokic, stats, lbls, title):
+def draw_three_boxplots(df, df_jokic, stats, lbls, title, show_plot=False):
     plt.boxplot([df[stats[0]], df[stats[1]], df[stats[2]]], notch=True, showfliers=False)
     plt.scatter([1 for i in range(len(df[stats[0]]))], df[stats[0]], c='red')
     plt.scatter([2 for i in range(len(df[stats[1]]))], df[stats[1]], c='red')
     plt.scatter([3 for i in range(len(df[stats[2]]))], df[stats[2]], c='red')
-    jokic = plt.scatter([1, 2, 3], [df_jokic[stats[0]].values, df_jokic[stats[1]].values, df_jokic[stats[2]].values], c='blue', s=80)
+    jokic = plt.scatter([1, 2, 3], [df_jokic[stats[0]].values, df_jokic[stats[1]].values, df_jokic[stats[2]].values], c='blue', s=90)
 
     plt.xticks([1, 2, 3], labels=lbls, fontsize=24)
     plt.yticks(fontsize=24)
@@ -80,7 +84,9 @@ def draw_three_boxplots(df, df_jokic, stats, lbls, title):
     plt.grid(axis='y')
     plt.legend(handles=[jokic], labels=['Jokić'], fontsize=22)
     plt.title(title, fontsize=36)
-    plt.show()
+
+    if show_plot:
+        plt.show()
 
 
 def compare_jokic_to_centers_traditional():
@@ -101,30 +107,34 @@ def compare_jokic_to_centers_traditional():
     dfj = df[df.Player == 'Nikola Jokić']
 
     # box plot PTS
+    plt.subplot(1, 3, 1)
     draw_one_boxplot(
         df,
         dfj,
         'PTS',
         ['PTS/G'],
-        'Points per game'
+        'PTS/G'
     )
 
     # box plot DRB, ORB and TRB
+    plt.subplot(1, 3, 2)
     draw_three_boxplots(
         df,
         dfj,
         ['DRB', 'ORB', 'TRB'],
         ['DRB/G', 'ORB/G', 'TRB/G'],
-        'Rebounds per game'
+        'Rebounds/G'
     )
 
     # box plot AST and TOV
+    plt.subplot(1, 3, 3)
     draw_two_boxplots(
         df,
         dfj,
         ['AST', 'TOV'],
         ['AST/G', 'TOV/G'],
-        'AST and TOV per game'
+        'AST/G and TOV/G',
+        show_plot=True
     )
 
 
@@ -145,15 +155,7 @@ def compare_jokic_to_centers_advanced():
     dfj = df[df.Player == 'Nikola Jokić']
 
     # box plot PER
-    draw_one_boxplot(
-        df,
-        dfj,
-        'PER',
-        ['PER'],
-        'PER'
-    )
-
-    # box plot WS/48
+    plt.subplot(1, 3, 1)
     draw_one_boxplot(
         df,
         dfj,
@@ -162,22 +164,35 @@ def compare_jokic_to_centers_advanced():
         'WS per 48'
     )
 
+    # box plot WS/48
+    plt.subplot(1, 3, 2)
+    draw_one_boxplot(
+        df,
+        dfj,
+        'PER',
+        ['PER'],
+        'PER'
+    )
+
+    # box plot VORP
+    plt.subplot(1, 3, 3)
+    draw_one_boxplot(
+        df,
+        dfj,
+        'VORP',
+        ['VORP'],
+        'VORP',
+        show_plot=True
+    )
+
     # box plot OBPM, DBPM, BPM
     draw_three_boxplots(
         df,
         dfj,
         ['OBPM', 'DBPM', 'BPM'],
         ['OBPM', 'DBPM', 'BPM'],
-        'Box Plus Minus'
-    )
-
-    # box plot VORP
-    draw_one_boxplot(
-        df,
-        dfj,
-        'VORP',
-        ['VORP'],
-        'VORP'
+        'Box Plus Minus',
+        show_plot=True
     )
 
 
