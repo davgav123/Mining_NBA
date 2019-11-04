@@ -107,7 +107,8 @@
 	\item \textbf{FT\%} - Free throws percentage. Calculated as FT / FTA.
 	\item \textbf{eFG\%} - Field goal percentage that takes into account that a 3-point field goal is, by one point, worth more than a 2-point field goal. Calculated as (FG + 0.5 * 3P) / FGA.
 	\item \textbf{ORB} - Offensive rebounds.
-	\item \textbf{TRB} - Defensive rebounds.
+	\item \textbf{DRB} - Defensive rebounds.
+	\item \textbf{TRB} - Total rebounds. Calculated as ORB + DRB.
 	\item \textbf{AST} - Assists.
 	\item \textbf{STL} - Steals.
 	\item \textbf{BLK} - Blocks.
@@ -298,7 +299,7 @@ Nikola Jokić was drafted by the Denver Nuggets as a 41st overall pick in the 20
 \begin{center}
 \includegraphics[scale=0.25]{jokic_plot_traditional.png}
 \end{center}
-\caption{Traditional stats by Joki\' c}
+\caption{Traditional stats by Joki\' c per season}
 \label{plt:trad_jokic}
 \end{figure}
 
@@ -306,7 +307,7 @@ Nikola Jokić was drafted by the Denver Nuggets as a 41st overall pick in the 20
 \begin{center}
 \includegraphics[scale=0.25]{jokic_plot_advanced.png}
 \end{center}
-\caption{Advanced stats by Joki\' c}
+\caption{Advanced stats by Joki\' c per season}
 \label{plt:adv_jokic}
 \end{figure}
 
@@ -315,18 +316,63 @@ As we can see, the stats are getting better as he age, and are very good in his 
 \subsection{Did he deserve 1st team All-NBA in the 18-19 season?}
 \label{subsec:jokic_all_nba}
 
-Let's start this subsecion with a note that All-NBA teams are selected by voters, and not purely by stats. That means that the players who are statistically very good might not get All-NBA team selection, if, for example, the team they play for isn't successful, although that's unlikely. Also, player doesn't have to be one of the five best players in the league to end up on the 1st All-NBA team, he just have to be the best, according to a voter, at his position. The All-NBA team consists of two guards, two wings and one center. In the 2018-19 season, Nikola Joki\' c was on the 1st All-NBA team. Did he \textit{statistically} deserve it?
+Let's start this subsecion with a note that All-NBA teams are \textit{selected by voters}, and \textbf{not} purely by stats. That means that the players who are statistically very good might not get All-NBA team selection, if, for example, a team they play for isn't successful, although that's unlikely. Also, player doesn't have to be one of the five best players in the league to end up on the 1st All-NBA team, he just have to be the best, according to a voter, at his position. The All-NBA team consists of two guards, two wings and one center. In the 2018-19 season, Nikola Joki\' c was on the 1st All-NBA team. Did he \textit{statistically} deserve it?
 
-Because Joki\' c plays center, and there is only one center on the 1st All-NBA team, I just have to compare his stats with the stats of the other centers.
+Joki\' c is a \textit{center}, and there is only one center on the 1st All-NBA team, so I just have to compare his stats with the stats of the other centers. In the 2018-19 season, Joki\' c played in 80 games, averaging 31.3 MPG, 20.1 PPG, 10.8 RPG and 7.3 APG on 0.51 FG\%, 0.31 3P\%, 0.82 FT\% shooting splits. Here is how it compared to other \textbf{centers} in the same season.
 
-TODO
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{centers_traditional.png}
+\end{center}
+\caption{Box plots of the traditional stats by centers in 2018-19 season}
+\label{plt:centers_trad}
+\end{figure}
+
+These stats are showing that Joki\' c really was one of the best centers in the league. Although not the best scorer or rebounder (but still very good), he had by far the most assists, almost three more than the second placed Marc Gasol, which is probably the reason why he had the 2nd most turnovers. As we have seen, traditional stats are almost always inferior to advanced when evaluating how good a certain player is. That is why the next step is to check out Joki\' c's, (figures \ref{plt:centers_adv} and \ref{plt:centers_bpm}) and compare it with others.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{centers_advanced.png}
+\end{center}
+\caption{Box plots of the advanced stats by centers in 2018-19 season}
+\label{plt:centers_adv}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{centers_bpm.png}
+\end{center}
+\caption{Box plots of the Box Plus Minus stats by centers in 2018-19 season}
+\label{plt:centers_bpm}
+\end{figure}
+
+Among centers, he was ranked high on WS/48 (4th), PER (2nd) and DBPM (5th) and is \textbf{first} in VORP (3rd in the league), OBPM (7th in the league) and BPM (3rd in the league). He dominated advanced statistics, not only when compared to the other players at his position, but also when compared to the best players in the NBA in that season. From this, it is not hard to decide that Nikola Joki\' c statstically deserved to be on the All-NBA 1st team! Of course, that does not mean that other centers weren't, but it means that voters had good reasoning behind their decision. The thing that certainly helped was that Denver Nuggets, led by him as the best player, were 2nd seeded team in the Western conference.
 
 \subsection{Passing}
 \label{subsec:jokic_passing}
 
+TODO/STILL IN PROGRESS...
+
+It is known that centers usually aren't good passers, and that they focus on a different part of the game, such as getting rebounds, protecting the rim, setting screens etc. So, it is natural that the first thing I did is check number of centers in the NBA history with more than a \textbf{six} assist per game in a season. Results are shown below, in the table \ref{tab:table1}.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\textbf{Player} & \textbf{Age} & \textbf{Season} & \textbf{Minutes per game} & \textbf{Assists per game} \\ \hline
+Wilt Chamberlain & 31 & 1967-68 & 46.8 & 8.6 \\ \hline
+Wilt Chamberlain & 30 & 1866-67 & 45.5 & 7.8\\ \hline
+Nikola Jokić & 23 & 2018-19 & 31.3 & 7.3 \\ \hline
+Nikola Jokić & 22 & 2017-18 & 32.6 & 6.1 \\ \hline
+\end{tabular}
+\caption{Centers with more than six assists per game in a season}
+\label{tab:table1}
+\end{center}
+\end{table}
+
+Yes, only two centers in the \textbf{history} of the NBA menaged to average more than six assists per game in a season. Number of seasons with decreased AST/G in a season by a center, \textbf{five}, is 21, by only 13 players. Wilt Chamberlain appears on this expanded list four times, ranked 1st, 2nd, 15th, 20th, while number of Nikola Joki\' c such seasons remains the same, two, with 3nd and 4th spots. Note that Joki\' c's third third highest AST/G is 4.9, so he misses new list by a tiny margin.
+
 TODO
-
-
 
 \pagebreak
 
