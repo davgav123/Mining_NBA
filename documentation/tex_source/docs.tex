@@ -15,55 +15,10 @@
 
 % used for code
 \usepackage{color}
-\usepackage{listings}
-\usepackage{setspace}
-
-\definecolor{Background}{rgb}{0.97,0.97,0.97}
-
-\renewcommand{\lstlistingname}{Code}
-\lstdefinelanguage{Python3}{
-	language=Python,
-	firstnumber=1,
-	stepnumber=1,
-	numbers=left,
-	numbersep=5pt, 
-	tabsize=4,
-	basicstyle=\small\ttfamily,	
-	morekeywords={import,from,class,def,for,while,if,is,in,elif,else,not,and,or,print,break,
-		continue,return,True,False,None,access,as,,del,except,exec,finally,global,import,lambda,pass,print,raise,try,assert},
-	stringstyle=\color{mymauve},
-	commentstyle=\color{mygreen},  
-	keywordstyle=\color{blue},
-	backgroundcolor=\color{Background},	
-	captionpos=b,  
-	frame=single,	  
- 	breakatwhitespace=false,
- 	breaklines=true,
- 	escapeinside={\%*}{*)},
- 	extendedchars=true,
- 	keepspaces=true,
-	numberstyle=\tiny\color{mygray},
-  	rulecolor=\color{black},
-  	showspaces=false,
-  	showstringspaces=false,
-  	showtabs=false,
-}
-
-% this will be used when we want to show results
-\lstdefinelanguage{Print}{
-	numbers=none,
-	tabsize=4,
-	basicstyle=\small\ttfamily,
-	frame=none	
-}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
-
-\lstset{ 
-                  % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
 
 \begin{document}
 
@@ -92,7 +47,7 @@
 	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: \textit{\textbf{PG}} - point guard, \textit{\textbf{SG}} - shooting guard, \textit{\textbf{SF}} - small forward, \textit{\textbf{PF}} - power forward and \textit{\textbf{C}} - center. Nowdays, one player usually plays multiple positions and usually is one of the: \textit{\textbf{Point}} - primarly PG, \textit{\textbf{Combo guard}} - plays PG and SG, \textit{\textbf{Wing}} - SF and SG, \textit{\textbf{Forward}} - PF and SF, \textit{\textbf{Big}} - usually C but can also be PF.
 	\item \textbf{G} - Games. Number of games player played in during a season.
 	\item \textbf{GS} - Games started. Number of games player started. Cannot be greater than G.
-	\item \textbf{MP} - Minutes played (Per game or total in a season).
+	\item \textbf{MP} - Minutes played.
 	\item \textbf{FG} - Field goals.
 	\item \textbf{FGA} - Field goals attempts.
 	\item \textbf{FG\%} - Field goal percentage. Calculated as FG / FGA.
@@ -105,7 +60,7 @@
 	\item \textbf{FT} - Free throws.
 	\item \textbf{FTA} - Free throw attempts.
 	\item \textbf{FT\%} - Free throws percentage. Calculated as FT / FTA.
-	\item \textbf{eFG\%} - Field goal percentage that takes into account that a 3-point field goal is, by one point, worth more than a 2-point field goal. Calculated as (FG + 0.5 * 3P) / FGA.
+	\item \textbf{eFG\%} - Effective field goal percentage. Field goal percentage that takes into account that a 3-point field goal is, by one point, worth more than a 2-point field goal. Calculated as (FG + 0.5 * 3P) / FGA.
 	\item \textbf{ORB} - Offensive rebounds.
 	\item \textbf{DRB} - Defensive rebounds.
 	\item \textbf{TRB} - Total rebounds. Calculated as ORB + DRB.
@@ -152,7 +107,7 @@
 
 Every era of basketball is different. Nowdays, teams are focusing on shooting three-pointers or shots close to the basket because it is more efficient. In the 2000s, players used to shoot a lot of mid-range shots. In 90s isolation plays were popular and so on. Because of this, it may not be easy to compare players from different eras just by simple traditionals stats.
 
-In this section, I will try to give an answer to a question: Who had better scoring season, Micheal Jordan in 1986-87, Kobe Bryant in 2005-06 or James Harden in 2018-19? First, let's take a look at a traditional stats:
+In this section, I will try to give an answer to a question: Who had better scoring season, Micheal Jordan in 1986-87, Kobe Bryant in 2005-06 or James Harden in 2018-19? First, let's take a look at their traditional stats:
 
 \begin{itemize}
 	\item \textbf{Harden:} 78 games, 36.1 PPG in 36.8 minutes per game
@@ -168,9 +123,9 @@ Jordan, as we can see, scored more points per game than the other two players. N
 	\item \textbf{Jordan:} 0.562 TS\%, which was 0.024 more efficient than the average player in that season
 \end{itemize}
 
-Even though Jordan scored the most, Harden was way more efficient. That is to be expected because average TS\% in 2018-19 was higher in than in the other two seasons, when Jordan and Bryant played, due to players taking more efficient shots. But, gap between Harden's TS\% and the average TS\% is season he played in, is greater than the difference between Jordan's and Bryant's TS\% from average in their respective seasons.
+Even though Jordan scored the most, Harden was way more efficient. That is to be expected because average TS\% in 2018-19 was higher in than in the other two seasons, when Jordan and Bryant played, due to players taking more efficient shots. But, gap between Harden's TS\% and the average TS\% in season he played in, is greater than the difference between Jordan's and Bryant's TS\% from average in their respective seasons.
 
-Very important thing to note is that players played different number of minutes per game. The more time player spends on the floor, the more chances he will have to score. Because of that, ordinary PPG does not tell the whole story. That is the reason something called \textbf{per minute} statistics exist. Now, instead of points \textbf{per game}, we are measuring points \textbf{per minute}, or, more often, points per 36 minutes. Besides per 36, per 48 is also used in some instances, because 48 minutes is the lenght of a basketball game without overtime. Here, I used per 48, because all three players played more than 36 minutes per game. Results: 
+Very important thing to note is that players played different number of minutes per game. The more time player spends on the floor, the more chances he will have to score. Because of that, ordinary PPG does not tell the whole story. That is the reason something called \textbf{per minute} statistics exist. Now, instead of points \textbf{per game}, we are measuring points \textbf{per minute}, or, more often, points \textbf{per 36} minutes. Besides per 36, per 48 is also used in some instances, because 48 minutes is the lenght of a basketball game without overtime. Here, I used per 48, because all three players played more than 36 minutes per game. Results:
 
 \begin{itemize}
 	\item \textbf{Harden:} 47.2 Points per 48 minutes
@@ -178,7 +133,7 @@ Very important thing to note is that players played different number of minutes 
 	\item \textbf{Jordan:} 44.5 Points per 48 minutes
 \end{itemize}
 
-When we scale PPG to 48 minutes, Harden takes the lead. But, this does not provide eny extra information. The thing is, not every minute is created equal. Important aspect of the game is \textbf{pace}, number of possession team has in 48 minutes. The higher the pace, the more chances are there to score per game, but also per minute. That is the reason why \textbf{per possession} stats exist! Usually, per possession stats are used as an \textbf{per 100 pessessions} because it is more natural to say that a player had 40 points per 100 possessions, then 0.4 per possession. Scoring numbers for previously mentioned players look like this:
+When we scale PPG to 48 minutes, Harden takes the lead. But, this does not provide any extra information. The thing is, not every minute is created equal. Important aspect of the game is \textbf{pace}, number of possession team has in 48 minutes. The higher the pace, the more chances are there to score per game, but also per minute. That is the reason why \textbf{per possession} stats exist! Usually, per possession stats are used as an \textbf{per 100 pessessions} because it is more natural to say that a player had 40 points per 100 possessions, then 0.4 per possession. Scoring numbers for previously mentioned players now look like this:
 
 \begin{itemize}
 	\item \textbf{Harden:} 48.2 Points per 100 possessions
@@ -193,7 +148,7 @@ From this, it is not hard to conclude that Harden had better season in terms of 
 
 In this section I will try to determine when does an average player hit their \textit{prime}. But first, what is prime? In order to answer that question we must first define something called \textit{peak}. Peak is the best season player had in his career. Knowing that, prime can be defined as player's seasons in which he is close, or somewhat close, to his peak. Knowing length of a player's prime is important, because prime is probably the most important thing when discussing player's career.
 
-In this research only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS is used to determine players contribution to winning. It's expected from a player to contribute to winning more in his prime years, than in the rest of his career.
+In this research only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by a player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS is used to determine players contribution to winning. It's expected from a player to contribute to winning more in his prime years, than in the rest of his career.
 
 Of course, different players can hit their prime at different age. Let's check prime years of some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird (figure \ref{plt:bird}), Shaq (figure \ref{plt:shaq}) and Duncan (figure \ref{plt:duncan}). As we can see from the shown box plots, mentioned players had the best seasons when they were around 26 to 30 years old. From that we can conclude that those seasons were their prime.
 
@@ -223,7 +178,7 @@ Of course, different players can hit their prime at different age. Let's check p
 \end{figure}
 
 
-In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{Regular season MVP}, \textit{Finals MVP}, \textit{DPOY} and \textit{Sixth man of the year} (\textit{SMOY}). Plots are shown in figure \ref{plt:awards}. Every plot but plot for Sixth man of the year is somewhat similar. The number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 (highest value) and 27 years old when they won. After that, there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?
+In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{Regular season MVP}, \textit{Finals MVP}, \textit{DPOY} and \textit{Sixth man of the year} (\textit{SMOY}). Plots are shown in figure \ref{plt:awards}. Every plot but the plot for Defensive player of the year is somewhat similar. In those plots the number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 (highest value) and 27 years old when they won. After that, there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?
 
 \begin{figure}[h!]
 \begin{center}
@@ -233,7 +188,7 @@ In the next step of determining prime of players, I checked at what age do playe
 \label{plt:awards}
 \end{figure}
 
-After that, I checked age of players who played in the NBA. Results can be seen in figure \ref{plt:age_hist}. Note that there are two histograms. One represents every player who played in the NBA. The other is filtering out every player that has played in less than 25 games and less then 15 minutes per game. Those players are filtered out because I don't consider them regular contributors for the team they are playing for. The reason behind that is that they are probably not skilled enough, and possibly not in their prime, so they might not be important. Also, I just wanted to check on their histogram as well. Data used only takes into account players in the so-called \textit{Three-point era}. which began in 1979/80 season, the first season with 3-point line, and last till this day.
+After that, I checked age of players who played in the NBA. Results can be seen in figure \ref{plt:age_hist}. Note that there are two histograms. One represents every player who played in the NBA. The other is filtering out every player that has played in less than 35 games and less then 15 minutes per game. Those players are filtered out because I don't consider them regular contributors for the team they are playing for. The reason behind that is that they are probably not skilled enough, and possibly not in their prime, so they might not be important. Also, I just wanted to check on their histogram as well. Data used only takes into account players in the so-called \textit{Three-point era}. which began in 1979/80 season, the first season with 3-point line, and last till this day.
 
 \begin{figure}[h!]
 \begin{center}
@@ -245,9 +200,9 @@ After that, I checked age of players who played in the NBA. Results can be seen 
 
 
 In the left histogram, unfiltered one, most of the players are in between 21 and 28 years old. That makes sense because players are usually drafted when they are younger than 25, and after rookie contracts expire and they are not good enough, they are out of the league. Histogram on the right has way lower number of players youger than around 23 years old. The reason behind that is that rookies aren't usually contributors right away because they need some time to develop.   The difference in number of players that are above 28 years old in unfiltered and filtered data is not that large. That is the case because players obove that age are usually good players, and they might be good because they are in their prime. That trend continues on both histograms until the significant drop somewhere after players reach 32 or 33. That might happen because they are simply not serviceable anymore, and because of that cannot find teams to sign with. 
-To conclude this paragraph, number of players is rising ar first, until the age of 28. After that, there are two significant drops.
+To conclude this paragraph, number of players is rising ar first, until the age of 28 (or 25 for filtered players). After that, there are two significant drops.
 
-Now, I can try to estimate prime of an average player with statistics. First, I checked traditional stats. Box plots for four stats are shown, PTS, FG, FGA and FT. Simply, it is expected from a player in his prime to shoot and score more than in his non-prime seasons. Note that values represented on a y-axis are averages per season, not per game! In figure \ref{plt:totals_age} every player from the three-point era is taken into account while players represented in the figure \ref{plt:totals_age_filtered} are the ones I consider contributors (minutes per game $>$ 15 and games played $>$ 35). 
+Now, I can try to estimate prime of an average player with statistics. First, I checked traditional stats. Bar plots for four stats are shown, PTS, FG, FGA and FT. Simply, it is expected from a player in his prime to shoot and score more than in his non-prime seasons. Note that values represented on a y-axis are averages per season, not per game! In figure \ref{plt:totals_age} every player from the three-point era is taken into account while players represented in the figure \ref{plt:totals_age_filtered} are the ones I consider contributors (minutes per game $>$ 15 and games played $>$ 35).
 
 \begin{figure}[h!]
 \begin{center}
@@ -265,7 +220,7 @@ Now, I can try to estimate prime of an average player with statistics. First, I 
 \label{plt:totals_age_filtered}
 \end{figure}
 
-Both plots are somewhat similar. Values for players age from 26 to 30 or maybe 31 are higher than for the any other age, with a significant drop after that. Both plots show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is acually in late twenties/early thrties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has a easily noticable difference between values for players 21 and players 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized.
+Both figures are somewhat similar. Values for players age from 26 to 30 or maybe 31 are higher than for any other age, with a significant drop after that. Both figures show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is acually in late twenties/early thrties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has easily noticable difference between values for players 21 and players 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized.
 
 Advanced stats are better than traditional and hold more information about how good a certain player is. So, I did similar thing as in the paragraphs before, but now with the advanced stats. Stats chosen are PER, WS, BPM and VORP. Box plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while box plots after filtering are in figure \ref{plt:advanced_age_filtered}.
 
@@ -286,9 +241,9 @@ Advanced stats are better than traditional and hold more information about how g
 \label{plt:advanced_age_filtered}
 \end{figure}
 
-These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. It helps that there are not many players who played untill the age of 39.
+These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. Also, not many players play by that age, so the average might be high because there is a small number of players, none of which are bad.
 
-Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around \textbf{25} year old, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
+Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around his \textbf{25th} year, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
 
 \section{Nikola Joki\' c analysis}
 \label{jokic}
@@ -385,8 +340,6 @@ Wilt Chamberlain & 30 & 1866-67 & 45.5 & 6.2 \\ \hline
 \label{tab:jokic_wilt_per_36}
 \end{center}
 \end{table} 
-
-
 
 
 \pagebreak
