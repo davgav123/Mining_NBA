@@ -196,6 +196,66 @@ def compare_jokic_to_centers_advanced():
     )
 
 
+
+# after this function plt.show() should be called
+def scatter_names(df, x_col, y_col, players, name_x, name_y):
+    for player in players:
+        dfp = df[df.Player == player]
+        plt.text(x=dfp[x_col] + name_x, y=dfp[y_col] + name_y, s=player, c='black', fontsize=15)
+
+
+def jokic_and_players_2018_19_season(data_path, x, y, name_x, name_y, advanced=False):
+    df = pd.read_csv(Path(data_path))
+
+    df = df[df.season == 2019]
+
+    # players that are contributors
+    df = df[df.G > 35]
+    if not advanced:
+        df = df[df.MP > 15.0]
+    else:
+        df = df[df.MP > (15.0 * df.G)]
+
+    # jokic
+    dfj = df[df.Player == 'Nikola Jokić']
+
+    # Point guards
+    dfpg = df[df.Pos.isin(['PG', 'PG-SG'])]
+
+    # every player in a season plot
+    plt.scatter(df[x], df[y], c='red', s=80)
+    # pg plot
+    pg = plt.scatter(dfpg[x], dfpg[y], c='green', s=80)
+    # jokic plot
+    nj = plt.scatter(dfj[x], dfj[y], c='blue', s=220)
+
+    scatter_names(
+        df,
+        x,
+        y,
+        [
+            'Chris Paul',
+            'LeBron James',
+            'James Harden',
+            'Ben Simmons',
+            'Kyrie Irving',
+            'Jrue Holiday',
+            'Kyle Lowry',
+            'Russell Westbrook'
+        ],
+        name_x,
+        name_y
+    )
+
+    plt.grid()
+    plt.legend(handles=[pg, nj], labels=['Point Guards', 'Nikola Jokić'], fontsize=22, loc=2)
+    plt.title('Players from 2018-19 season', fontsize=36)
+
+    plt.xlabel('AST%' if advanced else 'AST/G', fontsize=24)
+    plt.ylabel('TOV%' if advanced else 'TOV/G', fontsize=24)
+    plt.show()
+
+
 if __name__ == "__main__":
     title1 = 'Jokić\'s traditional stats'
     jokic_stats_plot(Path('../data/per_game_data.csv'), ['Age', 'PTS', 'AST', 'TOV', 'TRB'], title1)
@@ -205,3 +265,6 @@ if __name__ == "__main__":
 
     compare_jokic_to_centers_traditional()
     compare_jokic_to_centers_advanced()
+
+    jokic_and_players_2018_19_season('../data/per_game_data.csv', 'AST', 'TOV', 0.05, -0.15, advanced=False)
+    jokic_and_players_2018_19_season('../data/advanced_data.csv', 'AST%', 'TOV%', 0.2, -0.7, advanced=True)
