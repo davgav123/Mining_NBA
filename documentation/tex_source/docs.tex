@@ -5,6 +5,7 @@
 \usepackage{url}
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
+%\usepackage{caption}
 %\usepackage[nottoc]{tocbibind}
 
 \usepackage[american]{babel}
@@ -13,7 +14,6 @@
 \usepackage[unicode]{hyperref}
 \hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
 
-% used for code
 \usepackage{color}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
@@ -341,6 +341,66 @@ Wilt Chamberlain & 30 & 1866-67 & 45.5 & 6.2 \\ \hline
 \end{center}
 \end{table} 
 
+Not only Joki\' c has hight AST per 36 minutes number, he is also at the top for AST per 100 possessions stat. In fact, out of top five AST per 100 seasons by a center (table \ref{tab:centers_ast_per100_top5}), Joki\' c has three! He is ranked 1st, 3rd and 5th. He is also the only center with more than 10 AST per 100, with 11.4, a significant diference to a second-placed Vlade Divac. Note that Joki\' c's rookie season, although not elite, still cracks top 100, at 90th spot.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\textbf{Player} & \textbf{Age} & \textbf{Season} & \textbf{Assists per 100} \\ \hline
+Nikola Jokić & 23 & 2018-19 & 11.4 \\ \hline
+Vlade Divac & 35 & 2003-04 & 9.6 \\ \hline
+Nikola Jokić & 22 & 2017-18 & 9.3 \\ \hline
+Sam Lacey & 31 & 1979-80 & 8.9 \\ \hline
+Nikola Jokić & 21 & 2016-17 & 8.6 \\ \hline
+\end{tabular}
+\caption{Best 5 of AST per 100 possessions by a center}
+\label{tab:centers_ast_per100_top5}
+\end{center}
+\end{table}
+
+High number of assists migh not mean much, if a player turnovers the ball often. When compared to the other centers in TOV per 100 possessions, Joki\' c worst season (2018-19), at 4.9 TOV per 100, is ranked 59th, and it is his only season in the worst 100. This proves that Joki\' c might be \textbf{the best passing big man ever}. But what about other possitions?
+
+First, I compared his stats from 2018-19 to the ones of the other players from the same season. Result can be seen in figure \ref{plt:ast_tov_g}. Bottom right corner is good, top left corner is bad. Not only he is among the best passers in the league, but he is mostly surrounded by point-guards.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{ast_tov_g_2019.png}
+\end{center}
+\caption{AST/G to TOV/G for players from 2018-19 season (min 15 MP/G and 35 G)}
+\label{plt:ast_tov_g}
+\end{figure}
+
+The figure \ref{plt:ast_tov_pct} is showing similar results, just this time, instead of AST and TOV per game, AST\% and TOV\% are used. Joki\' c had really good passing season, not just for a center, but overall!
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{ast_tov_pct_2019.png}
+\end{center}
+\caption{AST\% to TOV\% for players from 2018-19 season (min 15 MP/G and 35 G)}
+\label{plt:ast_tov_pct}
+\end{figure}
+
+But what about NBA history? Let's take his best passing season and see how good it was compared to the every player from the 3-point era (figure \ref{plt:ast_tov_g_3p}). This is just the proof that his passing numbers are not center-like. His surroundings are made of non-centers exclusively. Plot is constructed in a way that it is good to be down and right, and bad to be up and left. Joki\' c is somewhere in the middle. That means that his numbers are net elite, but still solid.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{ast_tov_g_3point_era.png}
+\end{center}
+\caption{AST\% to TOV\% for players from 3-point era (min 15 MP/G and 35 G)}
+\label{plt:ast_tov_g_3p}
+\end{figure}
+
+On the second figure, that represents AST\% and TOV\% of the players from 3-point era, he moved down and right, which is good. Not only that, but it appears that there are fewer player between him and bottom-right corner than on the previous plot. That implies that his stats are a little bit better than what the per game numbers show.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.30]{ast_tov_pct_3point_era.png}
+\end{center}
+\caption{AST\% to TOV\% for players from 3-point era (min 15 MP/G and 35 G)}
+\label{plt:ast_tov_pct_3p}
+\end{figure}
+
+To conclude this subsection, Nikola Joki\' c is absolutely best passing center ever. His passing numbers also look very good when compared to the numbers of the elite passers, but are still inferior to them. I am, personally very excited for the future of Denver Nuggets.
 
 \pagebreak
 
