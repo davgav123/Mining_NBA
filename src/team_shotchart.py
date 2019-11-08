@@ -77,7 +77,7 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     return ax
 
 
-def plot_raw_shotchart(data_frame, title):
+def plot_raw_shotchart(data_frame, title, point_color):
     plt.style.use('fivethirtyeight')
     fig, ax = plt.subplots(figsize=(12, 12))
 
@@ -85,26 +85,26 @@ def plot_raw_shotchart(data_frame, title):
         x=data_frame.LOC_X,
         y=data_frame.LOC_Y,
         marker='o',
-        c='red',
+        c=point_color,
         s=30,
         alpha=0.6
     )
-    
+
     # Remove ticks
     ax.xaxis.set_ticks([])
     ax.yaxis.set_ticks([])
     ax.grid(False)
 
-    plt.title(title, size=20)
-    
+    plt.title(title, fontsize=40)
+
     # Draw court
     draw_court(ax=ax,outer_lines=True, lw=3)
     ax.set_xlim(-251,251)
     ax.set_ylim(-65,423)
 
 
-def team_shotchart(team_id, first_date, last_date, title):
-    # scrap shots by houston rockets from nba.com
+def team_shotchart(team_id, first_date, last_date, title, point_color):
+    # scrap shots by selected team from stats.nba.com
     team_shots = ShotChartDetail(
         team_id=team_id, 
         player_id=0, 
@@ -115,19 +115,31 @@ def team_shotchart(team_id, first_date, last_date, title):
     # filter games
     team_shots = team_shots[team_shots.GAME_DATE > first_date]
     team_shots = team_shots[team_shots.GAME_DATE < last_date]
-    
+
     # draw shotchart
-    plot_raw_shotchart(team_shots, title)
+    plot_raw_shotchart(team_shots, title, point_color)
     plt.show()
 
 
 if __name__ == "__main__":
-    houston_id = 1610612745
+    team_id_color = [
+        ['HOU', 1610612745, 'red'],
+        ['MLK', 1610612749, '#004d00'],
+        ['DEN', 1610612743, '#0066cc'],
+        ['BRK', 1610612751, 'black']
+    ]
 
     # dates used for filtering must be type string!
     # date format: yyyymmdd
-    first_date = '20101001'
-    last_date = '20111001'
+    seasons = [['20181001', '20191001'], ['20121001', '20131001']]
 
-    team_shotchart(houston_id, first_date, last_date, 'Rockets FG attempts shotchart for {}-{} season'.format(first_date[:4], last_date[:4]))
-    
+    # draw shotchart for every team in selected seasons
+    for s in seasons:
+        for tic in team_id_color:
+            team_shotchart(
+                tic[1], # id
+                s[0],
+                s[1],
+                f'{tic[0]} shotchart for {s[0][:4]}-{s[1][2:4]} season',
+                tic[2] # color
+            )
