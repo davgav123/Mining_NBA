@@ -400,7 +400,81 @@ On the second figure, that represents AST\% and TOV\% of the players from 3-poin
 \label{plt:ast_tov_pct_3p}
 \end{figure}
 
-To conclude this subsection, Nikola Joki\' c is absolutely best passing center ever. His passing numbers also look very good when compared to the numbers of the elite passers, but are still inferior to them. I am, personally very excited for the future of Denver Nuggets.
+To conclude this subsection, Nikola Joki\' c is absolutely best passing center ever. His passing numbers also look good when compared to the numbers of the elite passers, but are still inferior to them. Basically, he is passing like a starting caliber point guard. I am, personally, very excited for the future of Denver Nuggets.
+
+\pagebreak
+
+\section{Moreyball}
+\label{moreyball}
+
+Moreyball, named after Houston Rockets General manager Daryl Morey, is an offensive strategy in basketball that is based on taking just the most efficient shots, the shots that are worth the most points per possession. Those shots are 3-point shots, shots close to the basket and free throws. Let's see why those shots are more efficient than others.
+
+Average Offensive rating in 2018-19 season in the NBA was 110.4. That means that an average offense scores 110.4 points per 100 possessions. In that same season, percentages of shots from the areas calculated by distance from the basket, according to the stats.nba.com, were:
+
+\begin{itemize}
+	\item Percentage of shots close to the basket (less than 8 ft.) is 0.579. That translates to 115.8 points per 100 possessions.
+	\item Percentage of shots from 8 to 16 ft. is 0.412. That translates to 82.4 points per 100 possessions.
+	\item Percentage of shots from 16 to 24 ft. is 0.401. That translates to 80.2 points per 100 possessions.
+	\item Percentage of shots at the 3-point line (24+ ft.) is 0.357, with back court shots excluded. That translates to 107.1 points per 100 possessions.
+	\item Percentage of \textbf{wide open} 3-point shots (where the nearest defender is at 6+ ft.) is 0.380. That translates to 114.0 points per 100 possessions.
+	\item Percentage of a free throw shot is 0.776. That translates to 76.6 points per 100 possessions (one shot), 153.2 per 100 (two shots) or 229.8 per 100 (three shots).
+\end{itemize}
+
+From here, it is easy to conclude which shots produce more points per possession than the average. Those shots are either close to the basket, or three-pointers. Not only that, but the most efficient field goal a team can take is the one from less than 8 feet, because those shots are hard to miss. Also, two free throws per possession are extremly efficient. Notice how staggering difference is beetween average 3-point shot and three free throws, the obvious reason why fouling someone on three-point shot is extremely bad.
+
+Because of that, most teams nowdays are trying to implement Moreyball. If we compare shootcharts by teams from 2018-19 season, and shotchart from the same team just 6 years prior (2012-13 season), we will se noticable difference (figure \ref{plt:shotcharts}). Teams used to shoot more mid-range shots.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.27]{shotcharts.png}
+\end{center}
+\caption{Shotcharts from 2012-13 and 2018-19 seasons}
+\label{plt:shotcharts}
+\end{figure}
+
+Team that popularized Moreyball, Houston Rockets, were last in number of mid-range attempts in 2018-19 season. They finished as a 2nd best offense in the league, just 0.4 points per 100 possessions behind 1st ranked Golden State Warriors. They were one of the best offensive teams for a while, finishing top 2 in ORtg in 2016-17 (2nd), 2017-18 (1st) and 2018-19 (2nd) seasons. Not only that, but from the 2012-13 season, they missed top 7 in ORtg only once, in 2014-15 (ranked 12th).
+
+So, Moreyball should work, right? I mean, if a team is shooting just shots that are more efficient than the average, or in other words drastically decrease number of mid-range shots, it will have above average offense. Let's compare ORtg to a percentage of shots that were mid-range, teams took in a 2018-19 season.
+
+The results are interesting. Team with the best ORtg, Golden State Warriors, was second in percentage of mid-range shots, while the second-placed Houston was dead last in that category. San Antonio Spurs, team that was first in percentage of mid-range shots, had 7th best offense. Teams such as Atlanta (23rd), Brooklyn (19th) and Milwaukee (4th), beside Houston, had taken less than 10\% of their shots from mid-range, with significant difference in ORtg. So, implementing Morreyball might not produce above average offense, and not only that, but an offense with lot of, usually inefficient, mid-range shots can work well (if a team has efficient mid-range scorer). If that's the case, why would teams even try to play Moreyball?
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.29]{ortg_pct_mid_range.png}
+\end{center}
+\caption{ORtg to \% of shots that were mid-range by team (2018-19 season)}
+\label{plt:ast_tov_pct_3p}
+\end{figure}
+
+Because Morreyball leads to a more efficient offence in general! Take a look at table \ref{tab:seasons_comp}. Every season shown has increase of three-point attempt rate from the season before, and with it, better ORtg and better efficiency.
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|} \hline
+\textbf{Stat \textbackslash Season} & \textbf{2000-01} & \textbf{2005-06} & \textbf{2010-11} & \textbf{2015-16} & \textbf{2018-19} \\ \hline
+\textbf{TS\%} & 51.8\% & 53.6\% & 54.1\% & 54.1\% & 56.0\% \\ \hline
+\textbf{ORtg} & 103.0 & 106.2 & 107.3 & 106.4 & 110.4 \\ \hline
+\textbf{Mid-range attempt freq} & 23\% & 23.6\% & 21.4\% & 16.2\% & 9.2\% \\ \hline
+\textbf{3P attempt freq} & 17\% & 20.2\% & 22.2\% & 28.5\% & 35.9\% \\ \hline
+\end{tabular}
+\caption{Comparing stats through seasons}
+\label{tab:seasons_comp}
+\end{center}
+\end{table}
+
+Correlations on data from season 2000-01 to season 2018-19 (from basketball-reference.com) are showing same results:
+
+\begin{itemize}
+	\item Correlation between TS\% and ORtg: 0.967
+	\item Correlation between TS\% and \% of 3PA: 0.851
+	\item Correlation between TS\% and \% of mid-rangea ttempts: -0.733
+	\item Correlation between \% of 3PA and ORtg: 0.766
+	\item Correlation between \% of mid-range attempts and ORtg: -0.634
+\end{itemize}
+
+Results are, based on everyting we have seen so far, expected. There is a very strong correlaton between efficiency and ORtg. True shooting percentage depends more on frequency of 3-point shots than on frequency of mid-range shots. More three-pointers, better efficiency, but also fewer mid-range shots, better efficiency, just not to the same degree. These are just some extra reasons why Moreyball does produce more points per possession!
+
+To conclude, Moreyball produces more points per possession in general, but offenses that are more Moreyball than the others, might not be above average on a season level. Rise in Moreyball contributed to the rise in ORtg in recent years. Also, let's note that strategies with lot of mid-range shooting can produce good/below average offense. % maybe why?
 
 \pagebreak
 
