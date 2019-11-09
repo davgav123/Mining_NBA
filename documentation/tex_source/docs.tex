@@ -123,7 +123,7 @@ Jordan, as we can see, scored more points per game than the other two players. N
 	\item \textbf{Jordan:} 0.562 TS\%, which was 0.024 more efficient than the average player in that season
 \end{itemize}
 
-Even though Jordan scored the most, Harden was way more efficient. That is to be expected because average TS\% in 2018-19 was higher in than in the other two seasons, when Jordan and Bryant played, due to players taking more efficient shots. But, gap between Harden's TS\% and the average TS\% in season he played in, is greater than the difference between Jordan's and Bryant's TS\% from average in their respective seasons.
+Even though Jordan scored the most, Harden was way more efficient. That is to be expected because average TS\% in 2018-19 was higher than in the other two seasons, when Jordan and Bryant played, due to players taking more efficient shots. But, gap between Harden's TS\% and the average TS\% in season he played in, is greater than the difference between Jordan's and Bryant's TS\% from average in their respective seasons.
 
 Very important thing to note is that players played different number of minutes per game. The more time player spends on the floor, the more chances he will have to score. Because of that, ordinary PPG does not tell the whole story. That is the reason something called \textbf{per minute} statistics exist. Now, instead of points \textbf{per game}, we are measuring points \textbf{per minute}, or, more often, points \textbf{per 36} minutes. Besides per 36, per 48 is also used in some instances, because 48 minutes is the lenght of a basketball game without overtime. Here, I used per 48, because all three players played more than 36 minutes per game. Results:
 
@@ -150,7 +150,7 @@ In this section I will try to determine when does an average player hit their \t
 
 In this research only individual statistics will be used in process of estimating prime years of a player. Because the ultimate stat that can correctly measure when do players hit their prime does not exist (yet), multiple other stats will be used, both traditional and advanced. Those stats are, mostly, PTS, FG and FGA from traditional and PER, WS, BPM and VORP from advanced stats. Reasoning behind first three is, well, player in his prime should be best version of himself, so he will probably score and shoot more than in his non-prime seasons. Stats such as PER, BPM and VORP exist so we could determine impact on a game by a player, or how good a player is. Prime season should have higher values for this stat than for other seasons. WS is used to determine players contribution to winning. It's expected from a player to contribute to winning more in his prime years, than in the rest of his career.
 
-Of course, different players can hit their prime at different age. Let's check prime years of some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird (figure \ref{plt:bird}), Shaq (figure \ref{plt:shaq}) and Duncan (figure \ref{plt:duncan}). As we can see from the shown box plots, mentioned players had the best seasons when they were around 26 to 30 years old. From that we can conclude that those seasons were their prime.
+Of course, different players can hit their prime at different age. Let's check prime years of some of the players inducted, or soon to be inducted, into the Naismith memorial basketball hall of fame. Selected players are chosen without any particular reason. Players used are Bird (figure \ref{plt:bird}), Shaq (figure \ref{plt:shaq}) and Duncan (figure \ref{plt:duncan}). As we can see from the shown bar plots, mentioned players had the best seasons when they were around 26 to 30 years old. From that we can conclude that those seasons were their prime.
 
 
 \begin{figure}[h!]
@@ -222,7 +222,7 @@ Now, I can try to estimate prime of an average player with statistics. First, I 
 
 Both figures are somewhat similar. Values for players age from 26 to 30 or maybe 31 are higher than for any other age, with a significant drop after that. Both figures show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is acually in late twenties/early thrties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has easily noticable difference between values for players 21 and players 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized.
 
-Advanced stats are better than traditional and hold more information about how good a certain player is. So, I did similar thing as in the paragraphs before, but now with the advanced stats. Stats chosen are PER, WS, BPM and VORP. Box plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while box plots after filtering are in figure \ref{plt:advanced_age_filtered}.
+Advanced stats are better than traditional and hold more information about how good a certain player is. So, I did similar thing as in the paragraphs before, but now with the advanced stats. Stats chosen are PER, WS, BPM and VORP. Bar plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while bar plots after filtering are in figure \ref{plt:advanced_age_filtered}.
 
 
 \begin{figure}[h!]
@@ -241,7 +241,7 @@ Advanced stats are better than traditional and hold more information about how g
 \label{plt:advanced_age_filtered}
 \end{figure}
 
-These plots are way more interesting. First, PER box plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. Also, not many players play by that age, so the average might be high because there is a small number of players, none of which are bad.
+These plots are way more interesting. First, PER bar plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are \textbf{normal distribution-like}, with spike from 26 to 31 in y-axis values and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, wich is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. Also, not many players play by that age, so the average might be high because there is a small number of players, none of which are bad.
 
 Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around his \textbf{25th} year, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
 
@@ -273,7 +273,7 @@ As we can see, the stats are getting better as he age, and are very good in his 
 
 Let's start this subsecion with a note that All-NBA teams are \textit{selected by voters}, and \textbf{not} purely by stats. That means that the players who are statistically very good might not get All-NBA team selection, if, for example, a team they play for isn't successful, although that's unlikely. Also, player doesn't have to be one of the five best players in the league to end up on the 1st All-NBA team, he just have to be the best, according to a voter, at his position. The All-NBA team consists of two guards, two wings and one center. In the 2018-19 season, Nikola Joki\' c was on the 1st All-NBA team. Did he \textit{statistically} deserve it?
 
-Joki\' c is a \textit{center}, and there is only one center on the 1st All-NBA team, so I just have to compare his stats with the stats of the other centers. In the 2018-19 season, Joki\' c played in 80 games, averaging 31.3 MPG, 20.1 PPG, 10.8 RPG and 7.3 APG on 0.51 FG\%, 0.31 3P\%, 0.82 FT\% shooting splits. Here is how it compared to other \textbf{centers} in the same season.
+Joki\' c is a \textit{center}, and there is only one center on the 1st All-NBA team, so I just have to compare his stats with the stats of the other centers. In the 2018-19 season, Joki\' c played in 80 games, averaging 31.3 MPG, 20.1 PPG, 10.8 RPG and 7.3 APG on 0.51 FG\%, 0.31 3P\%, 0.82 FT\% shooting splits. Here is how it compared to other \textbf{centers} in the same season. Plot chosen to represent this data is Box plot \cite{boxplots}, because we want to see whether Joki\' is, and how much, better than other centers.
 
 
 \begin{figure}[h!]
@@ -290,7 +290,7 @@ These stats are showing that Joki\' c really was one of the best centers in the 
 \begin{center}
 \includegraphics[scale=0.30]{centers_advanced.png}
 \end{center}
-\caption{Box plots of the advanced stats by centers in 2018-19 season}
+\caption{Bar plots of the advanced stats by centers in 2018-19 season}
 \label{plt:centers_adv}
 \end{figure}
 
@@ -302,12 +302,12 @@ These stats are showing that Joki\' c really was one of the best centers in the 
 \label{plt:centers_bpm}
 \end{figure}
 
-Among centers, he was ranked high on WS/48 (4th), PER (2nd) and DBPM (5th) and is \textbf{first} in VORP (3rd in the league), OBPM (7th in the league) and BPM (3rd in the league). He dominated advanced statistics, not only when compared to the other players at his position, but also when compared to the best players in the NBA in that season. From this, it is not hard to decide that Nikola Joki\' c statstically deserved to be on the All-NBA 1st team! Of course, that does not mean that other centers weren't, but it means that voters had good reasoning behind their decision. The thing that certainly helped was that Denver Nuggets, led by him as the best player, were 2nd seeded team in the Western conference.
+Among centers, he was ranked high on WS/48 (4th), PER (2nd) and DBPM (5th) and is \textbf{first} in VORP (3rd in the league), OBPM (7th in the league) and BPM (3rd in the league). He dominated advanced statistics, not only when compared to the other players at his position, but also when compared to the best players in the NBA in that season. From this, it is not hard to determine that Nikola Joki\' c statstically deserved to be on the All-NBA 1st team! Of course, that does not mean that other centers weren't, but it means that voters had good reasoning behind their decision. The thing that certainly helped was that Denver Nuggets, led by him as the best player, were 2nd seeded team in the Western conference.
 
 \subsection{Passing}
 \label{subsec:jokic_passing}
 
-The thing Joki\' c is most known for is definitely his passing ability, the thing the average center isn't. In this subsection I will take a look at his passing statistics, and compare it to other players (not just centers) from the NBA history. But first, let's see how his passing compares to the other centers. As we have seen in the previous subsection, his AST/G number (7.3) was by far the best in the league at his position. How many centers in the history averaged something similar. Table \ref{tab:centers_ast_g} contains every season where a center averaged more than  six AST per game. 
+The thing Joki\' c is most known for is definitely his passing ability, the thing the average center isn't. In this subsection I will take a look at his passing statistics, and compare it to other players (not just centers) from the NBA history. But first, let's see how his passing compares to the other centers. As we have seen in the previous subsection, his AST/G number (7.3) was by far the best in the league at his position. How many centers in the history averaged something similar? Table \ref{tab:centers_ast_g} contains every season where a center averaged more than  six AST per game. 
 
 \begin{table}[h!]
 \begin{center}
@@ -380,7 +380,7 @@ The figure \ref{plt:ast_tov_pct} is showing similar results, just this time, ins
 \label{plt:ast_tov_pct}
 \end{figure}
 
-But what about NBA history? Let's take his best passing season and see how good it was compared to the every player from the 3-point era (figure \ref{plt:ast_tov_g_3p}). This is just the proof that his passing numbers are not center-like. His surroundings are made of non-centers exclusively. Plot is constructed in a way that it is good to be down and right, and bad to be up and left. Joki\' c is somewhere in the middle. That means that his numbers are net elite, but still solid.
+But what about NBA history? Let's take his best passing season and see how good it was compared to the every player from the 3-point era (figure \ref{plt:ast_tov_g_3p}). This is just the proof that his passing numbers are not center-like. His surroundings are made of non-centers exclusively. Plot is constructed in a way that it is good to be down and right, and bad to be up and left. Joki\' c is somewhere in the middle. That means that his numbers are not elite, but still solid.
 
 \begin{figure}[h!]
 \begin{center}
@@ -436,15 +436,15 @@ Team that popularized Moreyball, Houston Rockets, were last in number of mid-ran
 
 So, Moreyball should work, right? I mean, if a team is shooting just shots that are more efficient than the average, or in other words drastically decrease number of mid-range shots, it will have above average offense. Let's compare ORtg to a percentage of shots that were mid-range, teams took in a 2018-19 season.
 
-The results are interesting. Team with the best ORtg, Golden State Warriors, was second in percentage of mid-range shots, while the second-placed Houston was dead last in that category. San Antonio Spurs, team that was first in percentage of mid-range shots, had 7th best offense. Teams such as Atlanta (23rd), Brooklyn (19th) and Milwaukee (4th), beside Houston, had taken less than 10\% of their shots from mid-range, with significant difference in ORtg. So, implementing Morreyball might not produce above average offense, and not only that, but an offense with lot of, usually inefficient, mid-range shots can work well (if a team has efficient mid-range scorer). If that's the case, why would teams even try to play Moreyball?
-
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.29]{ortg_pct_mid_range.png}
 \end{center}
 \caption{ORtg to \% of shots that were mid-range by team (2018-19 season)}
-\label{plt:ast_tov_pct_3p}
+\label{plt:ortg_oct_mid_range}
 \end{figure}
+
+The results are interesting. Team with the best ORtg, Golden State Warriors, was second in percentage of mid-range shots, while the second-placed Houston was dead last in that category. San Antonio Spurs, team that was first in percentage of mid-range shots, had 7th best offense. Teams such as Atlanta (23rd), Brooklyn (19th) and Milwaukee (4th), beside Houston, had taken less than 10\% of their shots from mid-range, with significant difference in ORtg. So, implementing Morreyball might not produce above average offense, and not only that, but an offense with lot of, usually inefficient, mid-range shots can work well (if a team has efficient mid-range scorer). If that's the case, why would teams even try to play Moreyball?
 
 Because Morreyball leads to a more efficient offence in general! Take a look at table \ref{tab:seasons_comp}. Every season shown has increase of three-point attempt rate from the season before, and with it, better ORtg and better efficiency.
 
@@ -474,7 +474,7 @@ Correlations on data from season 2000-01 to season 2018-19 (from basketball-refe
 
 Results are, based on everyting we have seen so far, expected. There is a very strong correlaton between efficiency and ORtg. True shooting percentage depends more on frequency of 3-point shots than on frequency of mid-range shots. More three-pointers, better efficiency, but also fewer mid-range shots, better efficiency, just not to the same degree. These are just some extra reasons why Moreyball does produce more points per possession!
 
-To conclude, Moreyball produces more points per possession in general, but offenses that are more Moreyball than the others, might not be above average on a season level. Rise in Moreyball contributed to the rise in ORtg in recent years. Also, let's note that strategies with lot of mid-range shooting can produce good/below average offense. % maybe why?
+To conclude, Moreyball produces more points per possession in general, but offenses that are more Moreyball than the others, might not be above average on a season level. Rise in Moreyball contributed to the rise in ORtg in recent years. Also, let's note that strategies with lot of mid-range shooting can produce good/above average offense. % maybe why?
 
 \pagebreak
 
