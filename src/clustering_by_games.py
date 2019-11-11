@@ -50,6 +50,12 @@ def clustering_by_games_played(columns, num_clusters=4, scale=False, show=False)
     if show:
         show_clusters(df, columns, agglomerative, 'Agglomerative, average linkage', scale)
 
+    # hierarchichal clustering, Ward's linkage
+    agglomerative = AgglomerativeClustering(n_clusters=num_clusters, linkage='ward').fit(df)
+    print(f'Agglomerative (ward) silhouette score: {silhouette_score(df, agglomerative.labels_)}')
+    if show:
+        show_clusters(df, columns, agglomerative, 'Agglomerative, Ward\'s linkage', scale)
+
 
 def show_clusters(data, columns, clst, title, scale=False):
     title_size = 32
@@ -75,19 +81,20 @@ def show_clusters(data, columns, clst, title, scale=False):
 
 
 if __name__ == "__main__":
-    clustering_by_games_played(columns=['G', 'GS'], num_clusters=3, show=True)
-    clustering_by_games_played(columns=['G', 'MP'], num_clusters=3)
+    # clustering_by_games_played(columns=['G', 'GS'], num_clusters=3)
+    # clustering_by_games_played(columns=['G', 'MP'], num_clusters=3)
     clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=3)
 
+    print('Scale to [0, 1]')
     # clustering_by_games_played(columns=['G', 'GS'], num_clusters=3, scale=True)
     # clustering_by_games_played(columns=['G', 'MP'], num_clusters=3, scale=True)
-    # clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=3, scale=True)
+    clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=3, scale=True)
 
     # clustering_by_games_played(columns=['G', 'GS'], num_clusters=4)
     # clustering_by_games_played(columns=['G', 'MP'], num_clusters=4)
-    # clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=4)
+    clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=4)
 
-    # print('Scale to [0, 1]')
-    clustering_by_games_played(columns=['G', 'GS'], num_clusters=4, scale=True)
-    clustering_by_games_played(columns=['G', 'MP'], num_clusters=4, scale=True, show=True)
-    # clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=4, scale=True)
+    print('Scale to [0, 1]')
+    # clustering_by_games_played(columns=['G', 'GS'], num_clusters=4, scale=True)
+    # clustering_by_games_played(columns=['G', 'MP'], num_clusters=4, scale=True)
+    clustering_by_games_played(columns=['G', 'GS', 'MP'], num_clusters=4, scale=True, show=True)
