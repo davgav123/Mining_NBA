@@ -290,7 +290,7 @@ These stats are showing that Joki\' c really was one of the best centers in the 
 \begin{center}
 \includegraphics[scale=0.30]{centers_advanced.png}
 \end{center}
-\caption{Bar plots of the advanced stats by centers in 2018-19 season}
+\caption{Box plots of the advanced stats by centers in 2018-19 season}
 \label{plt:centers_adv}
 \end{figure}
 
@@ -405,7 +405,7 @@ To conclude this subsection, Nikola Joki\' c is absolutely best passing center e
 \pagebreak
 
 \section{Moreyball}
-\label{moreyball}
+\label{sec:moreyball}
 
 Moreyball, named after Houston Rockets General manager Daryl Morey, is an offensive strategy in basketball that is based on taking just the most efficient shots, the shots that are worth the most points per possession. Those shots are 3-point shots, shots close to the basket and free throws. Let's see why those shots are more efficient than others.
 
@@ -475,6 +475,54 @@ Correlations on data from season 2000-01 to season 2018-19 (from basketball-refe
 Results are, based on everyting we have seen so far, expected. There is a very strong correlaton between efficiency and ORtg. True shooting percentage depends more on frequency of 3-point shots than on frequency of mid-range shots. More three-pointers, better efficiency, but also fewer mid-range shots, better efficiency, just not to the same degree. These are just some extra reasons why Moreyball does produce more points per possession!
 
 To conclude, Moreyball produces more points per possession in general, but offenses that are more Moreyball than the others, might not be above average on a season level. Rise in Moreyball contributed to the rise in ORtg in recent years. Also, let's note that strategies with lot of mid-range shooting can produce good/above average offense. % maybe why?
+
+
+\section{Clustering}
+\label{sec:clustering}
+
+In this secion I will try to, via clustering, find interesting things in NBA data. Clustering is process of finding different groups in data, where element in one group is more similar to another element in the same group than to any element from any other group \cite{clustering}. Those groups are called \textbf{clusters}. Two algorithms will be used.
+
+First one is \textbf{K-Means clustering.} This algorithm will find \textbf{K} groups. Every group will be represented by one point, called \textit{centroid}. Point that is not a centroid will belong to the cluster that is represented by the closest centroid to it. Algotihm will first choose K centroids at random, and then preform iterative calculations to optimize positions of said centroids. User can choose number of iterations. Because centroids are initialized at random, algorithm should be performed muliple times. Thenm out of all results, the best one is chosen. \cite{clustering}
+
+Second is \textbf{Hierarchichal clustering.} There are two types, Divisive and Agglomerative clustering. Former method begins with one cluster that contains every data point. Then, iteration by iteration, it will split that cluster in smaller ones, by similarity, until every point is cluster for itself. Latter is the opposite. It will start with as many clusters as data points, and then, iteratively, it will group two that are the most similar into one group, until only one cluster, that contains every data point, remains. \cite{clustering}
+
+Similarity between clusters is calculated by \textbf{linkage}. In \textit{single} linkage, the smaller the distance between closest points of two clusters is, the more similar they are. \textit{Complete} linkage is the opposite, it takes into account distance between the farthest points of two clusters. The closer they are the the similarity between clusters in greater. \textit{Average} linkage takes into account average distance from any point that belongs to one cluster to any point that belongs to the other cluster. The smaller the distance, the more similar they are. The last one is \textit{Ward's} linkage. Similar to previous one, but instead of average, it calculates sum of squared distances. \cite{clustering}\cite{hierarchical}
+
+One of the metrics that can tell if the clustering is good or not is \textbf{silhouette score}, calculated as $ (b - a)  / max(a, b) $, where \textit{a} is average distance to other data point in the same cluster, \textit{b} is average distance to other data point in the nearest cluster. Valus of this score can go from -1 to 1. The higher value the better.
+
+\subsection{Determining player's roles by games played}
+\label{subsec:players_roles}
+
+Player in the NBA usually can be placed in one of the three categories, starter, bench player and non-rotational player. First group, starters, are expected to start every game they play. Starters play the most minutes per game. They might not play every game due to various injuries and rest days. Also, they might not start evey game. For example, starter might get injured, and when he is healed coach might not put him in the starting lineup. That is usually practice if the starter is on a minute restriction, meaning he will play in the game, but will play in the fewer minutes than he usually plays in when he starts. Second group are bench players. They are not usually starters, but are important for the success of the team. They play in a lot of minutes, but not as much as starters. Bench players might get to start some games because starter is injured, or maybe because of matchups, but that is not really likely. Third are non-rotational players. They aren't usually playing in the game, or if they are, they are playing small amount of minutes or garbage time. Note that these players also might even start some games, if team has serious problem with injuries. Also, it's possible that a player make progress or regress during a season, which will result in promotion or demotion.
+
+The starting point is clustering based on games played (\textbf{G}) and games started (\textbf{GS}). It is expected that players with small amount of games are the non-rotational ones, the ones that started lot of games are startes and the others are bench players. Data is shown of figure \ref{plt:g_gs} and represents players from 2018-19 season.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{g_to_gs.png}
+\end{center}
+\caption{Games played to Games started (2018-19 season)}
+\label{plt:g_gs}
+\end{figure}
+
+The first clustering algorithm is KMeans. Value of K is 3 because players are supposed to be grouped in three groups. After that one, hierarchichal clustering methods with simple, complete, average and Ward's linkage have been ran. Results can be found in \ref{tab:clust_score_k3}.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|l|c|} \hline
+\textbf{Clustering method} & \textbf{Silhouette score}  \\ \hline
+KMeans & 0.550  \\ \hline
+Hierarchichal, simple linkage & -0.007  \\ \hline
+Hierarchichal, complete linkage & 0.524  \\ \hline
+Hierarchichal, average linkage &  0.519  \\ \hline
+Hierarchichal, Ward's linkage & 0.495  \\ \hline
+\end{tabular}
+\caption{Silhoutte score}
+\label{tab:clust_score_k3}
+\end{center}
+\end{table}
+
+% comment on results, try scaling, and then other methods, such as G, GS, MP and you are good to go!
 
 \pagebreak
 
