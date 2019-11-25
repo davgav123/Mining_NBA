@@ -52,8 +52,13 @@ def calculate_best_k(data, min_k=2, max_k=12):
         kmeans = KMeans(n_clusters=k, max_iter=800).fit(data)
         scores.append(silhouette_score(data, kmeans.labels_))
 
-    plt.plot(range(min_k, max_k + 1), scores)
-    plt.xticks(range(min_k, max_k + 1))
+    # plot scores
+    plt.plot(range(min_k, max_k + 1), scores, linewidth=5)
+    plt.xticks(range(min_k, max_k + 1), fontsize=20)
+    plt.yticks(fontsize=18)
+
+    plt.xlabel('Number of clusters', fontsize=28)
+    plt.ylabel('Silhouette score', fontsize=28)
     plt.grid()
 
     plt.show()
@@ -62,8 +67,13 @@ def calculate_best_k(data, min_k=2, max_k=12):
     # relative to the best possible score of 1
     standardized_scores = [1 - ((1 - x) / (1 - y)) for (x, y) in zip(scores[1:], scores[:-1])]
 
-    plt.plot(range(min_k + 1, max_k + 1), standardized_scores)
-    plt.xticks(range(min_k + 1, max_k + 1))
+    # plot standardized scores
+    plt.plot(range(min_k + 1, max_k + 1), standardized_scores, linewidth=5)
+    plt.xticks(range(min_k + 1, max_k + 1), fontsize=20)
+    plt.yticks(fontsize=20)
+
+    plt.xlabel('Number of clusters', fontsize=28)
+    plt.ylabel('percent of silhouette improvement', fontsize=28)
     plt.grid()
 
     plt.show()
