@@ -49,7 +49,7 @@ def calculate_best_k(data, min_k=2, max_k=12):
     scores = []
     # calculate silhouette for different number of clusters
     for k in range(min_k, max_k + 1):
-        kmeans = KMeans(n_clusters=k, max_iter=800).fit(data)
+        kmeans = KMeans(n_clusters=k, max_iter=1200, n_init=20).fit(data)
         scores.append(silhouette_score(data, kmeans.labels_))
 
     # plot scores
@@ -85,9 +85,9 @@ if __name__ == "__main__":
 
     calculate_best_k(data)
 
-    # k = 6
-    k = 9
-    kmeans = KMeans(n_clusters=k, max_iter=800).fit(data)
+    k = 6
+    # k = 8
+    kmeans = KMeans(n_clusters=k, max_iter=1200, n_init=20).fit(data)
 
     print(kmeans.cluster_centers_)
     # print(kmeans.labels_)
