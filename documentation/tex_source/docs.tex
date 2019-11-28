@@ -27,7 +27,7 @@
 
 \title{Mining NBA}
 \author{David Gavrilović}
-% \date{9.~april 2015.}
+% \date{...}
 \maketitle
 \thispagestyle{empty}
 
@@ -108,7 +108,7 @@
 \section{Comparing players from different eras}
 \label{sec:diff_eras}
 
-Every era of basketball is different. Nowdays, teams are focusing on shooting three-pointers or shots close to the basket because it is more efficient. In the 2000s, players used to shoot a lot of mid-range shots. In 90s isolation plays were popular and so on. Because of this, it may not be easy to compare players from different eras just by simple traditionals stats.
+Every era of basketball is different. Back in the day, there were no zone defenses, and three point shooting wasn't as frequent as today. In current era of basketball, players almost eliminated mid-range shots from their games, hand-checking is restricted, so it is easier to penetrate to the basket. Because of that, accurately comparing players between eras is very hard, if not impossible, but it can be done to a certain extent.
 
 In this section, I will try to give an answer to a question: Who had better scoring season, Micheal Jordan in 1986-87, Kobe Bryant in 2005-06 or James Harden in 2018-19? First, let's take a look at their traditional stats:
 
@@ -491,14 +491,14 @@ Second is \textbf{Hierarchichal clustering.} There are two types, \textbf{divisi
 
 Similarity between clusters is calculated by \textbf{linkage}. In \textit{single} linkage, the smaller the distance between closest points of two clusters is, the more similar they are. \textit{Complete} linkage is the opposite, it takes into account distance between the furthest points of two clusters. The closer they are the similarity between clusters is greater. \textit{Average} linkage takes into account average distance from any point that belongs to one cluster to any point that belongs to the other cluster. The smaller the distance, the more similar they are. The last one is \textit{Ward's} linkage. Similar to previous one, but instead of average, it calculates sum of squared distances. \cite{clustering}\cite{hierarchical}
 
-One of the metrics that can tell if the clustering is good or not is \textbf{silhouette score}, calculated as $ (b - a)  / max(a, b) $, where \textit{a} is average distance to other data point in the same cluster, \textit{b} is average distance to other data point in the nearest cluster. Values of this score can go from -1 to 1. The higher value the better clustering. \cite{clustering}
+One of the metrics that can tell if the clustering is good or not is \textbf{silhouette score}, calculated, for data point in cluster, as $ (b - a)  / max(a, b) $, where \textit{a} is average distance to other data point in the same cluster, \textit{b} is average distance to other data point in the nearest cluster. Values of this score can go from -1 to 1. The higher value the better clustering. In other words, silhouette score measures how similar a data point in a cluster is similar to its own cluster compared to other clusters by comparing the point’s distance from its own cluster to its distance from other clusters. \cite{clustering}
 
 \subsection{Determining player's roles by games played}
 \label{subsec:players_roles}
 
-Player in the NBA can usually be placed in one of the three categories, starter, bench player and non-rotational player. First group, starters, are expected to start every game they play. Starters play the most minutes per game. They might not play every game due to various injuries and rest days. Also, they might not start evey game. For example, starter might get injured, and when he is healed coach might not put him in the starting lineup. That is usually practice if the starter is on a minute restriction, meaning he will play in the game, but will play in the fewer minutes than he usually plays in when he starts. Second group are bench players. They are not usually starters, but are important for the success of the team. They play in a lot of minutes, but not as much as starters. Bench players might get to start some games because starter is injured, or maybe because of matchups, but that is not really likely. Third are non-rotational players. They aren't usually playing in the game, or if they are, they are playing small amount of minutes or garbage time. Note that these players also might even start some games, if team has serious problem with injuries. Also, it's possible that a player make progress or regress during a season, which will result in promotion or demotion.
+Player in the NBA can usually be placed in one of the three categories, starter, bench player and non-rotational player. First group, starters, are expected to start every game they play. Starters play the most minutes per game. They might not play every game due to various injuries and rest days. Also, they might not start every game. For example, starter might get injured, and when he is healed coach might not put him in the starting lineup. That is usually practice if the starter is on a minute restriction, meaning he will play in the game, but will play in the fewer minutes than he usually plays in when he starts. Second group are bench players. They are not usually starters, but are important for the success of the team. They play in a lot of minutes, but not as much as starters. Bench players might get to start some games because starter is injured, or maybe because of matchups, but that is not really likely. Third are non-rotational players. They aren't usually playing in the game, or if they are, they are playing small amount of minutes or garbage time. Note that these players also might even start some games, if team has serious problem with injuries. Also, it's possible that a player makes progress or regress during a season, which will result in promotion or demotion.
 
-The starting point is clustering based on games played (\textbf{G}) and games started (\textbf{GS}). It is expected that players with small amount of games are the non-rotational ones, the ones that started lot of games are startes and the others are bench players. Data is shown of figure \ref{plt:g_gs} and represents players from 2018-19 season. I beleve that the biggest difference between results of clustering algorithms will be in the area in the middle of the diagonal, where players did start every (or almost every) game they played in, but maybe didn't play enough games to be considered starters.
+The starting point is clustering based on games played (\textbf{G}) and games started (\textbf{GS}). It is expected that players with small amount of games are the non-rotational ones, the ones that started lot of games are startes and the others are bench players. Data is shown on figure \ref{plt:g_gs} and represents players from 2018-19 season. I beleve that the biggest difference between results of clustering algorithms will be in the area in the middle of the diagonal, where players did start every (or almost every) game they played in, but maybe didn't play enough games to be considered starters.
 
 \begin{figure}[h!]
 \begin{center}
@@ -508,13 +508,13 @@ The starting point is clustering based on games played (\textbf{G}) and games st
 \label{plt:g_gs}
 \end{figure}
 
-The first clustering algorithm is KMeans. Value of K is 3 because players are supposed to be grouped in three groups. After that, I tried hierarchichal clustering methods with simple, complete, average and Ward's linkage. Results can be found in table \ref{tab:clust_score_k3}.
+The first clustering algorithm is K-Means. Value of K is 3 because players are supposed to be grouped in three groups. After that, I tried hierarchichal clustering methods with simple, complete, average and Ward's linkage. Results can be found in table \ref{tab:clust_score_k3}.
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|l|c|} \hline
 \textbf{Clustering method} & \textbf{Silhouette score}  \\ \hline
-KMeans & 0.550  \\ \hline
+K-Means & 0.550  \\ \hline
 Hierarchichal, simple linkage & -0.007  \\ \hline
 Hierarchichal, complete linkage & 0.524  \\ \hline
 Hierarchichal, average linkage &  0.519  \\ \hline
@@ -525,7 +525,7 @@ Hierarchichal, Ward's linkage & 0.495  \\ \hline
 \end{center}
 \end{table}
 
-Judging by the silhouette score, clusters arn't well defined, which could also be assumed from the previous plot. Method with the best score is KMeans.
+Judging by the silhouette score, clusters aren't well defined, which could also be assumed from the previous plot. Method with the best score is K-Means.
 Let's take a look at the results (figure \ref{plt:clust_g_gs_k3}).
 
 \begin{figure}
@@ -554,9 +554,9 @@ Let's take a look at the results (figure \ref{plt:clust_g_gs_k3}).
 \label{plt:clust_g_gs_k3}
 \end{figure}
 
-The results are somewhat expected. In the upper right corner is the cluster that contains starters. In the lower left are players that are outside of rotation while bench players are in between. Clustering  with KMeans and agglomerative with average linkage is somewhat similar, where players in the middle of the diagonal are considered bench players. In the other two, those players are staters.
+The results are somewhat expected. In the upper right corner is the cluster that contains starters. In the lower left are players that are outside of rotation while bench players are in between. Clustering  with K-Means and agglomerative with average linkage is somewhat similar, where players in the middle of the diagonal are considered bench players. In the other two, those players are staters.
 
-Maybe the clustering will have better results if we add one more variable, minutes played (\textbf{MP}). It is expected that starters play the most minutes per game, while players that are outside of rotation play the least, if any. Bech players should play, but not as much as starters. Also, note that values of MP per game, for 2018-19 season, are between 0 and 36.9, the amount of minutes the league leaders, Bradley Beal and Paul George, played per game. Values of G and GS are from 0 to 82. Because of that, it is possible that normalazing data (scaling to [0, 1] interval) before clustering might improve results. Scaling data means that difference of one minute played per game won't have the same significance as difference of one game played.
+Maybe the clustering will have better results if we add one more variable, minutes played (\textbf{MP}). It is expected that starters play the most minutes per game, while players that are outside of rotation play the least, if any. Bench players should play, but not as much as starters. Also, note that values of MP per game, for 2018-19 season, are between 0 and 36.9, the amount of minutes the league leaders, Bradley Beal and Paul George, played per game. Values of G and GS are from 0 to 82. Because of that, it is possible that normalazing data (scaling to [0, 1] interval) before clustering might improve results. Scaling data means that difference of one minute played per game won't have the same significance as difference of one game played.
 
 As we have already seen, because of the data, clusters cannot really be well defined, so the part with silhouette score is skipped. Results for non-scaled data are shown in the figure \ref{plt:clust_g_gs_mp_k3} while results for scaled data are in figure \ref{plt:clust_g_gs_mp_k3_scaled}. Note that clusters are still shown in G to GS plot, even with MP variable included in clusering. The reason behind this is comparing results with the previous one.
 
@@ -586,7 +586,7 @@ As we have already seen, because of the data, clusters cannot really be well def
 \label{plt:clust_g_gs_mp_k3}
 \end{figure}
 
-KMeans algorithm have almost the same results as before, while others are different. The main difference is, unsurprisingly, middle of the diagonal. As opposed to before, agglomerative with complete and Ward's linkage are grouping it with bench players. Agglomerative with average linkage changed the most, with middle of the diagonal in starters group. Clustering on scaled data will probably give different results (figure \ref{plt:clust_g_gs_mp_k3_scaled}).
+K-Means algorithm have almost the same results as before, while others are different. The main difference is, unsurprisingly, middle of the diagonal. As opposed to before, agglomerative with complete and Ward's linkage are grouping it with bench players. Agglomerative with average linkage changed the most, with middle of the diagonal in starters group. Clustering on scaled data will probably give different results (figure \ref{plt:clust_g_gs_mp_k3_scaled}).
 
 \begin{figure}
 \centering
@@ -614,9 +614,85 @@ KMeans algorithm have almost the same results as before, while others are differ
 \label{plt:clust_g_gs_mp_k3_scaled}
 \end{figure}
 
-Scaling data definitely gave us different results, although results from KMeans are still similar to the previous ones. The biggest difference can be observed in cluster with non-rotational players. Players in that cluster played at most somewhere around half of the games, but did not start in almost any of them. Because of that, cluster with bench players increased in size. Cluster with starters remained somewhat same.
+Scaling data definitely gave us different results, although results from K-Means are still similar to the previous ones. The biggest difference can be observed in cluster with non-rotational players. Players in that cluster played at most somewhere around half of the games, but did not start in almost any of them. Because of that, cluster with bench players increased in size. Cluster with starters remained somewhat same.
 
-Clusters with starters were upper right, clusters with non-rotational players were lower left, and clusters with bench players were lower right, as expected. There were different results in clustering of the middle of the diagonal, that usually belonged with the starters or bench players. There is a case to be made for both, but I am personally more leaning towards starters option. That part of the diagonal contains players that played somewhere between 40 and 55 games, and started in a lot of them (or almost all of them). Notable players from that group are LeBron James, Brandon Ingram, Wayne Ellington, Wendell Carter, Lonzo Ball, Tristan Thompson, Will Barton etc. I would personally count them as starters, who missed significant part of the season due injuries or other reasons. I like results of agglomerative clustering with Ward's linkage on games and games started data, although I would argue that more players from non-rotational players cluster should belong to the bench cluster, specifically the ones that played more than 40 games.
+Clusters with starters were upper right, clusters with non-rotational players were lower left, and clusters with bench players were lower right, as expected. There were different results in clustering of the middle of the diagonal, that usually belonged with the starters or bench players. There is a case to be made for both, but I am personally more leaning towards starters option. That part of the diagonal contains players that played somewhere between 40 and 55 games, and started in a lot of them (or almost all of them). Notable players from that group are LeBron James, Brandon Ingram, Wayne Ellington, Wendell Carter, Lonzo Ball, Tristan Thompson, Will Barton etc. I would personally count them as starters, who missed significant part of the season due to injuries or other reasons. I like results of agglomerative clustering with Ward's linkage on games and games started data, although I would argue that more players from non-rotational players cluster should belong to the bench cluster, specifically the ones that played more than 40 games.
+
+\subsection{Clustering shooters}
+\label{subsec:clust_shooters}
+
+In basketball, shooting is the most important aspect of the game (or scoring, rather, but you must shoot to score), and different players are shooting from different places on the court, called zones. Some of them are good at three point shooting while others, although mostly centers, are shooting most of their shots near the basket. The area from wich players shoot is important, as we have seen in the Moreyball section (number \ref{sec:moreyball}). In this subsection, I will try to group players based on shooting from previously mentioned zones.
+
+First, let's talk about data used. Data contains shooting attempts in a 2018-19 season (totals, not per game) from various zones for every player that shot more than 100 shots in a season. Those zones are:
+
+\begin{itemize}
+	\item \textbf{Restricted area} - Area four feet from the basket. It is denoted by an arc inside the paint.
+	\item \textbf{In the paint (non-restricted area)} - Area between restricted area, and mid-range.
+	\item \textbf{Mid-range} - Shots somewhere between 12 feet and the three point line.
+	\item \textbf{Corner three} - Three point shot taken from the left or right corner.
+	\item \textbf{Above the break three} - Every three pointer that isn't taken from one of the corners. 
+\end{itemize}
+
+Algorithm used for clustering is K-Means. In the previous subsection, number of clusters was known, three, because I wanted to group players into three different roles. For this problem, that number is unknown, so first thing that must be done is to determine an optimal number of clusters in the data. To do that I used silhouette scores. In the figure \ref{plt:num_cls_shooting} values for silhouette scores for different number of clusters are shown. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.28]{num_of_clusters_shooting.png}
+\end{center}
+\caption{Silhouette score for different number of clusters}
+\label{plt:num_cls_shooting}
+\end{figure}
+
+This is expected because, usually, silhouette score decreases as number of clusters increases. But, that does not mean that we will use two clusters to represent data, because that number of clusters does not give any information about it. Instead of looking at value of silhouette scores, we will look at their difference, but not difference by substraction, but difference based on how many percent did silhouette score change from \textbf{k number} of clusters to \textbf{k+1 number} of clusters. That difference is calculated as $ 1 - ((1 - v) / (1 - w)) $ where v is silhouette score for x number of clusters and w is silhouette score for x-1 number of clusters. Plot is shown on figure \ref{plt:num_cls_pct_change}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.28]{num_of_clusters_shooting_pct_change.png}
+\end{center}
+\caption{Percentage of changes on silhouette scores}
+\label{plt:num_cls_pct_change}
+\end{figure}
+
+To select optimal number of clusters, we will just select the ones with the greatest improvement. The highest scores are for six, nine and eleven clusters, but the one for K-Means with nine clusters higher than others, so that is the one that will be used.
+
+As mentioned before, algorithm is K-Means and number of cluster is set to nine. Every cluster will have it's name based on either playstyle or zone players inside it shot most of their shots from. Following clusters are created:
+
+\begin{enumerate}
+	\item \textbf{Players that probably weren't focal point of the offense (mostly guards)}; 71 player: Horford, Rose, Dragić, Rondo, Hill etc.
+	\item \textbf{Three Point Gods}; 9 players: Curry, Harden, Paul George, Walker, Hield, Lillard, Beal, Klay Thompson and D'Angelo Russell
+	\item \textbf{Centers but mostly not good}; 43 players: Žižić, Okafor, DeAndre Jordan, Looney, Milsap, Jabari Parker, Mason Plumlee etc.
+	\item \textbf{Players with small amount of shots}; 126 players: Baynes, Theis, Bender, Biyombo, Marjanović, Korkmaz, Ntilikina etc.
+	\item \textbf{Good and very good players}; 36 players: Fox, Griffin, Kawhi, Durant, Butler, Booker, Embiid, Towns, Jokić, Westbrook etc.
+	\item \textbf{Good distance shooters}; 36 players: Middleton, Brook Lopez, Redick, Eric Gordon, Belineli, Dinwiddie, Ariza, Bogdan Bogdanović etc.
+	\item \textbf{Alergic to distance}; 17 players: Drummond, Ben Simmons, Giannis, Gobert, Capela, Collins, Randle, Nurkić, Siakam, Adams etc.
+	\item \textbf{SA Spurs All-stars}; 2 players: LaMarcus Aldridge and DeMar DeRozan
+	\item \textbf{Lower volume good distance shooters}; 57 players: Danny Green, Jerebko, Korver, Bertans, Mirotić, Austin Rivers, Devin Harris etc.
+\end{enumerate}
+
+Information about average player by cluster, or in other words centroids generated by K-Means, can be found in the table \ref{tab:avg_by_clst}.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|} \hline
+Cluster & RA & Non-RA & Mid-range & Corner 3 & Above the break 3 \\ \hline
+ 1 & 172.15 &  89.37 &  95.35 & 45.27 & 134.48 \\ \hline
+ 2 & 369.67 & 184.67 & 281.00 & 90.44 & 622.11 \\ \hline
+ 3 & 272.77 & 100.56 &  46.44 & 25.44 &  50.26 \\ \hline
+ 4 &  69.25 &  30.62 &  25.94 & 23.53 &  52.29 \\ \hline
+ 5 & 362.53 & 220.64 & 228.72 & 49.50 & 301.19 \\ \hline
+ 6 & 179.97 & 108.47 & 130.36 & 77.19 & 340.03 \\ \hline
+ 7 & 551.88 & 177.18 &  63.47 & 19.59 &  42.35 \\ \hline
+ 8 & 365.00 & 345.00 & 562.50 & 13.00 &  30.00 \\ \hline
+ 9 &  89.16 &  47.60 &  52.77 & 77.63 & 199.86 \\ \hline
+\end{tabular}
+\caption{Average attempts from zone by cluster}
+\label{tab:avg_by_clst}
+\end{center}
+\end{table}
+
+These results are very interesting. First, note that already mentioned mid-range centered offense of San Antonio Spurs produced one cluster, containing only two players, DeRozan and Aldridge, who barely shot any three-pointers. There is a cluster with players that just didn't shot much, containing some either not good offensive players, players that came from the bench or some players that were injured during the season and didn't menage to shoot as many times as some other players from different clusters. There are two clusters with players that specialized in three-point shooting, clusters 6 and 9. Cluster number six contains mostly guards and some wings, but also Brook Lopez and Marc Gasol, centers, wich is interesting. Cluster nine mostly consists of shooting guards, wings and some stretch fours. Centers from cluster three are mostly not offensively talented, or not talented at all, because they didn't play much. Cluster number seven contains good players, but bad distance shooters, mostly centers, but also Ben Simmons and MVP Giannis Antetokounmpo. Players that can score from anywhere on the court are contained in cluster number five. A lot of these players are All-stars, All-NBA players or players with a potential to become one. And, in the end, there is cluster two, or cluster with players that shoot massive amount of three pointers, but are also good from everywhere else. Definitely a good company to be in.
+
+In the end, let's note that these clusters could be a little bit missleading. First, data takes into account only attempts, not makes, so a player that shoots a lot of threes, but at low percentage, might be in the same group as other players who are good or very good three-point shooters. Also, data represents totals in season, not per game stats! Because of that, player that missed significant portion of the season might be in the wrong group. For example, player shoot five three-pointers per game, wich should put him in the cluster number six if he played in 82 games. But if he missed, let's say, half of the season, his per game stats stay the same, but his total stats take a hit, so because of that, he might end up in the cluster number nine.
 
 \pagebreak
 
