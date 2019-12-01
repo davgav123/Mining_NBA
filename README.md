@@ -14,6 +14,6 @@ Contents
     4.2 Passing
 5 Moreyball
 6 Clustering
-    6.1 Determining player’s roles by games played
+    6.1 Determining players' roles by games played
     6.2 Clustering shooters
 ```

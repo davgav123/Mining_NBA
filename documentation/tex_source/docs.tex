@@ -493,7 +493,7 @@ Similarity between clusters is calculated by \textbf{linkage}. In \textit{single
 
 One of the metrics that can tell if the clustering is good or not is \textbf{silhouette score}, calculated, for data point in cluster, as $ (b - a)  / max(a, b) $, where \textit{a} is average distance to other data point in the same cluster, \textit{b} is average distance to other data point in the nearest cluster. Values of this score can go from -1 to 1. The higher value the better clustering. In other words, silhouette score measures how similar a data point in a cluster is similar to its own cluster compared to other clusters by comparing the point’s distance from its own cluster to its distance from other clusters. \cite{clustering}
 
-\subsection{Determining player's roles by games played}
+\subsection{Determining players' roles by games played}
 \label{subsec:players_roles}
 
 Player in the NBA can usually be placed in one of the three categories, starter, bench player and non-rotational player. First group, starters, are expected to start every game they play. Starters play the most minutes per game. They might not play every game due to various injuries and rest days. Also, they might not start every game. For example, starter might get injured, and when he is healed coach might not put him in the starting lineup. That is usually practice if the starter is on a minute restriction, meaning he will play in the game, but will play in the fewer minutes than he usually plays in when he starts. Second group are bench players. They are not usually starters, but are important for the success of the team. They play in a lot of minutes, but not as much as starters. Bench players might get to start some games because starter is injured, or maybe because of matchups, but that is not really likely. Third are non-rotational players. They aren't usually playing in the game, or if they are, they are playing small amount of minutes or garbage time. Note that these players also might even start some games, if team has serious problem with injuries. Also, it's possible that a player makes progress or regress during a season, which will result in promotion or demotion.
@@ -623,7 +623,7 @@ Clusters with starters were upper right, clusters with non-rotational players we
 
 In basketball, shooting is the most important aspect of the game (or scoring, rather, but you must shoot to score), and different players are shooting from different places on the court, called zones. Some of them are good at three point shooting while others, although mostly centers, are shooting most of their shots near the basket. The area from wich players shoot is important, as we have seen in the Moreyball section (number \ref{sec:moreyball}). In this subsection, I will try to group players based on shooting from previously mentioned zones.
 
-First, let's talk about data used. Data contains shooting attempts in a 2018-19 season (totals, not per game) from various zones for every player that shot more than 100 shots in a season. Those zones are:
+First, let's talk about data used. Data (from stats.nba.com) contains shooting attempts from 2018-19 season (totals, not per game) from various zones for every player that shot more than 100 shots in a season. Those zones are:
 
 \begin{itemize}
 	\item \textbf{Restricted area} - Area four feet from the basket. It is denoted by an arc inside the paint.
@@ -653,28 +653,28 @@ This is expected because, usually, silhouette score decreases as number of clust
 \label{plt:num_cls_pct_change}
 \end{figure}
 
-To select optimal number of clusters, we will just select the ones with the greatest improvement. The highest scores are for six, nine and eleven clusters, but the one for K-Means with nine clusters higher than others, so that is the one that will be used.
+To select optimal number of clusters, we will just select the ones with the greatest improvement. The highest scores are for six, nine and eleven clusters, but the one for K-Means with nine clusters is higher than others, so that is the one that will be used.
 
 As mentioned before, algorithm is K-Means and number of cluster is set to nine. Every cluster will have it's name based on either playstyle or zone players inside it shot most of their shots from. Following clusters are created:
 
 \begin{enumerate}
-	\item \textbf{Players that probably weren't focal point of the offense (mostly guards)}; 71 player: Horford, Rose, Dragić, Rondo, Hill etc.
+	\item \textbf{Players that probably weren't focal point of the offense}; 71 player: Horford, Rose, Dragić, Rondo, Hill, Portis etc.
 	\item \textbf{Three Point Gods}; 9 players: Curry, Harden, Paul George, Walker, Hield, Lillard, Beal, Klay Thompson and D'Angelo Russell
 	\item \textbf{Centers but mostly not good}; 43 players: Žižić, Okafor, DeAndre Jordan, Looney, Milsap, Jabari Parker, Mason Plumlee etc.
 	\item \textbf{Players with small amount of shots}; 126 players: Baynes, Theis, Bender, Biyombo, Marjanović, Korkmaz, Ntilikina etc.
-	\item \textbf{Good and very good players}; 36 players: Fox, Griffin, Kawhi, Durant, Butler, Booker, Embiid, Towns, Jokić, Westbrook etc.
+	\item \textbf{Good and very good players}; 36 players: Fox, Griffin, LeBron, Kawhi, Durant, Butler, Booker, Embiid, Towns, Jokić, Westbrook etc.
 	\item \textbf{Good distance shooters}; 36 players: Middleton, Brook Lopez, Redick, Eric Gordon, Belineli, Dinwiddie, Ariza, Bogdan Bogdanović etc.
 	\item \textbf{Alergic to distance}; 17 players: Drummond, Ben Simmons, Giannis, Gobert, Capela, Collins, Randle, Nurkić, Siakam, Adams etc.
 	\item \textbf{SA Spurs All-stars}; 2 players: LaMarcus Aldridge and DeMar DeRozan
 	\item \textbf{Lower volume good distance shooters}; 57 players: Danny Green, Jerebko, Korver, Bertans, Mirotić, Austin Rivers, Devin Harris etc.
 \end{enumerate}
 
-Information about average player by cluster, or in other words centroids generated by K-Means, can be found in the table \ref{tab:avg_by_clst}.
+Information about how many shots by zone did average player attempted by cluster, or in other words centroids generated by K-Means, can be found in the table \ref{tab:avg_by_clst}.
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
-Cluster & RA & Non-RA & Mid-range & Corner 3 & Above the break 3 \\ \hline
+Cluster & RA & Paint non-ra & Mid-range & Corner 3 & Above the break 3 \\ \hline
  1 & 172.15 &  89.37 &  95.35 & 45.27 & 134.48 \\ \hline
  2 & 369.67 & 184.67 & 281.00 & 90.44 & 622.11 \\ \hline
  3 & 272.77 & 100.56 &  46.44 & 25.44 &  50.26 \\ \hline
@@ -690,9 +690,9 @@ Cluster & RA & Non-RA & Mid-range & Corner 3 & Above the break 3 \\ \hline
 \end{center}
 \end{table}
 
-These results are very interesting. First, note that already mentioned mid-range centered offense of San Antonio Spurs produced one cluster, containing only two players, DeRozan and Aldridge, who barely shot any three-pointers. There is a cluster with players that just didn't shot much, containing some either not good offensive players, players that came from the bench or some players that were injured during the season and didn't menage to shoot as many times as some other players from different clusters. There are two clusters with players that specialized in three-point shooting, clusters 6 and 9. Cluster number six contains mostly guards and some wings, but also Brook Lopez and Marc Gasol, centers, wich is interesting. Cluster nine mostly consists of shooting guards, wings and some stretch fours. Centers from cluster three are mostly not offensively talented, or not talented at all, because they didn't play much. Cluster number seven contains good players, but bad distance shooters, mostly centers, but also Ben Simmons and MVP Giannis Antetokounmpo. Players that can score from anywhere on the court are contained in cluster number five. A lot of these players are All-stars, All-NBA players or players with a potential to become one. And, in the end, there is cluster two, or cluster with players that shoot massive amount of three pointers, but are also good from everywhere else. Definitely a good company to be in.
+These results are very interesting. First, note that already mentioned mid-range centered offense of San Antonio Spurs produced one cluster, containing only two players, DeRozan and Aldridge, who barely shot any three-pointers. There is a cluster with players that just didn't shot much, containing some either not good offensive players, players that came from the bench or some players that were injured during the season and didn't menage to shoot as many times as some other players from different clusters. There are two clusters with players that specialized in three-point shooting, clusters 6 and 9. Cluster number six contains mostly guards and some wings, but also Brook Lopez and Marc Gasol, centers, wich is interesting. Cluster nine mostly consists of shooting guards, wings and some stretch fours. Centers from cluster three are mostly not offensively talented, or not talented at all, because they didn't play much. Cluster number seven contains good players, but bad distance shooters, mostly centers, but also Ben Simmons and 2018-19 MVP, Giannis Antetokounmpo. Players that can score from anywhere on the court can be found in cluster number five. A lot of these players are All-stars, All-NBA players or players with a potential to become one. And, in the end, there is cluster two, or cluster with players that shot massive amount of three pointers, but are also good from everywhere else. Definitely a good company to be in.
 
-In the end, let's note that these clusters could be a little bit missleading. First, data takes into account only attempts, not makes, so a player that shoots a lot of threes, but at low percentage, might be in the same group as other players who are good or very good three-point shooters. Also, data represents totals in season, not per game stats! Because of that, player that missed significant portion of the season might be in the wrong group. For example, player shoot five three-pointers per game, wich should put him in the cluster number six if he played in 82 games. But if he missed, let's say, half of the season, his per game stats stay the same, but his total stats take a hit, so because of that, he might end up in the cluster number nine.
+In the end, let's note that these clusters could be a little bit missleading. First, data takes into account only attempts, not makes, so a player that shoots a lot of threes, but at low percentage, might be in the same group as other players who are good or very good three-point shooters. Also, data represents totals in season, not per game stats! Because of that, player that missed significant portion of the season might be in the wrong group. For example, player shot five three-pointers per game, wich should put him in the cluster number six if he played in 82 games. But if he missed, let's say, half of the season, his per game stats stay the same, but his total stats take a hit and because of that he might end up in the cluster number nine.
 
 \pagebreak
 
