@@ -7,11 +7,12 @@ from numpy import around
 
 
 if __name__ == "__main__":
-    # harden PPG is from 2018-19 season
-    # Bryant PPG is from 2005-06 season
-    per_game_df = pd.read_csv(Path('../data/harden_and_bryant_per_game_data.csv'))
-    per_48_df = pd.read_csv(Path('../data/harden_and_bryant_per_48_data.csv'))
-    per_100_df = pd.read_csv(Path('../data/harden_and_bryant_per_100_data.csv'))
+    # Harden's PPG is from 2018-19 season
+    # Bryant's PPG is from 2005-06 season
+    # Jordan's PPG is from 1986-87 season
+    per_game_df = pd.read_csv(Path('../data/compare_players_per_game.csv'))
+    per_48_df = pd.read_csv(Path('../data/compare_players_per_48.csv'))
+    per_100_df = pd.read_csv(Path('../data/compare_players_per_100_poss.csv'))
 
     avg_TS_for_2018_19_season = 0.560 # source: https://www.basketball-reference.com/leagues/NBA_2019.html#all_misc_stats
     avg_TS_for_2005_06_season = 0.536 # source: https://www.basketball-reference.com/leagues/NBA_2006.html#all_misc_stats

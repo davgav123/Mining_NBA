@@ -47,7 +47,7 @@ def plot_award_ages():
     mvp_ages = mvp_df['Age']
     mvp_age_freq = mvp_df['Player'] # could be any stat but age
 
-    # box plot for mvp
+    # bar plot for mvp
     plt.subplot(2, 2, 1)
     plt.bar(mvp_ages, mvp_age_freq)
     x = np.arange(min(mvp_ages), max(mvp_ages) + 1)
@@ -59,7 +59,7 @@ def plot_award_ages():
     fmvp_ages = fmvp_df['Age']
     fmvp_age_freq = fmvp_df['Player'] # could be any stat but age
 
-    # box plot for fmvp    
+    # bar plot for fmvp
     plt.subplot(2, 2, 2)
     plt.bar(fmvp_ages, fmvp_age_freq)
     x = np.arange(min(fmvp_ages), max(fmvp_ages) + 1)
@@ -71,7 +71,7 @@ def plot_award_ages():
     dpoy_ages = dpoy_df['Age']
     dpoy_age_freq = dpoy_df['Player'] # could be any stat but age
 
-    # box plot for dpoy
+    # bar plot for dpoy
     plt.subplot(2, 2, 3)
     plt.bar(dpoy_ages, dpoy_age_freq)
     x = np.arange(min(dpoy_ages), max(dpoy_ages) + 1)
@@ -83,7 +83,7 @@ def plot_award_ages():
     smoy_ages = smoy_df['Age']
     smoy_age_freq = smoy_df['Player'] # could be any stat but age
 
-    # box plot for smoy
+    # bar plot for smoy
     plt.subplot(2, 2, 4)
     plt.bar(smoy_ages, smoy_age_freq)
     x = np.arange(min(smoy_ages), max(smoy_ages) + 1)
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     bar_plot_stat_by_age('../data/totals_data.csv', ['PTS', 'FG', 'FGA', 'FT'], filter_players=True)
     bar_plot_stat_by_age('../data/advanced_data.csv', ['PER', 'WS', 'BPM', 'VORP'], filter_players=True)
 
-    # '*' represents Hall of famer
+    # '*' represents Hall of famer in the data
     player_stat_by_age('Shaquille O\'Neal*', '../data/advanced_data.csv', 'WS/48')
     player_stat_by_age('Larry Bird*', '../data/advanced_data.csv', 'WS/48')
     player_stat_by_age('Tim Duncan', '../data/advanced_data.csv', 'WS/48')

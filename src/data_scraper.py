@@ -35,6 +35,7 @@ def scrap_bbref_table(year, target_table_url):
     stats = pd.DataFrame(player_stats, columns=headers)
     
     # delete empty rows, rows where 'Player' field is missing
+    # those rows are missing because of html
     stats = stats[pd.notnull(stats['Player'])]
     stats = stats.reset_index(drop=True)
 
@@ -53,7 +54,7 @@ def data_from_url(url, dest_path, years):
 
         dest_df = pd.concat([dest_df, df], ignore_index=True)
 
-    dest_df.to_csv(dest_path)
+    dest_df.to_csv(dest_path, index=False)
     print('Data is saved into {}'.format(dest_path))
 
 
