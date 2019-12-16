@@ -48,7 +48,7 @@ def filter_data(df):
     df = df[df.G >= 35]
 
     # filter needed columns
-    df.drop(columns=['Tm', 'Age', 'G', 'GS', 'MP', 'Player', 'season'], inplace=True)
+    df.drop(columns=['Tm', 'Age', 'G', 'GS', 'MP', 'Player', 'season', 'FG', 'FGA'], inplace=True)
 
     # drop percentage columns (can contain NaN values)
     df.drop(columns=['FG%', '3P%', '2P%', 'FT%', 'eFG%'], inplace=True)
@@ -79,6 +79,8 @@ def visualize_data(df):
 
     plot_boxplot(df['Pos'], df['2PA'], '2PA per game by position')
 
+    plot_boxplot(df['Pos'], df['FTA'], 'FTA per game by position')
+
     plot_boxplot(df['Pos'], df['TRB'], 'TRB per game by position')
 
     plot_boxplot(df['Pos'], df['AST'], 'AST per game by position')
@@ -93,6 +95,7 @@ def best_classifier(model, grid, model_name, cv, X_train, X_test, y_train, y_tes
     clf.fit(X_train, y_train)
 
     print(f'Best params for {model_name}: {clf.best_params_}')
+    print(f'Best score for {model_name}: {clf.best_score_}')
     print('') # new line
 
 
@@ -178,7 +181,7 @@ def classify_selected_player(per_game_data, player_name, trained_classifiers):
     positions = player['Pos'].values
 
     # prepare data for classification
-    player.drop(columns=['Tm', 'Pos', 'Age', 'G', 'GS', 'MP', 'Player', 'season'], inplace=True)
+    player.drop(columns=['Tm', 'Pos', 'Age', 'G', 'GS', 'MP', 'Player', 'season', 'FG', 'FGA'], inplace=True)
     player.drop(columns=['FG%', '3P%', '2P%', 'FT%', 'eFG%'], inplace=True)
 
     max_name_len = max([len(v) for (k, v) in trained_classifiers]) # for output formating
@@ -262,7 +265,7 @@ if __name__ == "__main__":
     # the best classifiers from GridSearchCV
     knn = create_classifier(
         KNeighborsClassifier(
-            n_neighbors=7,
+            n_neighbors=20,
             weights='distance'
         ),
         'KNN', X_train, X_test, y_train, y_test
@@ -272,7 +275,7 @@ if __name__ == "__main__":
         RandomForestClassifier(
             criterion='gini',
             max_depth=20,
-            n_estimators=250,
+            n_estimators=200,
             class_weight='balanced',
             random_state=27
         ),
@@ -284,7 +287,7 @@ if __name__ == "__main__":
             loss='deviance',
             max_depth=10,
             max_features='sqrt',
-            n_estimators=50,
+            n_estimators=150,
             random_state=27
         ),
         'Gradient Boosting', X_train, X_test, y_train, y_test
@@ -306,4 +309,3 @@ if __name__ == "__main__":
         (svc, 'SVC'), (gbc, 'Gradient Boosting')
     ]
     classify_players(classifiers)
-    
