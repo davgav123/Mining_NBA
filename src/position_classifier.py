@@ -40,8 +40,8 @@ def transform_positions(position):
 
 def filter_data(df):
     # filter seasons
-    df = df[df.season >= 1991] # from 1990-91 season
-    df = df[df.season <= 2011] # t0 2010-11 season
+    df = df[df.season >= 1986] # from 1985-86 season
+    df = df[df.season <= 2006] # t0 2005-06 season
 
     # filter contributors
     df = df[df.MP >= 15.0]
@@ -117,8 +117,9 @@ def find_best_classifiers(cv, X_train, X_test, y_train, y_test):
         RandomForestClassifier(),
         {
             'n_estimators': np.linspace(start=50, stop=300, num=6, dtype=int),
-            'criterion': ['gini', 'entropy'],
+            'criterion': ['gini'],
             'max_depth': np.linspace(start=10, stop=100, num=10, dtype=int),
+            'class_weight': [None, 'balanced'],
             'random_state': [27]
         },
         'Random forest', cv,
@@ -143,7 +144,8 @@ def find_best_classifiers(cv, X_train, X_test, y_train, y_test):
         {
             'C': [0.1, 1, 10, 100],
             'kernel': ['rbf', 'linear'],
-            'gamma': ['scale', 0.1, 0.01, 0.001, 0.0001]
+            'gamma': ['scale', 0.1, 0.01, 0.001, 0.0001],
+            'class_weight': [None, 'balanced']
         },
         'SVM', cv,
         X_train, X_test, y_train, y_test
@@ -199,8 +201,8 @@ def classify_players(trained_classifiers, players=None, seasons_range=[2012, 201
     '''
         Predict selected players from selected seasons. If players parameter is None,
         then players from the list below are selected.
-        Season range should not include seasons from 1990-91 to 2010-11 because models
-        are trained on those seasons!
+        Season range should not include seasons used for training because model
+        might have memorized them.
     '''
 
     if not players:
@@ -216,6 +218,8 @@ def classify_players(trained_classifiers, players=None, seasons_range=[2012, 201
             'Andre Drummond',
             'Ben Simmons',
             'Giannis Antetokounmpo',
+            'Clint Capela',
+            'Kevin Love',
         ]
 
     per_game = pd.read_csv(Path('../data/per_game_data.csv'))
@@ -242,9 +246,9 @@ if __name__ == "__main__":
     cv = StratifiedKFold(n_splits=5)
 
     # number of players by position
-    print(f'Number of players by position in data is {dict(Counter(y))}\n')
-    print(f'Number of players by position in train set is {dict(Counter(y_train))}\n')
-    print(f'Number of players by position in test set is {dict(Counter(y_test))}\n')
+    print(f'Number of players by position in data is {dict(Counter(y))}')
+    print(f'Number of players by position in train set is {dict(Counter(y_train))}')
+    print(f'Number of players by position in test set is {dict(Counter(y_test))}')
 
     # try different parameters for different classifiers
     # find_best_classifiers(cv, X_train, X_test, y_train, y_test) #  <- uncomment this for grid search
@@ -258,7 +262,7 @@ if __name__ == "__main__":
     # the best classifiers from GridSearchCV
     knn = create_classifier(
         KNeighborsClassifier(
-            n_neighbors=10,
+            n_neighbors=7,
             weights='distance'
         ),
         'KNN', X_train, X_test, y_train, y_test
@@ -266,9 +270,10 @@ if __name__ == "__main__":
 
     rfc = create_classifier(
         RandomForestClassifier(
-            criterion='entropy',
+            criterion='gini',
             max_depth=20,
-            n_estimators=300,
+            n_estimators=250,
+            class_weight='balanced',
             random_state=27
         ),
         'Random Forest', X_train, X_test, y_train, y_test
@@ -277,7 +282,7 @@ if __name__ == "__main__":
     gbc = create_classifier(
         GradientBoostingClassifier(
             loss='deviance',
-            max_depth=20,
+            max_depth=10,
             max_features='sqrt',
             n_estimators=50,
             random_state=27
@@ -288,8 +293,9 @@ if __name__ == "__main__":
     svc = create_classifier(
         SVC(
             C=100,
-            gamma=0.01,
-            kernel='rbf'
+            gamma=0.001,
+            kernel='rbf',
+            class_weight='balanced'
         ),
         'SVC', X_train, X_test, y_train, y_test
     )
