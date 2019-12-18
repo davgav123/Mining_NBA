@@ -17,4 +17,10 @@ Contents
 6 Clustering
     6.1 Determining players' roles by games played
     6.2 Clustering shooters
+7 Classification
+    7.1 Classifying positions
+        7.1.1 Training model
+        7.1.2 Evaluation
+        7.1.3 Results
+        7.1.4 Conclusion
 ```
