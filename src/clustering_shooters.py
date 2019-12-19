@@ -15,10 +15,10 @@ def prepare_data():
     df = pd.read_csv(Path('../data/shooting_by_zone_2018_19_data.csv'))
 
     # there are players who attempted ZERO shots from some zones and they will have NaN values thare
-    # replace them with zeros because KMeams won't work otherwise
+    # replace them with zeros because K-Means won't work otherwise
     df.fillna(0, inplace=True)
 
-    # eliminate right/left corner shots data, but leave corner shots data in total
+    # eliminate right/left corner shots data, but leave total corner shots data
     df = df.drop(columns=['FGM_left_corner_three', 'FGA_left_corner_three', 'FG%_left_corner_three'])
     df = df.drop(columns=['FGM_right_corner_three', 'FGA_right_corner_three', 'FG%_right_corner_three'])
 
@@ -42,14 +42,14 @@ def prepare_data():
 
 def calculate_best_k(data, min_k=2, max_k=12):
     '''
-        Calculating wich number of clusters is
+        Calculating which number of clusters is
         the optimal one using silhouette score
     '''
 
     scores = []
     # calculate silhouette for different number of clusters
     for k in range(min_k, max_k + 1):
-        kmeans = KMeans(n_clusters=k, max_iter=1200, n_init=20).fit(data)
+        kmeans = KMeans(n_clusters=k, max_iter=1500, n_init=30).fit(data)
         scores.append(silhouette_score(data, kmeans.labels_))
 
     # plot scores
@@ -85,12 +85,10 @@ if __name__ == "__main__":
 
     calculate_best_k(data)
 
-    k = 6
-    # k = 8
-    kmeans = KMeans(n_clusters=k, max_iter=1200, n_init=20).fit(data)
+    k = 9
+    kmeans = KMeans(n_clusters=k, max_iter=1500, n_init=30).fit(data)
 
     print(kmeans.cluster_centers_)
-    # print(kmeans.labels_)
 
     # check in which cluster clustered players belong
     for (i, j) in zip(names, kmeans.predict(data)):
