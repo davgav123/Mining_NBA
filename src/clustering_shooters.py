@@ -23,7 +23,7 @@ def prepare_data():
     df = df.drop(columns=['FGM_right_corner_three', 'FGA_right_corner_three', 'FG%_right_corner_three'])
 
     # delete players with less than 100 shots in season
-    df = df[df.FGA_restricted + df.FGA_paint_non_ra + df.FGA_mid_range + df.FGA_corner_three + df.FGA_above_the_break_three >= 100]
+    df = df[df.FGA_restricted + df.FGA_paint_non_ra + df.FGA_mid_range + df.FGA_corner_three + df.FGA_above_the_break_three >= 300]
 
     # delete percentage data
     df = df.drop(columns=['FG%_restricted', 'FG%_paint_non_ra', 'FG%_mid_range', 'FG%_corner_three', 'FG%_above_the_break_three'])
@@ -49,7 +49,7 @@ def calculate_best_k(data, min_k=2, max_k=12):
     scores = []
     # calculate silhouette for different number of clusters
     for k in range(min_k, max_k + 1):
-        kmeans = KMeans(n_clusters=k, max_iter=1500, n_init=30).fit(data)
+        kmeans = KMeans(n_clusters=k, max_iter=3500, n_init=35).fit(data)
         scores.append(silhouette_score(data, kmeans.labels_))
 
     # plot scores
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     calculate_best_k(data)
 
     k = 9
-    kmeans = KMeans(n_clusters=k, max_iter=1500, n_init=30).fit(data)
+    kmeans = KMeans(n_clusters=k, max_iter=3500, n_init=35).fit(data)
 
     print(kmeans.cluster_centers_)
 
