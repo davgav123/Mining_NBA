@@ -234,22 +234,24 @@ def apply_models_to_data(models):
         print(name + ' results:')
         result = model.predict_proba(X)
 
+        # [:, 1] is an All-Star probability, [:, 0] is for not All-Star probability
         print(np.around(result[:, 1], 3))
         print('-----------------')
 
         results.append(result[:, 1])
 
-    print('average chance:')
-    l = [(i + j + k) / 3.0 for i, j, k in zip(results[0], results[1], results[2])]
-    for player, probability in zip(names, l):
-        print(player, np.around(probability, 2), sep=': ')
+    # calculate average probability
+    print('average probability:')
+    results = np.array(results)
+    probabilites = results.mean(axis=0)
+
+    for name, probability in zip(names, probabilites):
+        print(name, np.around(probability, 2), sep=': ')
 
     print('-------------------------')
 
 
 def SHAP_values(model, X_train):
-    print('kek')
-
     k_sample = shap.kmeans(X_train, 5)
     explainer = shap.KernelExplainer(model.predict, k_sample)
     shap_values = explainer.shap_values(X_train)
@@ -371,6 +373,6 @@ if __name__ == "__main__":
 
     print('Both:')
     apply_models_to_data([
-        (svc_acc, 'SVC'), (rfc_acc, 'RFC'), (gbc_acc, 'GBC'),
-        (svc_rcl, 'SVC'), (rfc_rcl, 'RFC'), (gbc_rcl, 'GBC')
+        (svc_acc, 'SVC acc'), (rfc_acc, 'RFC acc'), (gbc_acc, 'GBC acc'),
+        (svc_rcl, 'SVC rcl'), (rfc_rcl, 'RFC rcl'), (gbc_rcl, 'GBC rcl')
     ])
