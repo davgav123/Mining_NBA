@@ -20,4 +20,20 @@ Contents
     6.3 Clustering shooting by teams
 7 Classification
     7.1 Classifying positions
+    7.2 Will rookie be an All-Star during his career?
+```
+
+# Requirements
+
+```
+Python3
+numpy
+pandas
+matplotlib
+seaborn
+sklearn
+shap
+nba_api
+bs4
+urllib
 ```

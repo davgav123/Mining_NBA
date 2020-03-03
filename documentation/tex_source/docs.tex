@@ -47,7 +47,7 @@
 \label{subsec:traditional_stats}
 
 \begin{itemize}
-	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: \textit{\textbf{PG}} - point guard, \textit{\textbf{SG}} - shooting guard, \textit{\textbf{SF}} - small forward, \textit{\textbf{PF}} - power forward and \textit{\textbf{C}} - center. Nowdays, one player usually plays multiple positions and usually is one of the: \textit{\textbf{Point}} - primarly PG, \textit{\textbf{Combo guard}} - plays PG and SG, \textit{\textbf{Wing}} - SF and SG, \textit{\textbf{Forward}} - PF and SF, \textit{\textbf{Big}} - usually C but can also be PF.
+	\item \textbf{Pos} - Position. Traditionaly, position can be one of the following: \textit{\textbf{PG}} - point guard, \textit{\textbf{SG}} - shooting guard, \textit{\textbf{SF}} - small forward, \textit{\textbf{PF}} - power forward and \textit{\textbf{C}} - center. nowadays, one player usually plays multiple positions and usually is one of the: \textit{\textbf{Point}} - primarly PG, \textit{\textbf{Combo guard}} - plays PG and SG, \textit{\textbf{Wing}} - SF and SG, \textit{\textbf{Forward}} - PF and SF, \textit{\textbf{Big}} - usually C but can also be PF.
 	\item \textbf{G} - Games. Number of games player played in during a season.
 	\item \textbf{GS} - Games started. Number of games player started. Cannot be greater than G.
 	\item \textbf{MP} - Minutes played.
@@ -180,7 +180,7 @@ Of course, different players can hit their prime at different age. Let's check p
 \label{plt:duncan}
 \end{figure}
 
-In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{Regular season MVP}, \textit{Finals MVP}, \textit{DPOY} and \textit{Sixth man of the year} (\textit{SMOY}). Plots are shown in figure \ref{plt:awards}. Every plot but the plot for Defensive player of the year is somewhat similar. In those plots the number of awards players won while in their late twenties and eary thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 (highest value) and 27 years old when they won. After that, there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?
+In the next step of determining prime of players, I checked at what age do players win awards, such as \textit{Regular season MVP}, \textit{Finals MVP}, \textit{DPOY} and \textit{Sixth man of the year} (\textit{SMOY}). Plots are shown in figure \ref{plt:awards}. Every plot but the plot for Defensive player of the year is somewhat similar. In those plots the number of awards players won while in their late twenties and early thirties is greater than number of awards in other years. Defensive player of the year award plot is different, where players aged from 23 to 31 won with roughly the same frequency, with an exception of players who were 28 (highest value) and 27 years old when they won. After that, there is a significant drop. These plots are showing us that the best players in the season are usually ones between 26 and 31 years old. But those players are stars and superstars. What about an average player?
 
 \begin{figure}[h!]
 \begin{center}
@@ -221,7 +221,7 @@ Now, I can try to estimate prime of an average player with statistics. First, I 
 \label{plt:totals_age_filtered}
 \end{figure}
 
-Both figures are somewhat similar. Values for players aged from 26 to 30 or maybe 31 are higher than for any other age, with a significant drop after that. Both figures show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is actually in late twenties/early thrties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has easily noticable difference between values for players that are 21 and 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized.
+Both figures are somewhat similar. Values for players aged from 26 to 30 or maybe 31 are higher than for any other age, with a significant drop after that. Both figures show peaks at a similar age, 28 for unfiltered data and 27 for filtered. So it's good thing to consider that prime of an average player is actually in late twenties/early thirties. The main difference can be seen in values for players that are younger than 25. Unfiltered data has easily noticeable difference between values for players that are 21 and 22 years old. Reason behind that is probably draft. Promising players are drafted earlier, often before they are 20, while a lot of players with lower upside decide to devlop in college and try to enter the league later. Those players are the reason why the values are lower for certain age. From plots with filtered data we can observe that those players are not contributing right away, so lower values are, while still there, not so emphasized.
 
 Advanced stats are better than traditional and hold more information about how good a certain player is. So, I did similar thing as in the paragraphs before, but now with the advanced stats. Stats chosen are PER, WS, BPM and VORP. Bar plots for unfiltered players are shown in figure \ref{plt:advanced_age}, while bar plots after filtering are in figure \ref{plt:advanced_age_filtered}.
 
@@ -242,7 +242,7 @@ Advanced stats are better than traditional and hold more information about how g
 \label{plt:advanced_age_filtered}
 \end{figure}
 
-These plots are way more interesting. First, PER bar plot, for both fitered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are having spike in values from 26 to 31 on y-axis and lower values from the sides. That radius with higher values contains prime years af an average player. Plot for BPM is, interestinglly, negative for unfiltered data, and with some possitive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, which is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. Also, not many players play by that age, so the average might be high because there is a small number of players, none of which are bad.
+These plots are way more interesting. First, PER bar plot, for both filtered and unfiltered data, is somewhat similar to the ones with traditional stats, with the same results. Plots for WS and VORP are having spike in values from 26 to 31 on y-axis and lower values from the sides. That radius with higher values contains prime years of an average player. Plot for BPM is, interestingly, negative for unfiltered data, and with some positive values for filtered data. Highest values for BPM are from players from 25 to 36 years old. Some of the plots that are showing advanced data have high value for players 39 years old, which is interesting. Those players were usually very good in their prime, and because of that they were usually good when they were older, just not that good anymore, and in usually lower minutes per game. Also, not many players play by that age, so the average might be high because there is a small number of players, none of which are bad.
 
 Taking all mentioned things into a consideration, age when players are usually winning awards and age when the players are statistically better than in any other age, conclusion is that an average player enters into prime at around his \textbf{25th} year, and exits when he is around \textbf{31}, with kinda significant drop after that. Peak season happens when player is from \textbf{27 to 29} years of age, somewhere in the middle of their prime.
 
@@ -272,7 +272,7 @@ As we can see, the stats are getting better as he age, and are very good in his 
 \subsection{Did he deserve 1st team All-NBA in the 18-19 season?}
 \label{subsec:jokic_all_nba}
 
-Let's start this subsecion with a note that All-NBA teams are \textit{selected by voters}, and \textbf{not} purely by stats. That means that the players who are statistically very good might not get All-NBA team selection, if, for example, a team they play for isn't successful, although that's unlikely. Also, player doesn't have to be one of the five best players in the league to end up on the 1st All-NBA team, he just have to be the best, according to a voter, at his position. The All-NBA team consists of two guards, two wings and one center. In the 2018-19 season, Nikola Joki\' c was on the 1st All-NBA team. Did he \textit{statistically} deserve it?
+Let's start this subsection with a note that All-NBA teams are \textit{selected by voters}, and \textbf{not} purely by stats. That means that the players who are statistically very good might not get All-NBA team selection, if, for example, a team they play for isn't successful, although that's unlikely. Also, player doesn't have to be one of the five best players in the league to end up on the 1st All-NBA team, he just have to be the best, according to a voter, at his position. The All-NBA team consists of two guards, two wings and one center. In the 2018-19 season, Nikola Joki\' c was on the 1st All-NBA team. Did he \textit{statistically} deserve it?
 
 Joki\' c is a \textit{center}, and there is only one center on the 1st All-NBA team, so I just have to compare his stats with the stats of the other centers. In the 2018-19 season, Joki\' c played in 80 games, averaging 31.3 MPG, 20.1 PPG, 10.8 RPG and 7.3 APG on 0.51 FG\%, 0.31 3P\%, 0.82 FT\% shooting splits. Here is how it compared to other \textbf{centers} in the same season. Plot chosen to represent this data is Box plot \cite{boxplots}, because we want to see whether Joki\' c is, and how much, better than other centers.
 
@@ -303,7 +303,7 @@ These stats are showing that Joki\' c really was one of the best centers in the 
 \label{plt:centers_bpm}
 \end{figure}
 
-Among centers, he was ranked high on WS/48 (4th), PER (2nd) and DBPM (5th) and is \textbf{first} in VORP (3rd in the league), OBPM (7th in the league) and BPM (3rd in the league). He dominated advanced statistics, not only when compared to the other players at his position, but also when compared to the best players in the NBA in that season. From this, it is not hard to determine that Nikola Joki\' c statstically deserved to be on the All-NBA 1st team! Of course, that does not mean that other centers weren't, but it means that voters had good reasoning behind their decision. The thing that certainly helped was that Denver Nuggets, led by him as the best player, were 2nd seeded team in the Western conference.
+Among centers, he was ranked high on WS/48 (4th), PER (2nd) and DBPM (5th) and is \textbf{first} in VORP (3rd in the league), OBPM (7th in the league) and BPM (3rd in the league). He dominated advanced statistics, not only when compared to the other players at his position, but also when compared to the best players in the NBA in that season. From this, it is not hard to determine that Nikola Joki\' c statistically deserved to be on the All-NBA 1st team! Of course, that does not mean that other centers weren't, but it means that voters had good reasoning behind their decision. The thing that certainly helped was that Denver Nuggets, led by him as the best player, were 2nd seeded team in the Western conference.
 
 \subsection{Passing}
 \label{subsec:jokic_passing}
@@ -359,7 +359,7 @@ Nikola Jokić & 21 & 2016-17 & 8.6 \\ \hline
 \end{center}
 \end{table}
 
-High number of assists migh not mean much, if a player turnovers the ball often. When compared to the other centers in TOV per 100 possessions, Joki\' c worst season (2018-19), at 4.9 TOV per 100, is ranked 59th, and it is his only season in the worst 100. This proves that Joki\' c might be \textbf{the best passing big man ever}. But what about other possitions?
+High number of assists might not mean much, if a player turnovers the ball often. When compared to the other centers in TOV per 100 possessions, Joki\' c worst season (2018-19), at 4.9 TOV per 100, is ranked 59th, and it is his only season in the worst 100. This proves that Joki\' c might be \textbf{the best passing big man ever}. But what about other positions?
 
 First, I compared his stats from 2018-19 to the ones of the other players from the same season. Result can be seen in figure \ref{plt:ast_tov_g}. Bottom right corner is good, top left corner is bad. Not only he is among the best passers in the league, but he is mostly surrounded by point-guards.
 
@@ -403,7 +403,7 @@ On the second figure, that represents AST\% and TOV\% of the players from 3-poin
 
 To conclude this section, Nikola Joki\' c is absolutely best passing center ever. His passing numbers also look good when compared to the numbers of the elite passers, but are still inferior to them. Basically, he is passing like a starting caliber point guard.
 
-In the end, let's say that AST and TOV aren't the only way to measure passing. Besides them, there are stats such as number of deflected passes, number of hockey assists and so on, all of which are helpful. Stats used in this section are very impotant for passing, but aren't prefect.
+In the end, let's say that AST and TOV aren't the only way to measure passing. Besides them, there are stats such as number of deflected passes, number of hockey assists and so on, all of which are helpful. Stats used in this section are very important for passing, but aren't prefect.
 
 \pagebreak
 
@@ -423,9 +423,9 @@ Average Offensive rating in 2018-19 season in the NBA was 110.4. That means that
 	\item Percentage of a free throw shot is 0.776. That translates to 76.6 points per 100 possessions (one shot), 153.2 per 100 (two shots) or 229.8 per 100 (three shots).
 \end{itemize}
 
-From here, it is easy to conclude which shots produce more points per possession than the average. Those shots are either close to the basket, or three-pointers. Not only that, but the most efficient field goal a team can take is the one from less than 8 feet, because those shots are hard to miss. Also, two free throws per possession are extremly efficient. Notice how staggering difference is beetween average 3-point shot and three free throws, the obvious reason why fouling someone on three-point shot is extremely bad.
+From here, it is easy to conclude which shots produce more points per possession than the average. Those shots are either close to the basket, or three-pointers. Not only that, but the most efficient field goal a team can take is the one from less than 8 feet, because those shots are hard to miss. Also, two free throws per possession are extremely efficient. Notice how staggering difference is between average 3-point shot and three free throws, the obvious reason why fouling someone on three-point shot is extremely bad.
 
-Because of that, most teams nowdays are trying to implement Moreyball. If we compare shootcharts by teams from 2018-19 season, and shotchart from the same team just 6 years prior (2012-13 season), we will se noticable difference (figure \ref{plt:shotcharts}). Teams used to shoot more mid-range shots.
+Because of that, most teams nowadays are trying to implement Moreyball. If we compare shot charts by teams from 2018-19 season, and shot chart from the same team just 6 years prior (2012-13 season), we will see noticeable difference (figure \ref{plt:shotcharts}). Teams used to shoot more mid-range shots.
 
 \begin{figure}[h!]
 \begin{center}
@@ -449,7 +449,7 @@ So, Moreyball should work, right? I mean, if a team is shooting just shots that 
 
 The results are interesting. Team with the best ORtg, Golden State Warriors, was second in percentage of mid-range shots, while the second-placed Houston was dead last in that category. San Antonio Spurs, team that was first in percentage of mid-range shots, had 7th best offense. Teams such as Atlanta (23rd), Brooklyn (19th) and Milwaukee (4th), besides Houston, had taken less than 10\% of their shots from mid-range, with significant difference in ORtg. So, implementing Morreyball might not produce above average offense, and not only that, but an offense with lot of, usually inefficient, mid-range shots can work well (if a team has efficient mid-range scorer). If that's the case, why would teams even try to play Moreyball?
 
-Because Morreyball leads to a more efficient offence in general! Take a look at table \ref{tab:seasons_comp}. Every season shown has increase of three-point attempt rate from the season before, and with it, better ORtg and better efficiency.
+Because Morreyball leads to a more efficient offense in general! Take a look at table \ref{tab:seasons_comp}. Every season shown has increase of three-point attempt rate from the season before, and with it, better ORtg and better efficiency.
 
 \begin{table}[h!]
 \begin{center}
@@ -475,7 +475,7 @@ Correlations on data from season 2000-01 to season 2018-19 (from basketball-refe
 	\item Correlation between \% of mid-range attempts and ORtg: -0.634
 \end{itemize}
 
-Results are, based on everyting we have seen so far, expected. There is a very strong correlaton between efficiency and ORtg. True shooting percentage depends more on frequency of 3-point shots than on frequency of mid-range shots. More three-pointers, better efficiency, but also fewer mid-range shots, better efficiency, just not to the same degree. These are just some extra reasons why Moreyball does produce more points per possession!
+Results are, based on everything we have seen so far, expected. There is a very strong correlation between efficiency and ORtg. True shooting percentage depends more on frequency of 3-point shots than on frequency of mid-range shots. More three-pointers, better efficiency, but also fewer mid-range shots, better efficiency, just not to the same degree. These are just some extra reasons why Moreyball does produce more points per possession!
 
 To conclude, Moreyball produces more points per possession in general, but offenses that are more Moreyball than the others might not be above average on a season level. Rise in Moreyball contributed to the rise in ORtg in recent years. Also, let's note that strategies with lot of mid-range shooting can produce good/above average offense. % maybe why?
 
@@ -483,11 +483,11 @@ To conclude, Moreyball produces more points per possession in general, but offen
 \section{Clustering}
 \label{sec:clustering}
 
-In this secion I will try to, via clustering, find interesting things in NBA data. Clustering is process of finding different groups in data, where element in one group is more similar to another element in the same group than to any element from any other group \cite{clustering}. Those groups are called \textbf{clusters}. Following algorithms will be used.
+In this section I will try to, via clustering, find interesting things in NBA data. Clustering is process of finding different groups in data, where element in one group is more similar to another element in the same group than to any element from any other group \cite{clustering}. Those groups are called \textbf{clusters}. Following algorithms will be used.
 
 First one is \textbf{K-Means clustering.} This algorithm will find \textbf{K} groups. Every group will be represented by one point, called \textit{centroid}. Point that is not a centroid will belong to the cluster that is represented by it's closest centroid. Algorithm will first choose K centroids at random, and then perform iterative calculations to optimize positions of mentioned centroids. User can choose number of iterations. Because centroids are initialized at random, algorithm should be executed muliple times. Then, out of all results, the best one is selected. \cite{clustering}
 
-Second is \textbf{Hierarchichal clustering.} There are two types, \textbf{divisive} and \textbf{agglomerative} clustering. Former method begins with one cluster that contains every data point. Then, iteration by iteration, it will split that cluster in smaller ones, by similarity, until every point is cluster for itself. Latter is the opposite. It will start with as many clusters as data points, and then it will, iteratively, group two that are the most similar into one group, until only one cluster, that contains every data point, remains. \cite{clustering}
+Second is \textbf{Hierarchical clustering.} There are two types, \textbf{divisive} and \textbf{agglomerative} clustering. Former method begins with one cluster that contains every data point. Then, iteration by iteration, it will split that cluster in smaller ones, by similarity, until every point is cluster for itself. Latter is the opposite. It will start with as many clusters as data points, and then it will, iteratively, group two that are the most similar into one group, until only one cluster, that contains every data point, remains. \cite{clustering}
 
 Similarity between clusters is calculated by \textbf{linkage}. In \textit{single} linkage, the smaller the distance between closest points of two clusters is, the more similar they are. \textit{Complete} linkage is the opposite, it takes into account distance between the furthest points of two clusters. The closer they are the similarity between clusters is greater. \textit{Average} linkage takes into account average distance from any point that belongs to one cluster to any point that belongs to the other cluster. The smaller the distance, the more similar they are. The last one is \textit{Ward's} linkage. Similar to previous one, but instead of average, it calculates sum of squared distances. \cite{clustering}\cite{hierarchical}
 
@@ -498,7 +498,7 @@ One of the metrics that can tell if the clustering is good or not is \textbf{sil
 
 Player in the NBA can usually be placed in one of the three categories, starter, bench player and non-rotational player. First group, starters, are expected to start every game they play. Starters play the most minutes per game. They might not play every game due to various injuries and rest days. Also, they might not start every game. For example, starter might get injured, and when he is healed coach might not put him in the starting lineup. That is usually practice if the starter is on a minute restriction, meaning he will play in the game, but will play in the fewer minutes than he usually plays in when he starts. Second group are bench players. They are not usually starters, but are important for the success of the team. They play in a lot of minutes, but not as much as starters. Bench players might get to start some games because starter is injured, or maybe because of matchups, but that is not really likely. Third are non-rotational players. They aren't usually playing in the game, or if they are, they are playing small amount of minutes or garbage time. Note that these players also might even start some games, if team has serious problem with injuries. Also, it's possible that a player makes progress or regress during a season, which will result in promotion or demotion.
 
-The starting point is clustering based on games played (\textbf{G}) and games started (\textbf{GS}). It is expected that players with small amount of games are the non-rotational ones, the ones that started lot of games are startes and the others are bench players. Data is shown on figure \ref{plt:g_gs} and represents players from 2018-19 season. I beleve that the biggest difference between results of clustering algorithms will be in the area in the middle of the diagonal, where players did start every (or almost every) game they played in, but maybe didn't play enough games to be considered starters.
+The starting point is clustering based on games played (\textbf{G}) and games started (\textbf{GS}). It is expected that players with small amount of games are the non-rotational ones, the ones that started lot of games are starters and the others are bench players. Data is shown on figure \ref{plt:g_gs} and represents players from 2018-19 season. I believe that the biggest difference between results of clustering algorithms will be in the area in the middle of the diagonal, where players did start every (or almost every) game they played in, but maybe didn't play enough games to be considered starters.
 
 \begin{figure}[h!]
 \begin{center}
@@ -508,7 +508,7 @@ The starting point is clustering based on games played (\textbf{G}) and games st
 \label{plt:g_gs}
 \end{figure}
 
-The first clustering algorithm is K-Means. Value of K is 3 because players are supposed to be grouped in three groups. After that, I tried hierarchichal clustering methods with simple, complete, average and Ward's linkage. Results can be found in table \ref{tab:clust_score_k3}.
+The first clustering algorithm is K-Means. Value of K is 3 because players are supposed to be grouped in three groups. After that, I tried hierarchical clustering methods with simple, complete, average and Ward's linkage. Results can be found in table \ref{tab:clust_score_k3}.
 
 \begin{table}[!h]
 \begin{center}
@@ -554,11 +554,11 @@ Let's take a look at the results (figure \ref{plt:clust_g_gs_k3}).
 \label{plt:clust_g_gs_k3}
 \end{figure}
 
-The results are somewhat expected. In the upper right corner is the cluster that contains starters. In the lower left are players that are outside of rotation while bench players are in between. Clustering  with K-Means and agglomerative with average linkage is somewhat similar, where players in the middle of the diagonal are considered bench players. In the other two, those players are staters.
+The results are somewhat expected. In the upper right corner is the cluster that contains starters. In the lower left are players that are outside of rotation while bench players are in between. Clustering  with K-Means and agglomerative with average linkage is somewhat similar, where players in the middle of the diagonal are considered bench players. In the other two, those players are starters.
 
-Maybe the clustering will have better results if we add one more variable, minutes played (\textbf{MP}). It is expected that starters play the most minutes per game, while players that are outside of rotation play the least, if any. Bench players should play, but not as much as starters. Also, note that values of MP per game, for 2018-19 season, are between 0 and 36.9, the amount of minutes the league leaders, Bradley Beal and Paul George, played per game. Values of G and GS are from 0 to 82. Because of that, it is possible that normalazing data (scaling to [0, 1] interval) before clustering might improve results. Scaling data means that difference of one minute played per game won't have the same significance as difference of one game played.
+Maybe the clustering will have better results if we add one more variable, minutes played (\textbf{MP}). It is expected that starters play the most minutes per game, while players that are outside of rotation play the least, if any. Bench players should play, but not as much as starters. Also, note that values of MP per game, for 2018-19 season, are between 0 and 36.9, the amount of minutes the league leaders, Bradley Beal and Paul George, played per game. Values of G and GS are from 0 to 82. Because of that, it is possible that normalizing data (scaling to [0, 1] interval) before clustering might improve results. Scaling data means that difference of one minute played per game won't have the same significance as difference of one game played.
 
-As we have already seen, because of the data, clusters cannot really be well defined, so the part with silhouette score is skipped. Results for non-scaled data are shown in the figure \ref{plt:clust_g_gs_mp_k3} while results for scaled data are in figure \ref{plt:clust_g_gs_mp_k3_scaled}. Note that clusters are still shown in G to GS plot, even with MP variable included in clusering. The reason behind this is comparing results with the previous one.
+As we have already seen, because of the data, clusters cannot really be well defined, so the part with silhouette score is skipped. Results for non-scaled data are shown in the figure \ref{plt:clust_g_gs_mp_k3} while results for scaled data are in figure \ref{plt:clust_g_gs_mp_k3_scaled}. Note that clusters are still shown in G to GS plot, even with MP variable included in clustering. The reason behind this is comparing results with the previous one.
 
 \begin{figure}
 \centering
@@ -649,7 +649,7 @@ Algorithm used for clustering is K-Means. In the previous section, number of clu
 \label{plt:num_cls_shooting}
 \end{figure}
 
-This is expected because, usually, silhouette score decreases as number of clusters increases. But, that does not mean that we will use two clusters to represent data, because that number of clusters does not give any information about it. Instead of looking at value of silhouette scores, we will look at their difference, but not difference by substraction, but difference based on how many percent did silhouette score change from \textbf{k number} of clusters to \textbf{k+1 number} of clusters. That difference is calculated as $ 1 - ((1 - v) / (1 - w)) $ where v is silhouette score for x number of clusters and w is silhouette score for x-1 number of clusters. Plot is shown on figure \ref{plt:num_cls_pct_change}.
+This is expected because, usually, silhouette score decreases as number of clusters increases. But, that does not mean that we will use two clusters to represent data, because that number of clusters does not give any information about it. Instead of looking at value of silhouette scores, we will look at their difference, but not difference by subtraction, but difference based on how many percent did silhouette score change from \textbf{k number} of clusters to \textbf{k+1 number} of clusters. That difference is calculated as $ 1 - ((1 - v) / (1 - w)) $ where v is silhouette score for x number of clusters and w is silhouette score for x-1 number of clusters. Plot is shown on figure \ref{plt:num_cls_pct_change}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -709,7 +709,7 @@ In the end, let's note that these clusters could be a little bit misleading. Fir
 
 In this decade (2010's), players started to exclude mid-range from their games in favor of more efficient three-point shots and shots that are closer to the basket. But that change did not happen overnight, it took several seasons. Also, some teams adopted that approach before the others. In this section, I will group teams from 2010's into groups based on the area they were shooting from.
 
-It is expected that teams from the same season have similar shot distribution and thus might be in the same group. This will maybe allow us to see the process of elimination of the mid-range across seasons. Also, this might show us shot distributions that were outdated, or before their time, for the season they were used in. For example, if there is an offense from 2018-19 season that shot from the same places on the court as, let's say twenty offenses from 2012-13, we will know that that offense was outdated. Of course, that does not mean it didn't work in 2018-19, but it would mean that most of the teams from that season prefered to score from other spots on the court.
+It is expected that teams from the same season have similar shot distribution and thus might be in the same group. This will maybe allow us to see the process of elimination of the mid-range across seasons. Also, this might show us shot distributions that were outdated, or before their time, for the season they were used in. For example, if there is an offense from 2018-19 season that shot from the same places on the court as, let's say twenty offenses from 2012-13, we will know that that offense was outdated. Of course, that does not mean it didn't work in 2018-19, but it would mean that most of the teams from that season preferred to score from other spots on the court.
 
 \subsubsection{Data}
 \label{subsubsec:clust_shooting_by_teams_data}
@@ -814,7 +814,7 @@ Season & 10-11 & 11-12 & 12-13 & 13-14 & 14-15 & 15-16 & 16-17 & 17-18 & 18-19 \
 \label{tab:clust_shooting_by_teams_num3}
 \end{table}
 
-Offense represented in \textbf{cluster three} was popular during more than half of the decade, peaking from 2012-13 to 2016-17 seasons. After that, there is a steap drop, with only one team from 2018-19, San Antonio Spurs. They were the 7th best offense in the league that year .
+Offense represented in \textbf{cluster three} was popular during more than half of the decade, peaking from 2012-13 to 2016-17 seasons. After that, there is a steep drop, with only one team from 2018-19, San Antonio Spurs. They were the 7th best offense in the league that year .
 
 \begin{table}[!h]
 \begin{center}
@@ -869,13 +869,13 @@ Season & 10-11 & 11-12 & 12-13 & 13-14 & 14-15 & 15-16 & 16-17 & 17-18 & 18-19 \
 
 Classification is a process of assigning categories to provided data points. It consists of two parts, training and testing. Classification model is created during the first part, while the second part is used to evaluate how good the created model is, with various methods.
 
-During training, classification algortihm will be given some data points with assigned category. It's task is to, using those given data points, learn in which category to put every new data point with unknown category. There are a lot of different algorithms for classification, such as K-Nearest Neighbor (KNN), Support Vector Machines (SVM), Decision Trees and others. Which algorithm will be used depends on the data and situation. \cite{supervisedLearning}
+During training, classification algorithm will be given some data points with assigned category. It's task is to, using those given data points, learn in which category to put every new data point with unknown category. There are a lot of different algorithms for classification, such as K-Nearest Neighbor (KNN), Support Vector Machines (SVM), Decision Trees and others. Which algorithm will be used depends on the data and situation. \cite{supervisedLearning}
 
 Created model should not only do well on already seen, training data, but should also be able to correctly classify new, unseen, data. That, of course, might not always happen. That means that created model is either \textbf{underfit} or \textbf{overfit}. Underfitting means that model did not memorize patterns that appear in training data, and thus cannot classify it well. That also leads to bad results on test data. Overfitting means that model did memorize patterns in training data, but memorized them better than it should and is unable to generalize, so, in spite of having good results on train data, gives poor results on test data.
 
 That can be avoided with \textbf{cross-validation}, validation techniques that can evaluate how well will model generalize new data. Evaluating can be done by dividing training data into two sets. First set will still be used in model creation, while the other, called validation set, is used for testing model during the \textit{training} phase in order to check how well will that model generalize and to limit overfitting and underfitting. Validation set and training set must be drawn from the same distribution! \cite{crossVal}
 
-In order to create models, we split the data into two parts, train and test. It is important that those sets do not overlap! If they do, model cannot be trusted because we are testing it on data that model was trained on. Also, spliting must be random. If it isn't, there is a chance that model trains on data that belong only to one category, and that can lead to overfitting, because it will be unable to recognize other categories. \cite{crossVal}
+In order to create models, we split the data into two parts, train and test. It is important that those sets do not overlap! If they do, model cannot be trusted because we are testing it on data that model was trained on. Also, splitting must be random. If it isn't, there is a chance that model trains on data that belong only to one category, and that can lead to overfitting, because it will be unable to recognize other categories. \cite{crossVal}
 
 Let's note that creating validation set will reduce number of samples in training data, which means that there is less data to train model on, which can lead to a model that did not memorize patterns well (underfitting). Method used to avoid that is called \textbf{K-Fold}, which can provide enough data for training and validating. In K-Fold, model will be created on train set, and then evaluated on validation set $K$ times, each time on different splits. Every data point gets to be in validation set once, and in the train set $K-1$ times. After evaluating each of the $K$ models, average will be computed. This method have shown best results when $K$ has a value of 3, 5 or 10. Special case of K-Fold is called Leave one Out, where $K$ equals number of data points in train set. This approach can be usefull if there is little data. Using random train/test split or K-Fold can lead to different distributions in different folds. To avoid that, method called stratification can be used. \cite{crossVal}
 
@@ -890,9 +890,9 @@ After training, model should be evaluated. For that, we are using test data beca
 
 In other words, true data points are correctly predicted, so, good model is the one that maximizes number of TP and TN, while minimizing FP and FN. Now we can define some of the most used metrics. \textbf{Accuracy} is a ratio of correctly predicted data points to total number of data points. It is calculated as $(TP + TN) / (TP + TN + FP + FN)$. \textbf{Precision} is ratio of correctly predicted positive data points to the total predicted positive data points. Calculated as $TP / (TP + FP)$. \textbf{Recall} or Sensitivity is a ratio of correctly predicted positive data points from one category to the number of data points from that category. It is calculated as $TP / (TP + FN)$. \textbf{F1 score} is the weighted average of Precision and Recall. It takes into account both FP and FN. Calculated as $2 * (Precision * Recall) / (Precision + Recall)$.
 
-These socres can have values from 0 to 1, with 1 being the perfect model, and 0 being model that can't classify anything correctly. Because those values are impossible to get, we want our model to have values for mentioned metrics as close to 1 as possible. Let's also note that accuracy is better to use on balanced datasets (each category has similar number of data points) while precision, recall and f1 score are better for unbalanced datasets.
+These scores can have values from 0 to 1, with 1 being the perfect model, and 0 being model that can't classify anything correctly. Because those values are impossible to get, we want our model to have values for mentioned metrics as close to 1 as possible. Let's also note that accuracy is better to use on balanced datasets (each category has similar number of data points) while precision, recall and f1 score are better for unbalanced datasets.
 
-The other thing we can do is compare results of trained model to random model (also called \textit{dummy}). That model will literaly classify data points at random, so if our model has worse results than that (or similar), it is a bad model. 
+The other thing we can do is compare results of trained model to random model (also called \textit{dummy}). That model will literally classify data points at random, so if our model has worse results than that (or similar), it is a bad model. 
 
 Besides those, there are more ways to evaluate models, such as confusion matrices, log loss, ROC curves, cross-validation (can be used for testing also) etc.
 
@@ -948,7 +948,7 @@ The only stat that is noticeably different for different positions in the first 
 
 In the second figure difference by position can be easily noticed for selected stats. Point guards had the most assists per game by far. They are also first in steals per game, but last in blocks and rebounds per game. Opposite applies to the centers and power forwards. To conclude, player that had a lot of assists and three-pointers per game were probably PGs and a good rebounder and blocker is probably center.
 
-After these examinations, we can start with training! Data is divided into two sets, train (70\% of the data) and test (30\% of the data). Models are trained with method called \textit{Grid search}. Grid search takes into account every combination of provided parameters we want to test, and returns model created with combination that has highest value for selected metric. In this case, selected metric is accuracy because data is fairly balanced. Model is trained with stratified K-Fold ($K = 5$) cross-validation method, in order to avoid overfitting and underfitting.
+After these examinations, we can start with training! Data is divided into two sets, train (70\% of the data) and test (30\% of the data). Models are trained with method called \textit{Grid search}. Grid search takes into account every combination of provided parameters we want to test, and returns model created with combination that has highest value for selected metric. In this case, selected metric is accuracy because data is fairly balanced. Models are trained with stratified K-Fold ($K = 5$) \cite{crossVal} cross-validation method, in order to avoid overfitting and underfitting.
 
 In total, four classifiers are used: K-Nearest Neighbor Classifier (\textbf{KNN}), Random Forests Classifier (\textbf{RFC}), Gradient Boosting Classifier (\textbf{GBC}) and Support Vector Classifier (\textbf{SVC}).
 
@@ -1049,7 +1049,7 @@ Dummy & 0.19 & 0.19 & 0.19 & 0.19 \\ \hline
 
 Every trained model is better than the random model in every metric by a significant margin.
 
-Important step is to cross-validate models, to check wheter or not they overfit. Cross-validation can be influenced by distribution of the classes in the train and test sets which should be close to equal for every class. In this case, as we can see from table \ref{tab:pos_clf_cross_val}, distribution is similar.
+Important step is to cross-validate models, to check whether or not they overfit. Cross-validation can be influenced by distribution of the classes in the train and test sets which should be close to equal for every class. In this case, as we can see from table \ref{tab:pos_clf_cross_val}, distribution is similar.
 
 \begin{table}[!h]
 \begin{center}
@@ -1088,23 +1088,23 @@ With training and testing finished we can now give our models some data, and obs
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 \multicolumn{6}{|c|}{\textbf{Passing bigs}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Nikola Jokić & C & PF & PF & PF & PF \\ \hline
 Draymond Green & PF & PG & SF & PF & SF \\ \hline
 \multicolumn{6}{|c|}{\textbf{Shooting bigs}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Brook Lopez & C & SF & PF  & PF & PF \\ \hline
 Karl-Anthony Towns & C & PF  & PF & PF & PF  \\ \hline
 \multicolumn{6}{|c|}{\textbf{Rim runners}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Jarrett Allen & C & PF & C & C & C  \\ \hline
 Clint Capela & C & C & C & C & C \\ \hline
 \multicolumn{6}{|c|}{\textbf{Stretch fours}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Dāvis Bertāns & PF & SF & PF & SF & PF \\ \hline
 Kevin Love & PF & PF & PF & PF & PF \\ \hline
 \multicolumn{6}{|c|}{\textbf{Various}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Hassan Whiteside & C & C & C & C & C \\ \hline
 Andre Drummond & C & PF & PF & PF & PF \\ \hline
 Giannis Antetokounmpo & PF & PF & PF & PF & PF \\ \hline
@@ -1120,22 +1120,22 @@ Blake Griffin & PF & SG & PF & SG & SF \\ \hline
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|} \hline
 \multicolumn{6}{|c|}{\textbf{Three and D players}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Danny Green & SG & SF & PF & PF & SF \\ \hline
 Klay Thompson & SG & SF & SG & SF & SG  \\ \hline
 Eric Gordon & SG & SG & SG & SG & SG  \\ \hline
 Jae Crowder & SF & SF & SF & SF & SF  \\ \hline
 \multicolumn{6}{|c|}{\textbf{Pass first guards}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Ricky Rubio & PG & PG & PG & PG & PG \\ \hline
 Elfrid Payton & PG & PG & PG & PG & PG \\ \hline
 \multicolumn{6}{|c|}{\textbf{Scoring guards}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 Stephen Curry & PG & SG & SG & SG & PG  \\ \hline
 James Harden & PG & SG & SG & SG & PG \\ \hline
 Damian Lillard & PG & SG & PG & PG & PG \\ \hline
 \multicolumn{6}{|c|}{\textbf{Various}} \\ \hline
-Player & Listed & KNN & RFC & GBC & SVC \\ \hline
+\textbf{Player} & \textbf{Listed} & \textbf{KNN} & \textbf{RFC} & \textbf{GBC} & \textbf{SVC} \\ \hline
 LeBron James & SF & SF & SF & SF & SF \\ \hline
 Russell Westbrook & PG & PF & SF & PG & PG \\ \hline
 Ben Simmons & PG & PF & PF & PF & SF \\ \hline
@@ -1151,12 +1151,307 @@ Blake Griffin & PF & SG & PF & SG & SF \\ \hline
 \end{center}
 \end{table}
 
-Players that played similar to their traditional position counterpart (e.g. passing guards and rim runners) are classified mostly correctly. Others mostly weren't. This means that this era of basketball has a lot of untraditional players, which is expected because nowdays, players are asked to do a lot of different things. Interestingly, the best rebounder in the NBA today, Andre Drummond is classified as a PF, and some classifiers predicted that Draymond Green is a PG and that Danny Green is a PF. 
+Players that played similar to their traditional position counterpart (e.g. passing guards and rim runners) are classified mostly correctly. Others mostly weren't. This means that this era of basketball has a lot of untraditional players, which is expected because nowadays, players are asked to do a lot of different things. Interestingly, the best rebounder in the NBA today, Andre Drummond is classified as a PF, and some classifiers predicted that Draymond Green is a PG and that Danny Green is a PF. 
 
 \subsubsection{Conclusion}
 \label{subsubsec:pos_clf_conclusion}
 
-Models created are fairly accurate. Data used for training spans multiple eras of basketball and that probably had influence on models' performance because playstyles were diferent. Also, players on the same positions during same era can be specialized in different things. Despite that, classifying algorithms managed to recognize some patterns in the data and because of that models are not bad. Classifying players from 2018-19 on models created on data from 1985-86 to 2005-06 had interesting results. 
+Models created are fairly accurate. Data used for training spans multiple eras of basketball and that probably had influence on models' performance because playstyles were different. Also, players on the same positions during same era can be specialized in different things. Despite that, classifying algorithms managed to recognize some patterns in the data and because of that models are not bad. Classifying players from 2018-19 on models created on data from 1985-86 to 2005-06 had interesting results. 
+
+\subsection{Will rookie be an All-Star during his career?}
+\label{subsec:rookie_to_all_star}
+
+In this section, we will analyze whether or not a player will be named an All-Star during his career based just on stats from his rookie season. This method is not fair, because players shouldn't be judged on their rookie season performance. For example, Giannis Antetokounmpo, NBA MVP for the 2018-19 season, had a rather underwhelming rookie season. Also, there are players that peaked during their first season, such as Tyreke Evans or Michael Carter-Williams. So, it is possible for a player that was not good during his rookie season to drastically improve and become an All-Star and/or All-NBA type of player at some point of his career. It is not just possible for a player to improve, it is also expected by the team that drafted that player.
+
+\subsubsection{Data}
+\label{subsubsec:data_all_star}
+
+Data used is from \href{https://www.basketball-reference.com/}{Basketball-reference.com} and includes stats from rookie seasons of every lottery pick (first 14 selections) from 2000 NBA draft to 2016 NBA draft. It includes total of 237 seasons. Note that only lottery pick drafted during that span that did not play in the NBA is Fran Vazquez. Stats taken into consideration for model creation are:
+
+\begin{itemize}
+	\item \textbf{PTS}, Points per game
+	\item \textbf{TRB}, Rebounds per game
+	\item \textbf{AST}, Assists per game
+	\item \textbf{STL}, Steals per game
+	\item \textbf{BLK}, Blocks per game
+	\item \textbf{TS\%}, True shooting percentage
+	\item \textbf{3PAr}, Three-point attempt rate
+	\item \textbf{FTr}, Free throw attempt rate
+	\item \textbf{OBPM}, Offensive box plus/minus
+	\item \textbf{DBPM}, Defensive box plus/minus
+	\item \textbf{Draft Pick}, draft position player is selected on
+\end{itemize}
+
+The first five are just regular traditional stats, something that most of the people would look at first. Next three are there because shooting should be taken into consideration. Offensive and defensive box plus/minus are advanced stats that are evaluating offense and defense of a player using box score of a player. Draft pick is there because it is important where a player is selected.
+
+\subsubsection{Plots}
+\label{subsubsec:plots_all_stars}
+
+Before we start with modeling, we should check is there any difference between rookie seasons of the players that will be All-Stars and players that won't. First, lets see the difference in draft position, points per game and Offensive and defensive box plus/minus stats. Those stats are shown with box plot \cite{boxplots} and can be seen in figure \ref{plt:box_plots_all_star}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{box_plots_all_star.png}
+\end{center}
+\caption{Box plots for different stats}
+\label{plt:box_plots_all_star}
+\end{figure}
+
+From the previous figure, we can see that future All-Stars are usually selected before players that won't become one. Difference in points per game is easily noticeable. As far as box plus/minus stats are go, values for future All-Stars are slightly higher. Let's also take a look at the distribution plots for rebounds per game and assists per game (figure \ref{plt:trb_ast_all_star}).
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.25]{trb_ast_all_star.png}
+\end{center}
+\caption{Distribution of AST and TRB per game}
+\label{plt:trb_ast_all_star}
+\end{figure}
+
+We can notice the same pattern for these stats, the future All-Stars do have more rebounds and assists per game in their rookie seasons when compared to the other players. This tells us that there are patterns models can use to classify future All-Stars.
+
+\subsubsection{Model creation}
+\label{subsubsec:model_creation_all_star}
+
+Out of 237 rookie seasons in the data 53 are from the future All-Stars (roughly 22\%). Before model creation we are splitting the data into two sets, train (70\% of the data) and test (30\% of the data). There are three different type of models that will be created, Random Forest Classificator (\textbf{RFC}), Support Vector Classificator (\textbf{SVC}) and Gradient Boosting Classificator (\textbf{GBC}).
+
+This classification is binary classification, where result can be only two different classes, All-Star and not All-Star. For us, it is important to correctly classify players that will become All-Stars. Because of that, we want models that have high recall!
+
+Models are trained with method called Grid Search that takes into account every combination of provided parameters we would like to test, and returns a model that is the 'best' for provided metric. In this case those metrics will be accuracy and recall. There will be six models in total, one RFC with the best accuracy and one with the best recall, one SVC with the best accuracy and one with the best recall and in the end one GBC with the best accuracy and one with the best recall. In order to minimize overfitting and underfitting, cross-validation method called stratified K-Fold \cite{crossVal} is used, where value of $K$ equals five.
+
+\subsubsection{Model evaluation}
+\label{subsubsec:model_eval_all_star}
+
+Now, let's see how well created models preform on test data (table \ref{tab:models_all_star}).
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\multicolumn{5}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
+SVC & \textbf{0.90} & 0.95 & 0.71 & 0.77 \\ \hline
+RFC & \textbf{0.90} & 0.88 & 0.74 & 0.79 \\ \hline
+GBC & \textbf{0.85} & 0.72 & 0.68 & 0.69 \\ \hline
+\multicolumn{5}{|c|}{\textbf{Models with the best recall}} \\ \hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
+SVC & 0.89 & 0.83 & \textbf{0.73} & 0.77 \\ \hline
+RFC & 0.92 & 0.90 & \textbf{0.78} & 0.83 \\ \hline
+GBC & 0.75 & 0.61 & \textbf{0.65} & 0.62 \\ \hline
+\end{tabular}
+\caption{Models created for All-Star classification}
+\label{tab:models_all_star}
+\end{center}
+\end{table}
+
+Created models does have high values for some of the metrics. The worst one appears to be GBC created by maximizing recall. Gradient boosting also have the worst results for recall overall. Interestingly, GBC with the best recall have lower recall value than the one with the best accuracy, according to grid search. Same thing can be seen with RFC, just with accuracy. These models are looking okay in a vacuum, but additional test have to done for us to be sure about that. First, we will check are these models better than the model that classifies rookie seasons at random (table \ref{tab:dummy_all_star}).
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
+Random & 0.62 & 0.51 & 0.51 & 0.49 \\ \hline
+\end{tabular}
+\caption{Random (dummy) classifier}
+\label{tab:dummy_all_star}
+\end{center}
+\end{table}
+
+We can see that our models are indeed better than the random one, with higher values for  every metric. After this, we want to check models for overfitting. We can do that by cross-validating (CV) them. Results are shown in the table \ref{tab:cross_val_all_star}. Cross-validation score is either close to the actual score or in the confidence interval.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|} \hline
+\multicolumn{3}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
+\textbf{Model} & \textbf{CV score (for accuracy)} & \textbf{95\% confidence interval} \\ \hline
+SVC & 0.85 & +/- 0.09 \\ \hline
+RFC & 0.85 & +/- 0.13 \\ \hline
+GBC & 0.81 & +/- 0.12 \\ \hline
+\multicolumn{3}{|c|}{\textbf{Models with the best recall}} \\ \hline
+\textbf{Model} & \textbf{CV score (for recall)} & \textbf{95\% confidence interval} \\ \hline
+SVC & 0.30 & +/- 0.53 \\ \hline
+RFC & 0.23 & +/- 0.58 \\ \hline
+GBC & 0.72 & +/- 0.45 \\ \hline
+\end{tabular}
+\caption{Cross-validation score}
+\label{tab:cross_val_all_star}
+\end{center}
+\end{table}
+
+In the end, we would like to test models for two more metrics, Log loss and AUC-ROC Curve. We would like our loss to be as low as possible, so models that have Log loss close to \textbf{zero} are good. \cite{logLoss} 
+
+If AUC (area under the ROC curve) is \textbf{one} that means our models can classify data correctly (every data point that should be class A will belong to class A). If it is \textbf{0.5} or close that means that the model cannot distinguish between classes and models where AUC is close to \textbf{zero} are reciprocating classes (every data point that should be class A will be class B and vice versa). That means that values further from 0.5 and closer to one are good \cite{aucRoc}
+
+As seen in table \ref{tab:aucroc_logloss_all_star} created models are mostly good. Gradient boosting with the best recall appears to be poorer than we originally thought. 
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|} \hline
+\multicolumn{3}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
+\textbf{Model} & \textbf{Log loss} & \textbf{AUC-ROC} \\ \hline
+SVC & 0.297 & 0.88 \\ \hline
+RFC & 0.312 & 0.88 \\ \hline
+GBC & 0.438 & 0.83 \\ \hline
+\multicolumn{3}{|c|}{\textbf{Models with the best recall}} \\ \hline
+\textbf{Model} & \textbf{Log loss} & \textbf{AUC-ROC} \\ \hline
+SVC & 0.314 & 0.87 \\ \hline
+RFC & 0.319 & 0.86 \\ \hline
+GBC & 1.515 & 0.80 \\ \hline
+\end{tabular}
+\caption{Log loss and AUC-ROC for our models}
+\label{tab:aucroc_logloss_all_star}
+\end{center}
+\end{table}
+
+\subsubsection{Results}
+\label{subsubsec:results_all_star}
+
+We can finally show the results of our models. Output of every model will be a value between 0 and 1 that represents probability of a player whose rookie season is being classified becoming an All-Star at some point of his career. 
+
+Instead of showing the output for every model separately, we will use averages. For every rookie season there will be three outputs total, one is the average probability for models with the best accuracy, one is the average probability for models with the best recall and the last one is the average probability for every model.
+
+Results for rookie seasons of players that are drafted on NBA drafts in 2017 and 2018 are shown in table \ref{tab:results_all_star}. Note that results are missing for 14th pick of the 2018 NBA draft, Michael Porter Jr. because he missed whole of 2018-19 season due to back injury.
+
+\begin{table}[!h] % the best accuracy models average
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\textbf{ } & \textbf{ } & \textbf{Accuracy} & \textbf{Recall} & \textbf{Average} \\
+\textbf{Pick} & \textbf{Player} & \textbf{models} & \textbf{models} & \textbf{of every} \\
+\textbf{ } & \textbf{ } & \textbf{average} & \textbf{average} & \textbf{model} \\ \hline
+1 & Markelle Fultz & 0.14 & 0.15 & 0.15 \\ \hline
+2 & Lonzo Ball & 0.31 & 0.24 & 0.27 \\ \hline
+3 & Jayson Tatum & 0.72 & 0.76 & 0.74 \\ \hline
+4 & Josh Jackson & 0.15 & 0.12 & 0.13 \\ \hline
+5 & De'Aaron Fox & 0.12 & 0.11 & 0.12 \\ \hline
+6 & Jonathan Isaac & 0.09 & 0.14 & 0.11 \\ \hline
+7 & Lauri Markkanen & 0.29 & 0.27 & 0.28 \\ \hline
+8 & Frank Ntilikina & 0.10 & 0.44 & 0.27 \\ \hline
+9 & Dennis Smith Jr. & 0.20 & 0.55 & 0.38 \\ \hline
+10 & Zach Collins & 0.06 & 0.08 & 0.07 \\ \hline
+11 & Malik Monk & 0.07 & 0.39 & 0.23 \\ \hline
+12 & Luke Kennard & 0.08 & 0.10 & 0.09 \\ \hline
+13 & Donovan Mitchell & 0.42 & 0.63 & 0.53 \\ \hline
+14 & Bam Adebayo & 0.12 & 0.16 & 0.14 \\ \hline
+1 & Deandre Ayton & 0.81 & 0.78 & 0.80 \\ \hline
+2 & Marvin Bagley & 0.63 & 0.68 & 0.66 \\ \hline
+3 & Luka Dončić & 0.87 & 0.89 & 0.88 \\ \hline
+4 & Jaren Jackson & 0.68 & 0.74 & 0.71 \\ \hline
+5 & Trae Young & 0.76 & 0.75 & 0.75 \\ \hline
+6 & Mo Bamba & 0.18 & 0.22 & 0.20 \\ \hline
+7 & Wendell Carter & 0.19 & 0.21 & 0.2 \\ \hline
+8 & Collin Sexton & 0.18 & 0.15 & 0.17 \\ \hline
+9 & Kevin Knox & 0.11 & 0.10 & 0.10 \\ \hline
+10 & Mikal Bridges & 0.41 & 0.56 & 0.49 \\ \hline
+11 & Shai Gilgeous-Alexander & 0.36 & 0.60 & 0.48 \\ \hline
+12 & Miles Bridges & 0.11 & 0.12 & 0.12 \\ \hline
+13 & Jerome Robinson & 0.01 & 0.02 & 0.02 \\ \hline
+\end{tabular}
+\caption{Results}
+\label{tab:results_all_star}
+\end{center}
+\end{table}
+
+We can see that this models gave high probabilities to the players that already became All-Stars such as Tatum, Donćič and Young. Models did not value Bam Adebayo's rookie season much, but he made All-Star team in his third year regardless. That just confirms that players usually shouldn't be valued by their rookie season stats. Note that models gave high probabilities to the every top 5 pick of the 2018 NBA draft. Judging by these models, that draft class has more potential future All-Stars than the one the year before it.
+
+\subsubsection{Why are the results the way they are?}
+\label{subsubsec:shap_values_all_star}
+
+Now, we will explain why models output what they do, or in other words, why are they classifying data the way they are. We can do that by using something called SHAP values \cite{shap}. Those values can tell us which features are important for the classification and which are not as much. 
+
+Figures \ref{plt:shap_svm_all_star}, \ref{plt:shap_rfc_all_star} and \ref{plt:shap_gbc_all_star} are showing that the most important feature for models is \textbf{pointer per game}. The second most important appears to be one of the box plus/minus metrics while stats for shooting such as 3PAr, FTr and TS\% are the least important. 
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{svm_shap.png}
+\end{center}
+\caption{SHAP values for SVC for accuracy (left) and recall (right)}
+\label{plt:shap_svm_all_star}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{rfc_shap.png}
+\end{center}
+\caption{SHAP values for RFC for accuracy (left) and recall (right)}
+\label{plt:shap_rfc_all_star}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{gbc_shap.png}
+\end{center}
+\caption{SHAP values for GBC for accuracy (left) and recall (right)}
+\label{plt:shap_gbc_all_star}
+\end{figure}
+
+\subsubsection{Models without draft pick taken into consideration}
+\label{subsubsec:without_draft_pick_all_star}
+
+After finishing classification and showing the results, one question remains. Why should player's position on the draft influence his chances of becoming an All-Star. I mean, players that are believed to be better prospects will be selected higher, so a player drafted number one overall should have higher probability of being an All-Star than the player selected 14th. But, after they enter the league the way they are playing matters, not their draft position. Because of that, more models will be created, using the same stats but this time \textbf{draft position will be excluded}!
+
+Process of creating and testing the models is the same as before, six models in total, three with the best accuracy (SVC, RFC and GBC) according to grid search and three with the best recall, also SVC, RFC and GBC.
+
+Models will be trained on the same data as before (stats from the 2000 NBA draft to 2016 NBA draft) and will applied to the same data as models created earlier (20017 and 2018 NBA drafts). Models can be seen in table \ref{tab:models_no_draft_pick_all_star}.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\multicolumn{5}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
+SVC & \textbf{0.92} & 0.90 & 0.78 & 0.83 \\ \hline
+RFC & \textbf{0.88} & 0.80 & 0.69 & 0.73 \\ \hline
+GBC & \textbf{0.81} & 0.65 & 0.65 & 0.65 \\ \hline
+\multicolumn{5}{|c|}{\textbf{Models with the best recall}} \\ \hline
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
+SVC & 0.92 & 0.90 & \textbf{0.78} & 0.83 \\ \hline
+RFC & 0.88 & 0.80 & \textbf{0.69} & 0.73 \\ \hline
+GBC & 0.78 & 0.65 & \textbf{0.70} & 0.66 \\ \hline
+\end{tabular}
+\caption{Models created without draft pick}
+\label{tab:models_no_draft_pick_all_star}
+\end{center}
+\end{table}
+
+These models have similar results as the ones with draft pick taken into consideration, so maybe the probabilities won't be different much. Other test won't be shown and instead of them we will go to the results right away (table \ref{tab:results_no_draft_pick_all_star}).
+
+\begin{table}[!h] % the best accuracy models average
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} \hline
+\textbf{ } & \textbf{ } & \textbf{Accuracy} & \textbf{Recall} & \textbf{Average} \\
+\textbf{Pick} & \textbf{Player} & \textbf{models} & \textbf{models} & \textbf{of every} \\
+\textbf{ } & \textbf{ } & \textbf{average} & \textbf{average} & \textbf{model} \\ \hline
+1 & Markelle Fultz & 0.13 & 0.12 & 0.12 \\ \hline
+2 & Lonzo Ball & 0.17 & 0.15 & 0.16 \\ \hline
+3 & Jayson Tatum & 0.64 & 0.69 & 0.66 \\ \hline
+4 & Josh Jackson & 0.12 & 0.10 & 0.11 \\ \hline
+5 & De'Aaron Fox & 0.12 & 0.11 & 0.12 \\ \hline
+6 & Jonathan Isaac & 0.15 & 0.15 & 0.15 \\ \hline
+7 & Lauri Markkanen & 0.24 & 0.22 & 0.23 \\ \hline
+8 & Frank Ntilikina & 0.14 & 0.46 & 0.30 \\ \hline
+9 & Dennis Smith Jr. & 0.18 & 0.52 & 0.35 \\ \hline
+10 & Zach Collins & 0.09 & 0.08 & 0.09 \\ \hline
+11 & Malik Monk & 0.10 & 0.41 & 0.26 \\ \hline
+12 & Luke Kennard & 0.10 & 0.10 & 0.10 \\ \hline
+13 & Donovan Mitchell & 0.47 & 0.70 & 0.59 \\ \hline
+14 & Bam Adebayo & 0.18 & 0.19 & 0.18 \\ \hline
+1 & Deandre Ayton & 0.81 & 0.81 & 0.81 \\ \hline
+2 & Marvin Bagley & 0.64 & 0.65 & 0.65 \\ \hline
+3 & Luka Dončić & 0.88 & 0.88 & 0.88 \\ \hline
+4 & Jaren Jackson & 0.68 & 0.72 & 0.70 \\ \hline
+5 & Trae Young & 0.79 & 0.83 & 0.81 \\ \hline
+6 & Mo Bamba & 0.19 & 0.19 & 0.19 \\ \hline
+7 & Wendell Carter & 0.19 & 0.20 & 0.19 \\ \hline
+8 & Collin Sexton & 0.07 & 0.06 & 0.07 \\ \hline
+9 & Kevin Knox & 0.07 & 0.06 & 0.06 \\ \hline
+10 & Mikal Bridges & 0.45 & 0.54 & 0.49 \\ \hline
+11 & Shai Gilgeous-Alexander & 0.56 & 0.58 & 0.57 \\ \hline
+12 & Miles Bridges & 0.14 & 0.13 & 0.13 \\ \hline
+13 & Jerome Robinson & 0.06 & 0.06 & 0.06 \\ \hline
+\end{tabular}
+\caption{Results without draft pick taken into consideration}
+\label{tab:results_no_draft_pick_all_star}
+\end{center}
+\end{table}
+
+Results are somewhat similar. Luka Dončić remained the player most probable to become an All-Star. As the ones before, these models also value first five picks of the 2018 NBA draft. As far as 2017 NBA draft goes, Tatum's probability decreased while Mithcell's increased. We can also notice increase in Gilgeous-Alexander's probability as well while Mikal's remained the same. Adebayo's probability did increase, but remained low, below 20\%. Young core of the New York Knicks, Dennis Smith, Frank Ntilikina and Kevin Knox are not valued highly by the models. Same could be said about Orlando's due Isaac and Bamba, but only time will tell as we have seen that these models can undervalue raw rookies.
 
 \pagebreak
 
