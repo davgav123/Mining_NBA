@@ -1161,7 +1161,7 @@ Models created are fairly accurate. Data used for training spans multiple eras o
 \subsection{Will rookie be an All-Star during his career?}
 \label{subsec:rookie_to_all_star}
 
-In this section, we will analyze whether or not a player will be named an All-Star during his career based just on stats from his rookie season. This method is not fair, because players shouldn't be judged on their rookie season performance. For example, Giannis Antetokounmpo, NBA MVP for the 2018-19 season, had a rather underwhelming rookie season. Also, there are players that peaked during their first season, such as Tyreke Evans or Michael Carter-Williams. So, it is possible for a player that was not good during his rookie season to drastically improve and become an All-Star and/or All-NBA type of player at some point of his career. It is not just possible for a player to improve, it is also expected by the team that drafted that player.
+In this section, we will analyze whether or not a player will be named an All-Star during his career based just on stats from his rookie season. This method is not fair, because players shouldn't be judged on their rookie season performance. For example, Giannis Antetokounmpo, NBA MVP for the 2018-19 season, had a rather underwhelming rookie season. Also, there are players that, it appears, peaked during their first season, such as Tyreke Evans or Michael Carter-Williams. So, it is possible for a player that was not good during his rookie season to drastically improve and become an All-Star and/or All-NBA type of player at some point of his career. It is not just possible for a player to improve, it is also expected from him to, as he gain more experience.
 
 \subsubsection{Data}
 \label{subsubsec:data_all_star}
@@ -1177,12 +1177,14 @@ Data used is from \href{https://www.basketball-reference.com/}{Basketball-refere
 	\item \textbf{TS\%}, True shooting percentage
 	\item \textbf{3PAr}, Three-point attempt rate
 	\item \textbf{FTr}, Free throw attempt rate
+	\item \textbf{WS}, Win shares
 	\item \textbf{OBPM}, Offensive box plus/minus
 	\item \textbf{DBPM}, Defensive box plus/minus
+	\item \textbf{VORP}, Value over replacement player
 	\item \textbf{Draft Pick}, draft position player is selected on
 \end{itemize}
 
-The first five are just regular traditional stats, something that most of the people would look at first. Next three are there because shooting should be taken into consideration. Offensive and defensive box plus/minus are advanced stats that are evaluating offense and defense of a player using box score of a player. Draft pick is there because it is important where a player is selected.
+The first five are just regular traditional stats, something that most of the people would look at first. Next three are there because shooting should be taken into consideration. Offensive and defensive box plus/minus are advanced stats that are evaluating offense and defense of a player using box score of a player. Besides them, there are two more advanced stats that are good at evaluating player's performance. Draft pick is there because it is important where a player is selected.
 
 \subsubsection{Plots}
 \label{subsubsec:plots_all_stars}
@@ -1197,104 +1199,112 @@ Before we start with modeling, we should check is there any difference between r
 \label{plt:box_plots_all_star}
 \end{figure}
 
-From the previous figure, we can see that future All-Stars are usually selected before players that won't become one. Difference in points per game is easily noticeable. As far as box plus/minus stats are go, values for future All-Stars are slightly higher. Let's also take a look at the distribution plots for rebounds per game and assists per game (figure \ref{plt:trb_ast_all_star}).
+From the previous figure, we can see that future All-Stars are usually selected before players that won't become one. Difference in points per game is easily noticeable. As far as box plus/minus stats go, values for future All-Stars are slightly higher. Let's also take a look at the distribution plots for rebounds per game and assists per game (figure \ref{plt:trb_ast_all_star}) and for win shares \ref{plt:ws_all_star}.
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.25]{trb_ast_all_star.png}
+\includegraphics[scale=0.38]{trb_ast_all_star.png}
 \end{center}
 \caption{Distribution of AST and TRB per game}
 \label{plt:trb_ast_all_star}
 \end{figure}
 
-We can notice the same pattern for these stats, the future All-Stars do have more rebounds and assists per game in their rookie seasons when compared to the other players. This tells us that there are patterns models can use to classify future All-Stars.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.31]{ws_all_star.png}
+\end{center}
+\caption{Distribution of WS}
+\label{plt:ws_all_star}
+\end{figure}
+
+We can notice the same pattern for these stats, the future All-Stars do have more rebounds per game, assists per game and win shares in their rookie seasons when compared to the other players. This tells us that there are patterns models can use to classify future All-Stars.
 
 \subsubsection{Model creation}
 \label{subsubsec:model_creation_all_star}
 
-Out of 237 rookie seasons in the data 53 are from the future All-Stars (roughly 22\%). Before model creation we are splitting the data into two sets, train (70\% of the data) and test (30\% of the data). There are three different type of models that will be created, Random Forest Classificator (\textbf{RFC}), Support Vector Classificator (\textbf{SVC}) and Gradient Boosting Classificator (\textbf{GBC}).
+Out of 237 rookie seasons in the data 52 are from the future All-Stars (roughly 22\%). Before model creation we are splitting the data into two sets, train (70\% of the data) and test (30\% of the data). There are three different type of models that will be created, Random Forest Classifier (\textbf{RFC}), Support Vector Classifier (\textbf{SVC}) and Gradient Boosting Classifier (\textbf{GBC}).
 
 This classification is binary classification, where result can be only two different classes, All-Star and not All-Star. For us, it is important to correctly classify players that will become All-Stars. Because of that, we want models that have high recall!
 
-Models are trained with method called Grid Search that takes into account every combination of provided parameters we would like to test, and returns a model that is the 'best' for provided metric. In this case those metrics will be accuracy and recall. There will be six models in total, one RFC with the best accuracy and one with the best recall, one SVC with the best accuracy and one with the best recall and in the end one GBC with the best accuracy and one with the best recall. In order to minimize overfitting and underfitting, cross-validation method called stratified K-Fold \cite{crossVal} is used, where value of $K$ equals five.
+Parameters for models are selected with method called Grid Search that takes into account every combination of provided parameters we would like to test, and returns a model that is the 'best' for provided metric. In this case those metrics will be accuracy and recall. There will be six models in total, one RFC with the best accuracy and one with the best recall, one SVC with the best accuracy and one with the best recall and in the end one GBC with the best accuracy and one with the best recall. In order to minimize overfitting and underfitting, cross-validation method called stratified K-Fold \cite{crossVal} is used, where value of $K$ equals five.
 
 \subsubsection{Model evaluation}
 \label{subsubsec:model_eval_all_star}
 
-Now, let's see how well created models preform on test data (table \ref{tab:models_all_star}).
+Now, let's see how well created models preform on the test data (table \ref{tab:models_all_star}).
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|} \hline
 \multicolumn{5}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
 \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
-SVC & \textbf{0.90} & 0.95 & 0.71 & 0.77 \\ \hline
-RFC & \textbf{0.90} & 0.88 & 0.74 & 0.79 \\ \hline
-GBC & \textbf{0.85} & 0.72 & 0.68 & 0.69 \\ \hline
+SVC & \textbf{0.82} & 0.75 & 0.66 & 0.69 \\ \hline
+RFC & \textbf{0.85} & 0.80 & 0.72 & 0.75 \\ \hline
+GBC & \textbf{0.83} & 0.78 & 0.69 & 0.72 \\ \hline
 \multicolumn{5}{|c|}{\textbf{Models with the best recall}} \\ \hline
 \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
-SVC & 0.89 & 0.83 & \textbf{0.73} & 0.77 \\ \hline
-RFC & 0.92 & 0.90 & \textbf{0.78} & 0.83 \\ \hline
-GBC & 0.75 & 0.61 & \textbf{0.65} & 0.62 \\ \hline
+SVC & 0.79 & 0.69 & \textbf{0.64} & 0.66 \\ \hline
+RFC & 0.82 & 0.75 & \textbf{0.66} & 0.69 \\ \hline
+GBC & 0.79 & 0.69 & \textbf{0.67} & 0.68 \\ \hline
 \end{tabular}
 \caption{Models created for All-Star classification}
 \label{tab:models_all_star}
 \end{center}
 \end{table}
 
-Created models does have high values for some of the metrics. The worst one appears to be GBC created by maximizing recall. Gradient boosting also have the worst results for recall overall. Interestingly, GBC with the best recall have lower recall value than the one with the best accuracy, according to grid search. Same thing can be seen with RFC, just with accuracy. These models are looking okay in a vacuum, but additional test have to done for us to be sure about that. First, we will check are these models better than the model that classifies rookie seasons at random (table \ref{tab:dummy_all_star}).
+Created models does have high values for some of the metrics. Also, models have similar results. The worst value for accuracy, out of every models with the best accuracy, is SVC. Same can be also said about SVC in recall group, though values are not different much. These models are looking okay in a vacuum, but additional test have to done for us to be sure about that. First, we will check are these models better than the model that classifies rookie seasons at random (table \ref{tab:dummy_all_star}).
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|} \hline
 \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
-Random & 0.62 & 0.51 & 0.51 & 0.49 \\ \hline
+Random & 0.56 & 0.44 & 0.42 & 0.43 \\ \hline
 \end{tabular}
 \caption{Random (dummy) classifier}
 \label{tab:dummy_all_star}
 \end{center}
 \end{table}
 
-We can see that our models are indeed better than the random one, with higher values for  every metric. After this, we want to check models for overfitting. We can do that by cross-validating (CV) them. Results are shown in the table \ref{tab:cross_val_all_star}. Cross-validation score is either close to the actual score or in the confidence interval.
+We can see that our models are indeed better than the random one, with higher values for  every metric, which is good. After this, we want to check models for overfitting. First thing we would like to check is distribution of All-Stars in both train and test sets, which should be similar. Distributions are almost the same, train set has 22\% of the All-Stars while test set has 21\%. We will continue this by cross-validating (CV) models. Results are shown in the table \ref{tab:cross_val_all_star}. The results are close to to the actual score for the models with best accuracy, which is fine. Same cannot be said for models with best recall, because they might overfitt, which is not good.
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|c|c|c|} \hline
 \multicolumn{3}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
 \textbf{Model} & \textbf{CV score (for accuracy)} & \textbf{95\% confidence interval} \\ \hline
-SVC & 0.85 & +/- 0.09 \\ \hline
-RFC & 0.85 & +/- 0.13 \\ \hline
-GBC & 0.81 & +/- 0.12 \\ \hline
+SVC & 0.83 & +/- 0.07 \\ \hline
+RFC & 0.83 & +/- 0.14 \\ \hline
+GBC & 0.82 & +/- 0.11 \\ \hline
 \multicolumn{3}{|c|}{\textbf{Models with the best recall}} \\ \hline
 \textbf{Model} & \textbf{CV score (for recall)} & \textbf{95\% confidence interval} \\ \hline
-SVC & 0.30 & +/- 0.53 \\ \hline
-RFC & 0.23 & +/- 0.58 \\ \hline
-GBC & 0.72 & +/- 0.45 \\ \hline
+SVC & 0.30 & +/- 0.33 \\ \hline
+RFC & 0.48 & +/- 0.37 \\ \hline
+GBC & 0.50 & +/- 0.30 \\ \hline
 \end{tabular}
 \caption{Cross-validation score}
 \label{tab:cross_val_all_star}
 \end{center}
 \end{table}
 
-In the end, we would like to test models for two more metrics, Log loss and AUC-ROC Curve. We would like our loss to be as low as possible, so models that have Log loss close to \textbf{zero} are good. \cite{logLoss} 
+In the end, we would like to test models for two more metrics, Log loss and AUC-ROC curve. We would like our loss to be as low as possible, so models that have Log loss close to \textbf{zero} are good. \cite{logLoss} 
 
-If AUC (area under the ROC curve) is \textbf{one} that means our models can classify data correctly (every data point that should be class A will belong to class A). If it is \textbf{0.5} or close that means that the model cannot distinguish between classes and models where AUC is close to \textbf{zero} are reciprocating classes (every data point that should be class A will be class B and vice versa). That means that values further from 0.5 and closer to one are good \cite{aucRoc}
+If AUC (area under the ROC curve) is \textbf{one} that means our models can classify data perfectly (every data point that should be class A will belong to class A). If it is close to, or \textbf{0.5}, model cannot distinguish between classes and models where AUC is close to \textbf{zero} are reciprocating classes (every data point that should be class A will be class B and vice versa). That means that values further from 0.5 and closer to one are good \cite{aucRoc}.
 
-As seen in table \ref{tab:aucroc_logloss_all_star} created models are mostly good. Gradient boosting with the best recall appears to be poorer than we originally thought. 
+As seen in table \ref{tab:aucroc_logloss_all_star} created models are mostly good. Gradient boosting appears to be poorer than we originally thought for both the best accuracy and recall. Note that Random forest models had the best results throughout evaluation process.
 
 \begin{table}[!h]
 \begin{center}
 \begin{tabular}{|c|c|c|} \hline
 \multicolumn{3}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
 \textbf{Model} & \textbf{Log loss} & \textbf{AUC-ROC} \\ \hline
-SVC & 0.297 & 0.88 \\ \hline
-RFC & 0.312 & 0.88 \\ \hline
-GBC & 0.438 & 0.83 \\ \hline
+SVC & 0.513 & 0.73 \\ \hline
+RFC & 0.466 & 0.77 \\ \hline
+GBC & 0.898 & 0.77 \\ \hline
 \multicolumn{3}{|c|}{\textbf{Models with the best recall}} \\ \hline
 \textbf{Model} & \textbf{Log loss} & \textbf{AUC-ROC} \\ \hline
-SVC & 0.314 & 0.87 \\ \hline
-RFC & 0.319 & 0.86 \\ \hline
-GBC & 1.515 & 0.80 \\ \hline
+SVC & 0.499 & 0.71 \\ \hline
+RFC & 0.457 & 0.79 \\ \hline
+GBC & 1.084 & 0.68 \\ \hline
 \end{tabular}
 \caption{Log loss and AUC-ROC for our models}
 \label{tab:aucroc_logloss_all_star}
@@ -1316,47 +1326,47 @@ Results for rookie seasons of players that are drafted on NBA drafts in 2017 and
 \textbf{ } & \textbf{ } & \textbf{Accuracy} & \textbf{Recall} & \textbf{Average} \\
 \textbf{Pick} & \textbf{Player} & \textbf{models} & \textbf{models} & \textbf{of every} \\
 \textbf{ } & \textbf{ } & \textbf{average} & \textbf{average} & \textbf{model} \\ \hline
-1 & Markelle Fultz & 0.14 & 0.15 & 0.15 \\ \hline
-2 & Lonzo Ball & 0.31 & 0.24 & 0.27 \\ \hline
-3 & Jayson Tatum & 0.72 & 0.76 & 0.74 \\ \hline
-4 & Josh Jackson & 0.15 & 0.12 & 0.13 \\ \hline
-5 & De'Aaron Fox & 0.12 & 0.11 & 0.12 \\ \hline
-6 & Jonathan Isaac & 0.09 & 0.14 & 0.11 \\ \hline
-7 & Lauri Markkanen & 0.29 & 0.27 & 0.28 \\ \hline
-8 & Frank Ntilikina & 0.10 & 0.44 & 0.27 \\ \hline
-9 & Dennis Smith Jr. & 0.20 & 0.55 & 0.38 \\ \hline
-10 & Zach Collins & 0.06 & 0.08 & 0.07 \\ \hline
-11 & Malik Monk & 0.07 & 0.39 & 0.23 \\ \hline
-12 & Luke Kennard & 0.08 & 0.10 & 0.09 \\ \hline
-13 & Donovan Mitchell & 0.42 & 0.63 & 0.53 \\ \hline
-14 & Bam Adebayo & 0.12 & 0.16 & 0.14 \\ \hline
-1 & Deandre Ayton & 0.81 & 0.78 & 0.80 \\ \hline
-2 & Marvin Bagley & 0.63 & 0.68 & 0.66 \\ \hline
-3 & Luka Dončić & 0.87 & 0.89 & 0.88 \\ \hline
-4 & Jaren Jackson & 0.68 & 0.74 & 0.71 \\ \hline
-5 & Trae Young & 0.76 & 0.75 & 0.75 \\ \hline
-6 & Mo Bamba & 0.18 & 0.22 & 0.20 \\ \hline
-7 & Wendell Carter & 0.19 & 0.21 & 0.2 \\ \hline
-8 & Collin Sexton & 0.18 & 0.15 & 0.17 \\ \hline
-9 & Kevin Knox & 0.11 & 0.10 & 0.10 \\ \hline
-10 & Mikal Bridges & 0.41 & 0.56 & 0.49 \\ \hline
-11 & Shai Gilgeous-Alexander & 0.36 & 0.60 & 0.48 \\ \hline
-12 & Miles Bridges & 0.11 & 0.12 & 0.12 \\ \hline
-13 & Jerome Robinson & 0.01 & 0.02 & 0.02 \\ \hline
+1 & Markelle Fultz & 0.11 & 0.22 & 0.16 \\ \hline
+2 & Lonzo Ball & 0.5 & 0.26 & 0.38 \\ \hline
+3 & Jayson Tatum & 0.73 & 0.63 & 0.68 \\ \hline
+4 & Josh Jackson & 0.16 & 0.15 & 0.16 \\ \hline
+5 & De'Aaron Fox & 0.14 & 0.14 & 0.14 \\ \hline
+6 & Jonathan Isaac & 0.07 & 0.10 & 0.08 \\ \hline
+7 & Lauri Markkanen & 0.14 & 0.14 & 0.14 \\ \hline
+8 & Frank Ntilikina & 0.11 & 0.13 & 0.12 \\ \hline
+9 & Dennis Smith & 0.26 & 0.18 & 0.22 \\ \hline
+10 & Zach Collins & 0.10 & 0.12 & 0.11 \\ \hline
+11 & Malik Monk & 0.07 & 0.09 & 0.08 \\ \hline
+12 & Luke Kennard & 0.09 & 0.11 & 0.10 \\ \hline
+13 & Donovan Mitchell & 0.84 & 0.67 & 0.75 \\ \hline
+14 & Bam Adebayo & 0.13 & 0.13 & 0.13 \\ \hline
+1 & Deandre Ayton & 0.68 & 0.66 & 0.67 \\ \hline
+2 & Marvin Bagley & 0.2 & 0.49 & 0.35 \\ \hline
+3 & Luka Dončić & 0.98 & 0.96 & 0.97 \\ \hline
+4 & Jaren Jackson & 0.24 & 0.28 & 0.26 \\ \hline
+5 & Trae Young & 0.42 & 0.81 & 0.61 \\ \hline
+6 & Mo Bamba & 0.07 & 0.09 & 0.08 \\ \hline
+7 & Wendell Carter & 0.09 & 0.10 & 0.09 \\ \hline
+8 & Collin Sexton & 0.14 & 0.12 & 0.13 \\ \hline
+9 & Kevin Knox & 0.13 & 0.14 & 0.13 \\ \hline
+10 & Mikal Bridges & 0.15 & 0.15 & 0.15 \\ \hline
+11 & Shai Gilgeous-Alexander & 0.17 & 0.18 & 0.17 \\ \hline
+12 & Miles Bridges & 0.09 & 0.10 & 0.09 \\ \hline
+13 & Jerome Robinson & 0.06 & 0.07 & 0.06 \\ \hline
 \end{tabular}
 \caption{Results}
 \label{tab:results_all_star}
 \end{center}
 \end{table}
 
-We can see that this models gave high probabilities to the players that already became All-Stars such as Tatum, Donćič and Young. Models did not value Bam Adebayo's rookie season much, but he made All-Star team in his third year regardless. That just confirms that players usually shouldn't be valued by their rookie season stats. Note that models gave high probabilities to the every top 5 pick of the 2018 NBA draft. Judging by these models, that draft class has more potential future All-Stars than the one the year before it.
+We can see that this models gave high probabilities to the players that already became All-Stars such as Tatum, Mitchell, Donćič and Young. Models did not value Bam Adebayo's rookie season much, but he made All-Star team in his third year regardless. That just confirms that players usually shouldn't be valued by their rookie season stats. Note that models value Ayton's  rookie season. Judging by these models, draft class of 2019 has more potential future All-Stars than the one the year before it.
 
 \subsubsection{Why are the results the way they are?}
 \label{subsubsec:shap_values_all_star}
 
 Now, we will explain why models output what they do, or in other words, why are they classifying data the way they are. We can do that by using something called SHAP values \cite{shap}. Those values can tell us which features are important for the classification and which are not as much. 
 
-Figures \ref{plt:shap_svm_all_star}, \ref{plt:shap_rfc_all_star} and \ref{plt:shap_gbc_all_star} are showing that the most important feature for models is \textbf{pointer per game}. The second most important appears to be one of the box plus/minus metrics while stats for shooting such as 3PAr, FTr and TS\% are the least important. 
+Figures \ref{plt:shap_svm_all_star}, \ref{plt:shap_rfc_all_star} and \ref{plt:shap_gbc_all_star} are showing that the most important features for our classification are points per game and VORP. Also, a lot of models consider WS to be important. The shooting stats, 3PAr, FTr and TS\% are not valued much it appears.
 
 \begin{figure}[h!]
 \begin{center}
@@ -1385,9 +1395,9 @@ Figures \ref{plt:shap_svm_all_star}, \ref{plt:shap_rfc_all_star} and \ref{plt:sh
 \subsubsection{Models without draft pick taken into consideration}
 \label{subsubsec:without_draft_pick_all_star}
 
-After finishing classification and showing the results, one question remains. Why should player's position on the draft influence his chances of becoming an All-Star. I mean, players that are believed to be better prospects will be selected higher, so a player drafted number one overall should have higher probability of being an All-Star than the player selected 14th. But, after they enter the league the way they are playing matters, not their draft position. Because of that, more models will be created, using the same stats but this time \textbf{draft position will be excluded}!
+After finishing classification and showing the results, one question remains. Why should player's position on the draft have influence on his chance of becoming an All-Star. I mean, players that are believed to be better prospects will be selected higher, so a player drafted number one overall should have higher probability of being an All-Star than the player selected 14th. But, after they enter the league the way they are playing matters, not their draft position. Because of that, more models will be created, using the same stats but this time \textbf{draft position will be excluded}!
 
-Process of creating and testing the models is the same as before, six models in total, three with the best accuracy (SVC, RFC and GBC) according to grid search and three with the best recall, also SVC, RFC and GBC.
+Process of creating and testing the models is the same as before, six models in total, three with the best accuracy (SVC, RFC and GBC) and three with the best recall, also SVC, RFC and GBC. Model parameters are again selected with grid search.
 
 Models will be trained on the same data as before (stats from the 2000 NBA draft to 2016 NBA draft) and will applied to the same data as models created earlier (20017 and 2018 NBA drafts). Models can be seen in table \ref{tab:models_no_draft_pick_all_star}.
 
@@ -1396,21 +1406,21 @@ Models will be trained on the same data as before (stats from the 2000 NBA draft
 \begin{tabular}{|c|c|c|c|c|} \hline
 \multicolumn{5}{|c|}{\textbf{Models with the best accuracy}} \\ \hline
 \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
-SVC & \textbf{0.92} & 0.90 & 0.78 & 0.83 \\ \hline
-RFC & \textbf{0.88} & 0.80 & 0.69 & 0.73 \\ \hline
-GBC & \textbf{0.81} & 0.65 & 0.65 & 0.65 \\ \hline
+SVC & \textbf{0.81} & 0.72 & 0.67 & 0.69 \\ \hline
+RFC & \textbf{0.85} & 0.80 & 0.72 & 0.75 \\ \hline
+GBC & \textbf{0.82} & 0.74 & 0.68 & 0.70 \\ \hline
 \multicolumn{5}{|c|}{\textbf{Models with the best recall}} \\ \hline
 \textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 score} \\ \hline
-SVC & 0.92 & 0.90 & \textbf{0.78} & 0.83 \\ \hline
-RFC & 0.88 & 0.80 & \textbf{0.69} & 0.73 \\ \hline
-GBC & 0.78 & 0.65 & \textbf{0.70} & 0.66 \\ \hline
+SVC & 0.81 & 0.72 & \textbf{0.67} & 0.69 \\ \hline
+RFC & 0.85 & 0.80 & \textbf{0.72} & 0.75 \\ \hline
+GBC & 0.82 & 0.74 & \textbf{0.68} & 0.70 \\ \hline
 \end{tabular}
 \caption{Models created without draft pick}
 \label{tab:models_no_draft_pick_all_star}
 \end{center}
 \end{table}
 
-These models have similar results as the ones with draft pick taken into consideration, so maybe the probabilities won't be different much. Other test won't be shown and instead of them we will go to the results right away (table \ref{tab:results_no_draft_pick_all_star}).
+Note that SVM with the best accuracy and SVM with the best recall are the models with the same parameters, according to grid search. Same applies to RFC, but not to GBC. These models have similar results as the ones with draft pick taken into consideration, so maybe the probabilities won't be different much. Other test won't be shown and instead of them we will go to the results right away (table \ref{tab:results_no_draft_pick_all_star}).
 
 \begin{table}[!h] % the best accuracy models average
 \begin{center}
@@ -1418,40 +1428,43 @@ These models have similar results as the ones with draft pick taken into conside
 \textbf{ } & \textbf{ } & \textbf{Accuracy} & \textbf{Recall} & \textbf{Average} \\
 \textbf{Pick} & \textbf{Player} & \textbf{models} & \textbf{models} & \textbf{of every} \\
 \textbf{ } & \textbf{ } & \textbf{average} & \textbf{average} & \textbf{model} \\ \hline
-1 & Markelle Fultz & 0.13 & 0.12 & 0.12 \\ \hline
-2 & Lonzo Ball & 0.17 & 0.15 & 0.16 \\ \hline
-3 & Jayson Tatum & 0.64 & 0.69 & 0.66 \\ \hline
-4 & Josh Jackson & 0.12 & 0.10 & 0.11 \\ \hline
-5 & De'Aaron Fox & 0.12 & 0.11 & 0.12 \\ \hline
-6 & Jonathan Isaac & 0.15 & 0.15 & 0.15 \\ \hline
-7 & Lauri Markkanen & 0.24 & 0.22 & 0.23 \\ \hline
-8 & Frank Ntilikina & 0.14 & 0.46 & 0.30 \\ \hline
-9 & Dennis Smith Jr. & 0.18 & 0.52 & 0.35 \\ \hline
-10 & Zach Collins & 0.09 & 0.08 & 0.09 \\ \hline
-11 & Malik Monk & 0.10 & 0.41 & 0.26 \\ \hline
-12 & Luke Kennard & 0.10 & 0.10 & 0.10 \\ \hline
-13 & Donovan Mitchell & 0.47 & 0.70 & 0.59 \\ \hline
-14 & Bam Adebayo & 0.18 & 0.19 & 0.18 \\ \hline
-1 & Deandre Ayton & 0.81 & 0.81 & 0.81 \\ \hline
-2 & Marvin Bagley & 0.64 & 0.65 & 0.65 \\ \hline
-3 & Luka Dončić & 0.88 & 0.88 & 0.88 \\ \hline
-4 & Jaren Jackson & 0.68 & 0.72 & 0.70 \\ \hline
-5 & Trae Young & 0.79 & 0.83 & 0.81 \\ \hline
-6 & Mo Bamba & 0.19 & 0.19 & 0.19 \\ \hline
-7 & Wendell Carter & 0.19 & 0.20 & 0.19 \\ \hline
-8 & Collin Sexton & 0.07 & 0.06 & 0.07 \\ \hline
-9 & Kevin Knox & 0.07 & 0.06 & 0.06 \\ \hline
-10 & Mikal Bridges & 0.45 & 0.54 & 0.49 \\ \hline
-11 & Shai Gilgeous-Alexander & 0.56 & 0.58 & 0.57 \\ \hline
-12 & Miles Bridges & 0.14 & 0.13 & 0.13 \\ \hline
-13 & Jerome Robinson & 0.06 & 0.06 & 0.06 \\ \hline
+1 & Markelle Fultz & 0.12 & 0.11 & 0.12 \\ \hline
+2 & Lonzo Ball & 0.50 & 0.50 & 0.50 \\ \hline
+3 & Jayson Tatum & 0.67 & 0.67 & 0.67 \\ \hline
+4 & Josh Jackson & 0.18 & 0.18 & 0.18 \\ \hline
+5 & De'Aaron Fox & 0.16 & 0.15 & 0.15 \\ \hline
+6 & Jonathan Isaac & 0.11 & 0.10 & 0.10 \\ \hline
+7 & Lauri Markkanen & 0.25 & 0.25 & 0.25 \\ \hline
+8 & Frank Ntilikina & 0.14 & 0.13 & 0.14 \\ \hline
+9 & Dennis Smith & 0.40 & 0.40 & 0.40 \\ \hline
+10 & Zach Collins & 0.10 & 0.10 & 0.10 \\ \hline
+11 & Malik Monk & 0.04 & 0.03 & 0.04 \\ \hline
+12 & Luke Kennard & 0.08 & 0.07 & 0.07 \\ \hline
+13 & Donovan Mitchell & 0.68 & 0.68 & 0.68 \\ \hline
+14 & Bam Adebayo & 0.15 & 0.15 & 0.15 \\ \hline
+1 & Deandre Ayton & 0.78 & 0.78 & 0.78 \\ \hline
+2 & Marvin Bagley & 0.21 & 0.21 & 0.21 \\ \hline
+3 & Luka Dončić & 0.91 & 0.91 & 0.91 \\ \hline
+4 & Jaren Jackson & 0.55 & 0.55 & 0.55 \\ \hline
+5 & Trae Young & 0.54 & 0.54 & 0.54 \\ \hline
+6 & Mo Bamba & 0.09 & 0.08 & 0.09 \\ \hline
+7 & Wendell Carter & 0.17 & 0.17 & 0.17 \\ \hline
+8 & Collin Sexton & 0.14 & 0.13 & 0.14 \\ \hline
+9 & Kevin Knox & 0.16 & 0.16 & 0.16 \\ \hline
+10 & Mikal Bridges & 0.17 & 0.17 & 0.17 \\ \hline
+11 & Shai Gilgeous-Alexander & 0.20 & 0.20 & 0.20 \\ \hline
+12 & Miles Bridges & 0.08 & 0.08 & 0.08 \\ \hline
+13 & Jerome Robinson & 0.03 & 0.03 & 0.03 \\ \hline
 \end{tabular}
 \caption{Results without draft pick taken into consideration}
 \label{tab:results_no_draft_pick_all_star}
 \end{center}
 \end{table}
 
-Results are somewhat similar. Luka Dončić remained the player most probable to become an All-Star. As the ones before, these models also value first five picks of the 2018 NBA draft. As far as 2017 NBA draft goes, Tatum's probability decreased while Mithcell's increased. We can also notice increase in Gilgeous-Alexander's probability as well while Mikal's remained the same. Adebayo's probability did increase, but remained low, below 20\%. Young core of the New York Knicks, Dennis Smith, Frank Ntilikina and Kevin Knox are not valued highly by the models. Same could be said about Orlando's due Isaac and Bamba, but only time will tell as we have seen that these models can undervalue raw rookies.
+
+Results are indeed somewhat similar. Luka Dončić remained the player most probable to become an All-Star. As the ones before, these models value Tatum, Mitchell and Ayton. We can also see that the probability of Bagley becoming an All-Star decreased, while probability of Jeren Jackson becoming an All-Star increased. Lonzo Ball and Dennis Smith  also got their chances increased. There are not significant changes for the players that are selected late in the lottery. Note that, once again, Ayton's season is valued the highest out of all other seasons of the players that have yet to officially become an NBA All-Star.
+
+This models confirms that Sacramento Kings should have selected Dončić instead of Bagley number two overall on 2019 NBA draft. Models are not valuing New York's young core of Smith, Ntilikina and Knox. Orlando's rookies are also not looking good judging by this model. As we have already said, things can change, and rookies can and will improve, so don't take these results as an absolute measurement.
 
 \pagebreak
 
