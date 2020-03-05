@@ -66,6 +66,18 @@ def plot_distplots(data):
         'Distribution of draft positions'
     )
 
+    plot_one_distplot(
+        data, 'WS',
+        'Win shares',
+        'Distribution of Win shares'
+    )
+
+    plot_one_distplot(
+        data, 'VORP',
+        'Value over replacement player',
+        'Distribution of Value over replacement player'
+    )
+
 
 def plot_boxplots(data):
     label_size = 18
@@ -107,19 +119,12 @@ def plot_boxplots(data):
 
 
 def filter_data(df):
-    # transform data (totals in a season)
-    # into per game data
-    df['PTS'] = np.around(df['PTS'] / df['G'], 3)
-    df['TRB'] = np.around(df['TRB'] / df['G'], 3)
-    df['AST'] = np.around(df['AST'] / df['G'], 3)
-    df['STL'] = np.around(df['STL'] / df['G'], 3)
-    df['BLK'] = np.around(df['BLK'] / df['G'], 3)
-    df['MP'] = np.around(df['MP'] / df['G'], 3)
-
     filtered_df = df[[
         'TS%', '3PAr', 'FTr',
-        'OBPM', 'DBPM', 'TRB',
-        'AST', 'STL', 'BLK',
+        'OBPM', 'DBPM',
+        'WS', 'VORP',
+        'TRB', 'AST',
+        'STL', 'BLK',
         'PTS', 'DraftPick',
         'ALL_STAR'
     ]]
@@ -132,7 +137,7 @@ def filter_data(df):
 
 
 def best_classifier(model, grid, model_name, cv, X_train, X_test, y_train, y_test):
-    clf = GridSearchCV(model, param_grid=grid, scoring='accuracy', cv=cv, n_jobs=-1)
+    clf = GridSearchCV(model, param_grid=grid, scoring='recall', cv=cv, n_jobs=-1)
     clf.fit(X_train, y_train)
 
     print(f'Best params for {model_name}: {clf.best_params_}')
@@ -150,25 +155,13 @@ def find_best_classifiers(cv, X_train, X_test, y_train, y_test):
     best_classifier(
         SVC(),
         {
-            'kernel': ['poly'],
+            'kernel': ['rbf', 'linear', 'poly'],
             'degree': [i for i in range(1, 11)],
             'gamma': ['scale'],
             'C': [0.1, 1, 10, 100],
             'probability': [True]
         },
-        'Poly  SVC', cv,
-        X_train, X_test, y_train, y_test
-    )
-
-    best_classifier(
-        SVC(),
-        {
-            'kernel': ['rbf', 'linear'],
-            'gamma': ['scale'],
-            'C': [0.1, 1, 10, 100],
-            'probability': [True]
-        },
-        'Rbf and Linear SVC', cv,
+        'Rbf, Linear and Poly SVC', cv,
         X_train, X_test, y_train, y_test
     )
 
@@ -198,7 +191,7 @@ def find_best_classifiers(cv, X_train, X_test, y_train, y_test):
     )
 
 
-def create_classifier(model, model_name, X_train, X_test, y_train, y_test, scoring):
+def create_classifier(model, model_name, X_train, X_test, y_train, y_test, scoring, cv):
     clf = model
     clf.fit(X_train, y_train)
 
@@ -212,7 +205,7 @@ def create_classifier(model, model_name, X_train, X_test, y_train, y_test, scori
     pos_prob = proba[:, 1]
     print(f'Area under ROC curve: {roc_auc_score(y_test, pos_prob):.2f}')
 
-    score = cross_val_score(clf, X_test, y_test, cv=5, scoring=scoring)
+    score = cross_val_score(clf, X_test, y_test, cv=cv, scoring=scoring)
     print(f'{model_name} cross-validation score: {score.mean():.2f} (+/- {(score.std() * 2):.2f})')
 
     print(f'{model_name} classification report: \n{classification_report(y_test, y_pred)}')
@@ -269,11 +262,14 @@ if __name__ == "__main__":
     # plot_boxplots(filtered_df)
     # plot_distplots(filtered_df)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3,
+        random_state=27, stratify=y
+    )
 
-    print(f'Number of All-stars is: {Counter(y)}')
-    print(f'Number of All-stars in train set is: {Counter(y_train)}')
-    print(f'Number of All-stars in test set is: {Counter(y_test)}')
+    print(f'Number of not All-Stars and All-stars is: {Counter(y)}')
+    print(f'Number of not All-Stars and All-stars in train set is: {Counter(y_train)}')
+    print(f'Number of not All-Stars and All-stars in test set is: {Counter(y_test)}')
 
     cv = StratifiedKFold(n_splits=5)
     # find_best_classifiers(cv, X_train, X_test, y_train, y_test) # <- uncomment for Grid Search
@@ -284,7 +280,8 @@ if __name__ == "__main__":
             strategy='stratified',
             random_state=27
         ), 'Dummy',
-        X_train, X_test, y_train, y_test, 'accuracy'
+        X_train, X_test, y_train, y_test,
+        'accuracy', cv
     )
 
     # maximizing accuracy:
@@ -293,10 +290,11 @@ if __name__ == "__main__":
             kernel='poly',
             gamma='scale',
             C=1,
-            degree=1,
+            degree=7,
             probability=True
         ), 'SVC',
-        X_train, X_test, y_train, y_test, 'accuracy'
+        X_train, X_test, y_train, y_test,
+        'accuracy', cv
     )
 
     # SHAP_values(svc_acc, X_train)
@@ -308,7 +306,8 @@ if __name__ == "__main__":
             n_estimators=100,
             random_state=27
         ), 'RFC',
-        X_train, X_test, y_train, y_test, 'accuracy'
+        X_train, X_test, y_train, y_test,
+        'accuracy', cv
     )
 
     # SHAP_values(rfc_acc, X_train)
@@ -318,10 +317,11 @@ if __name__ == "__main__":
             loss='deviance',
             max_depth=10,
             max_features='sqrt',
-            n_estimators=50,
+            n_estimators=100,
             random_state=27
         ), 'GBC',
-        X_train, X_test, y_train, y_test, 'accuracy'
+        X_train, X_test, y_train, y_test,
+        'accuracy', cv
     )
 
     # SHAP_values(gbc_acc, X_train)
@@ -331,11 +331,12 @@ if __name__ == "__main__":
         SVC(
             kernel='poly',
             gamma='scale',
-            C=100,
-            degree=1,
+            C=10,
+            degree=9,
             probability=True
         ), 'SVC',
-        X_train, X_test, y_train, y_test, 'recall'
+        X_train, X_test, y_train, y_test,
+        'recall', cv
     )
 
     # SHAP_values(svc_rcl, X_train)
@@ -344,10 +345,11 @@ if __name__ == "__main__":
         RandomForestClassifier(
             criterion='gini',
             max_depth=10,
-            n_estimators=200,
+            n_estimators=250,
             random_state=27
         ), 'RFC',
-        X_train, X_test, y_train, y_test, 'recall'
+        X_train, X_test, y_train, y_test,
+        'recall', cv
     )
 
     # SHAP_values(rfc_rcl, X_train)
@@ -357,10 +359,11 @@ if __name__ == "__main__":
             loss='deviance',
             max_depth=10,
             max_features=None,
-            n_estimators=100,
+            n_estimators=50,
             random_state=27
         ), 'GBC',
-        X_train, X_test, y_train, y_test, 'recall'
+        X_train, X_test, y_train, y_test,
+        'recall', cv
     )
 
     # SHAP_values(gbc_rcl, X_train)
