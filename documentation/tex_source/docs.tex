@@ -1252,7 +1252,7 @@ GBC & 0.79 & 0.69 & \textbf{0.67} & 0.68 \\ \hline
 \end{center}
 \end{table}
 
-Created models does have high values for some of the metrics. Also, models have similar results. The worst value for accuracy, out of every models with the best accuracy, is SVC. Same can be also said about SVC in recall group, though values are not different much. These models are looking okay in a vacuum, but additional test have to done for us to be sure about that. First, we will check are these models better than the model that classifies rookie seasons at random (table \ref{tab:dummy_all_star}).
+Created models do have high values for some of the metrics. Also, models have similar results. The worst value for accuracy, out of every model with the best accuracy, is SVC. Same can be also said about SVC in recall group, though values are not different much. These models are looking okay in a vacuum, but additional test have to done for us to be sure about that. First, we will check are these models better than the model that classifies rookie seasons at random (table \ref{tab:dummy_all_star}).
 
 \begin{table}[!h]
 \begin{center}
@@ -1395,7 +1395,7 @@ Figures \ref{plt:shap_svm_all_star}, \ref{plt:shap_rfc_all_star} and \ref{plt:sh
 \subsubsection{Models without draft pick taken into consideration}
 \label{subsubsec:without_draft_pick_all_star}
 
-After finishing classification and showing the results, one question remains. Why should player's position on the draft have influence on his chance of becoming an All-Star. I mean, players that are believed to be better prospects will be selected higher, so a player drafted number one overall should have higher probability of being an All-Star than the player selected 14th. But, after they enter the league the way they are playing matters, not their draft position. Because of that, more models will be created, using the same stats but this time \textbf{draft position will be excluded}!
+After finishing classification and showing the results, one question remains. Why should player's position on the draft have influence on his chance of becoming an All-Star. I mean, players that are believed to be better prospects will be selected higher, so a player drafted number one overall should have higher probability of being an All-Star than the player selected 14th initially. But, after they enter the league the way they are playing matters, not their draft position. Because of that, more models will be created, using the same stats but this time \textbf{draft position will be excluded}!
 
 Process of creating and testing the models is the same as before, six models in total, three with the best accuracy (SVC, RFC and GBC) and three with the best recall, also SVC, RFC and GBC. Model parameters are again selected with grid search.
 
@@ -1462,9 +1462,17 @@ Note that SVM with the best accuracy and SVM with the best recall are the models
 \end{table}
 
 
-Results are indeed somewhat similar. Luka Dončić remained the player most probable to become an All-Star. As the ones before, these models value Tatum, Mitchell and Ayton. We can also see that the probability of Bagley becoming an All-Star decreased, while probability of Jeren Jackson becoming an All-Star increased. Lonzo Ball and Dennis Smith  also got their chances increased. There are not significant changes for the players that are selected late in the lottery. Note that, once again, Ayton's season is valued the highest out of all other seasons of the players that have yet to officially become an NBA All-Star.
+Results are indeed somewhat similar. Luka Dončić remained the player most probable to become an All-Star. As the ones before, these models value Tatum, Mitchell and Ayton. We can also see that the probability of Bagley becoming an All-Star decreased, while probability of Jaren Jackson becoming an All-Star increased. Lonzo Ball and Dennis Smith  also got their chances increased. There are not significant changes for the players that are selected late in the lottery. Note that, once again, Ayton's season is valued the highest out of all other seasons of the players that have yet to officially become an NBA All-Star.
 
 This models confirms that Sacramento Kings should have selected Dončić instead of Bagley number two overall on 2019 NBA draft. Models are not valuing New York's young core of Smith, Ntilikina and Knox. Orlando's rookies are also not looking good judging by this model. As we have already said, things can change, and rookies can and will improve, so don't take these results as an absolute measurement.
+
+\subsubsection{Possible improvement}
+\label{subsubsec:improvement_all_star}
+
+Even though the results are fairly good, it is probably possible to improve them. That can be done by changing the data. First and obvious choice, more rookie seasons could be taken into consideration. Second, we could add some more features, such as PER or TOV. 
+
+In my personal opinion, data used should be minute weighted or even possession weighted because not every rookie plays the same amount of minutes (or possessions). That is why per minute stats or per possession stats could improve the results over per game stats.
+
 
 \pagebreak
 
